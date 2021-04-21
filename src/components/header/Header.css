@@ -1,35 +1,80 @@
 .header-container {
-    background-image: url(../../asssets/cover-mainpage.jpg);
-    height: 350px;
-    background-size: cover;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-.cities-searchbar-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.username-auth {
-    text-align: right;
-}
-
-.auth {
-    margin-right: 25px;
-}
-
-.username {
-    margin-right: 50px;
+  background-image: url(../../asssets/cover-resto.jpeg);
+  background-size: cover;
+  height: 350px;
+  padding-top: 10px;
+  padding-right: 10px;
 }
 
 img {
-    height: 200px;
-    width: 200px;
+  position: absolute;
+  width: 201px;
+  height: 201px;
+  left: 15px;
 }
 
-span {
-    color: white;
+.auth-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+a {
+  margin-right: 20px;
+}
+
+a.masuk {
+  margin-right: 30px;
+}
+
+a:link {
+  color: #ffff;
+  text-decoration: none;
+}
+
+a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: gray;
+  text-decoration: none;
+}
+
+a:active {
+  color: gray;
+  text-decoration: none;
+}
+
+.center-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.judul-motto {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.9;
+}
+
+.judul {
+  color: #ffff;
+  font-weight: 500;
+  font-size: 120px;
+}
+
+.motto {
+  color: #ffff;
+  font-style: italic;
+  font-weight: 200;
+  font-size: 50px;
+}
+
+.location-search-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
 }

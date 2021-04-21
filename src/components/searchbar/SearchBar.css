@@ -1,16 +1,18 @@
-.search {
-    height: 40px;
-    background: #fff;
-    padding-left: 10px;
+.searchbar {
+  height: 40px;
+  border-radius: 0px 8px 8px 0px;
+  background: #fff;
+  padding-left: 10px;
+  border: 1px solid;
 }
 
-.text{
-    border:none;
-    background: none;
-    outline: none;
-    float: left;
-    padding:0;
-    font-size:16px;
-    line-height: 40px;
-    width: 350px;
+.text {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  font-size: 16px;
+  line-height: 40px;
+  width: 500px;
 }
