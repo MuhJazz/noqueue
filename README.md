@@ -1,7 +1,7 @@
 # Noqueue
 
 # Cara melihat tampilan web di Browser
-1. Clone repository ini ke local drive
-2. Jalankan perintah ini di terminal :<br/>
-    2.1 npm install   
-    2.2 npm start
+
+1. Clone repository ini
+2. Run npm install
+3. Run npm start
