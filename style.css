@@ -18,15 +18,19 @@ body {
 }
 
 #masuk {
-  padding-right: 30px;
+  padding-right: 45px;
   text-decoration: none;
 }
 
 #daftar {
-  padding-right: 15px;
+  padding-right: 35px;
   text-decoration: none;
 }
 
+#logout{
+  padding-right: 25px;
+  text-decoration: none;
+}
 .center {
   text-align: center;
 }

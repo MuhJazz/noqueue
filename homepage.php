@@ -23,6 +23,7 @@
 ?>
     <header class="header">
       <div class="auth-container">
+        <a id="masuk"><?php echo $_SESSION['username']; ?></a>
 				<!-- notification message -->
 		<?php if (isset($_SESSION['success'])) : ?>
 		<div class="error success" >
