@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Home Page</title>
+    <title>Signup</title>
   </head>
   <body>
     <header class="header">
@@ -13,7 +13,11 @@
         <a id="masuk" href="./signin.html">Masuk</a>
         <a id="daftar" href="./signup.html">Daftar</a>
       </div>
-      <img style="position: absolute" src="./images/logo.png" alt="logo" />
+      <img
+        style="position: absolute; top: 0px; left: 0px"
+        src="./images/logo.png"
+        alt="logo"
+      />
       <div class="center">
         <span class="judul">NoQ!</span>
         <br />
@@ -88,8 +92,26 @@
       </div>
     </div>
     <div class="modal-bg">
-      <div class="modal" style="height: 55%">
-        <div class="form">
+      <div class="modal" style="height: 75%">
+        <form class="form" id="form-daftar-user" method="POST">
+          <label for="username">Username</label>
+          <input type="text" name="username" placeholder="username" />
+          <label for="password">Password</label>
+          <input type="password" name="password" placeholder="xxxxxxxxx" />
+          <label for="email">Email</label>
+          <input type="email" name="email" placeholder="contoh@gmail.com" />
+          <label for="nama">Nama</label>
+          <input type="text" name="nama" placeholder="nama" />
+          <label for="tel">No Telepon</label>
+          <input type="tel" name="tel" placeholder="+62 xxx xxxx xxxx" />
+          <label for="address">Alamat</label>
+          <textarea name="address" id="address" cols="30" rows="4"></textarea>
+          <a href="">daftarkan restoran</a>
+          <button id="daftar-button">DAFTAR</button>
+        </form>
+      </div>
+      <div class="modal modal-hidden" style="height: 55%">
+        <form action="" class="form" id="form-pemilik-resto">
           <label for="username">Username</label>
           <input type="text" name="username" placeholder="username" />
           <label for="password">Password</label>
@@ -101,8 +123,15 @@
           <label for="tel">No Telepon</label>
           <input type="tel" name="tel" placeholder="+62 xxx xxxx xxxx" />
           <button>LANJUT</button>
-        </div>
+        </form>
       </div>
     </div>
+    <script>
+      document.getElementById("daftar-button").onclick = function (e) {
+        e.preventDefault();
+        console.log("hai");
+        location.href = "./homepage-profile.html";
+      };
+    </script>
   </body>
 </html>
