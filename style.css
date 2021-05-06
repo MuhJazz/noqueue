@@ -17,6 +17,18 @@ body {
   color: white;
 }
 
+.image-avatar {
+  text-align: right;
+  padding-top: 5px;
+  padding-right: 15px;
+}
+
+.image-avatar img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
 #masuk {
   padding-right: 45px;
   text-decoration: none;
@@ -27,10 +39,11 @@ body {
   text-decoration: none;
 }
 
-#logout{
+#logout {
   padding-right: 25px;
   text-decoration: none;
 }
+
 .center {
   text-align: center;
 }
@@ -163,6 +176,10 @@ button {
   width: 20%;
 }
 
+.modal-hidden {
+  display: none;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -180,6 +197,12 @@ button {
   margin-bottom: 20px;
 }
 
+textarea {
+  resize: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
 .form > button {
   align-self: flex-end;
 }
@@ -188,4 +211,72 @@ button {
   font-size: 14px;
   color: black;
   font-weight: 300;
+}
+
+/* profile page */
+.profile-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.image-biodata-container {
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  margin-top: 60px;
+  margin-left: 40px;
+}
+
+.edit-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.profile-image {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background-image: url("./images/profile-picture.png");
+  background-size: cover;
+}
+
+.transparent-background-image {
+  position: fixed;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  margin-right: 20px;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.biodata {
+  display: flex;
+  flex-direction: column;
+}
+
+.biodata > h2 {
+  margin-bottom: 15px;
+}
+
+.biodata > p {
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+.riwayat-pemesanan {
+  height: 250px;
+  width: 200px;
+  border: blue solid;
+  margin-top: 40px;
+  margin-right: 40px;
+}
+
+.riwayat-pemesanan > h2 {
+  text-align: center;
 }
