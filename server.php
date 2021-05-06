@@ -55,7 +55,7 @@ if (isset($_POST['reg_user'])) {
                   VALUES('$nama','$username', '$email', '$password', '$no_hp')";
         $results = mysqli_query($db, $query);
         $_SESSION['username'] = $username;
-        header('location: homepage.php');
+        header('location: login.php');
     }
   }
   // LOGIN USER
@@ -82,5 +82,71 @@ if (isset($_POST['login_user'])) {
         }
     }
   }
-  
+
+
+  //ADD RESTO
+
+if(isset($_POST['add_resto'])){
+    $filename = $_FILES['resto_image']['name'];
+    $filetmpname = $_FILES['resto_image']['tmp_name'];
+    $folder = 'images/';
+
+    $q = "INSERT INTO restoran ('resto_image') VALUES ('$file')";
+    $res = mysqli_query($db,$q);
+    if($res)
+      {
+        move_uploaded_file($filetmpname, $folder.$filename);
+        $msg = "Foto Terupload";
+      }
+      else{
+        $msg = "Foto gagal";
+      }
+
+  $lokasi_resto = mysqli_real_escape_string($db,$_POST['lokasi_resto']);
+  $resto_name = mysqli_real_escape_string($db, $_POST['nama_resto']);
+  $resto_address = mysqli_real_escape_string($db, $_POST['alamat_resto']);
+  $resto_number = mysqli_real_escape_string($db, $_POST['nomor_resto']);
+
+  if(empty($resto_name))
+    array_push($errors, "Masukan Nama");
+  if(empty($resto_address))
+    array_push($errors, "Masukan Alamat");
+  if(empty($resto_number))
+    array_push($errors, "Masukan Nomor");
+
+  if (count($errors) == 0) {
+      $query = "INSERT INTO restoran (resto_name,resto_address,resto_number,loc_id) VALUES ('$resto_name','$resto_address','$resto_number','$lokasi_resto')";
+      $results = mysqli_query($db, $query);
+      $_SESSION['username'] = $username;
+      header('location: restoran.php');
+    }
+}
+
+
+
+
+  //ADD KOTA RESTO
+if (isset($_POST['resto_loc'])){
+
+  $loc_name = mysqli_real_escape_string($db, $_POST['loc_name']);
+
+  if (empty($loc_name)) {
+    array_push($errors, "Masukan Kota");
+}
+  $user_check_query = "SELECT * FROM restoran_loc WHERE loc_name='$loc_name' LIMIT 1";
+  $result = mysqli_query($db,$user_check_query);
+  $user = mysqli_fetch_assoc($result);
+    if ($user) { // if user exists
+      if ($user['loc_name'] === $loc_name) {
+        array_push($errors, "Kota sudah ada");
+      }
+    }
+      
+    if (count($errors) == 0) {
+      $query = "INSERT INTO restoran_loc (loc_name) VALUES ('$loc_name')";
+      $results = mysqli_query($db, $query);
+      $_SESSION['username'] = $username;
+      header('location: homepage.php');
+    }
+  }
 ?>
