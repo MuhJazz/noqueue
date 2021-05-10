@@ -60,7 +60,7 @@
               <img src="./images/akar-icons_edit.png" alt="edit icon" />
             </div>
           </div>
-          <a href="#">Edit profile</a>
+          <a href="./profile_edit.php">Edit profile</a>
           <a href="./homepage.php">Kembali</a>
         </div>
         <div class="biodata">
@@ -68,7 +68,6 @@
             <p><?php echo $username; ?></p>
             <p><?php echo $email; ?></p>
             <p><?php echo $no_hp; ?></p>
-
         </div>
       </div>
       <div class="riwayat-pemesanan">
