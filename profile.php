@@ -19,11 +19,6 @@
   </head>
   <body>
     <header class="header">
-      <div class="image-avatar">
-        <a href="./profile.php">
-          <img src="./images/profile-picture.png" alt="image-avatar" />
-        </a>
-      </div>
       <a href="./homepage.php">
         <img
           style="position: absolute; top: 0px; left: 0px"
@@ -35,21 +30,6 @@
         <span class="judul">NoQ!</span>
         <br />
         <span class="motto">Makan enak tanpa antre</span>
-      </div>
-      <div class="search-location">
-        <select name="location" id="location">
-          <option value="bogor">Bogor</option>
-          <option value="jakarta">Jakarta</option>
-          <option value="depok">Depok</option>
-          <option value="bekasi">Bekasi</option>
-        </select>
-        <div class="search-bar">
-          <input
-            class="text"
-            type="text"
-            placeholder="Find your nearest restaurant..."
-          />
-        </div>
       </div>
     </header>
     <div class="profile-container">

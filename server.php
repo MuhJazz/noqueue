@@ -82,30 +82,52 @@ if (isset($_POST['login_user'])) {
         }
     }
   }
+ // PROFILE EDIT
+  if(isset($_POST['edit']))
+  {
+    $user = mysqli_real_escape_string($db,$_SESSION['username']);
+    $nama = mysqli_real_escape_string($db,$_POST['nama']);
+    $email = mysqli_real_escape_string($db,$_POST['email']);
+    $pass = mysqli_real_escape_string($db,$_POST['password']);
+    $no_hp = mysqli_real_escape_string($db,$_POST['no_hp']);
 
+    if (empty($nama)) {
+        array_push($errors, "Name is required");
+    }
+    if (empty($email)) {
+        array_push($errors, "Email is required");
+    }
+    if (empty($pass)) {
+      array_push($errors, "Pass is required");
+    }
+    if (empty($no_hp)) {
+        array_push($errors, "Nomor HP is required");
+    }
+      if(count($errors) == 0)
+      {
+        $pass = md5($pass);
+        $query = "UPDATE users SET nama='$nama', email='$email', password='$pass', no_hp='$no_hp' WHERE username='$user'";
+        $result = mysqli_query($db,$query);
+        if($result)
+        {
+          header("Location: profile.php");
+        }
+        else 
+        {
+          array_push($errors, "Gagal Update");
+        }
+      }
+  }
 
   //ADD RESTO
 
 if(isset($_POST['add_resto'])){
-    $filename = $_FILES['resto_image']['name'];
-    $filetmpname = $_FILES['resto_image']['tmp_name'];
-    $folder = 'images/';
-
-    $q = "INSERT INTO restoran ('resto_image') VALUES ('$file')";
-    $res = mysqli_query($db,$q);
-    if($res)
-      {
-        move_uploaded_file($filetmpname, $folder.$filename);
-        $msg = "Foto Terupload";
-      }
-      else{
-        $msg = "Foto gagal";
-      }
 
   $lokasi_resto = mysqli_real_escape_string($db,$_POST['lokasi_resto']);
   $resto_name = mysqli_real_escape_string($db, $_POST['nama_resto']);
   $resto_address = mysqli_real_escape_string($db, $_POST['alamat_resto']);
   $resto_number = mysqli_real_escape_string($db, $_POST['nomor_resto']);
+  $img = mysqli_real_escape_string($db, $_FILES['resto_image']['name']);
 
   if(empty($resto_name))
     array_push($errors, "Masukan Nama");
@@ -115,15 +137,16 @@ if(isset($_POST['add_resto'])){
     array_push($errors, "Masukan Nomor");
 
   if (count($errors) == 0) {
-      $query = "INSERT INTO restoran (resto_name,resto_address,resto_number,loc_id) VALUES ('$resto_name','$resto_address','$resto_number','$lokasi_resto')";
+      $query = "INSERT INTO restoran (resto_name,resto_address,resto_number,resto_image,loc_id) VALUES ('$resto_name','$resto_address','$resto_number','$img  ','$lokasi_resto')";
       $results = mysqli_query($db, $query);
+      if($results)
+      {
+        move_uploaded_file($_FILES['resto_image']['tmp_name'], "images/$img");
+      }
       $_SESSION['username'] = $username;
       header('location: restoran.php');
     }
 }
-
-
-
 
   //ADD KOTA RESTO
 if (isset($_POST['resto_loc'])){
@@ -149,4 +172,35 @@ if (isset($_POST['resto_loc'])){
       header('location: homepage.php');
     }
   }
+
+//ADD MENU
+
+if(isset($_POST['add_menu'])){
+
+  $nama_resto = mysqli_real_escape_string($db,$_POST['nama_resto']);
+  $menu_name = mysqli_real_escape_string($db, $_POST['nama_menu']);
+  $menu_price = mysqli_real_escape_string($db, $_POST['harga_menu']);
+  $menu_desc = mysqli_real_escape_string($db, $_POST['desc_menu']);
+  $img = mysqli_real_escape_string($db, $_FILES['menu_image']['name']);
+
+  if(empty($menu_name))
+    array_push($errors, "Masukan Nama Menu");
+  if(empty($menu_price))
+    array_push($errors, "Masukan Harga Menu");
+  if(empty($menu_desc))
+    array_push($errors, "Masukan Deskripsi Menu");
+  if(empty($img))
+    array_push($errors, "Masukan Gambar Menu");
+
+  if (count($errors) == 0) {
+      $query = "INSERT INTO menu (menu_name,menu_price,menu_desc,menu_image,res_id) VALUES ('$menu_name','$menu_price','$menu_desc','$img','$nama_resto')";
+      $results = mysqli_query($db, $query);
+      if($results)
+      {
+        move_uploaded_file($_FILES['menu_image']['tmp_name'], "menu_images/$img");
+      }
+      $_SESSION['username'] = $username;
+      header('location: homepage.php');
+    }
+}
 ?>
