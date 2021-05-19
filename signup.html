@@ -92,7 +92,7 @@
       </div>
     </div>
     <div class="modal-bg">
-      <div class="modal" style="height: 75%">
+      <div class="modal-container">
         <form class="form" id="form-daftar-user" method="POST">
           <label for="username">Username</label>
           <input type="text" name="username" placeholder="username" />
@@ -106,12 +106,13 @@
           <input type="tel" name="tel" placeholder="+62 xxx xxxx xxxx" />
           <label for="address">Alamat</label>
           <textarea name="address" id="address" cols="30" rows="4"></textarea>
-          <a href="">daftarkan restoran</a>
-          <button id="daftar-button">DAFTAR</button>
+          <a id="linkFormPemilikResto" href="">daftarkan restoran</a>
+          <button id="daftar-user-button">DAFTAR</button>
         </form>
-      </div>
-      <div class="modal modal-hidden" style="height: 55%">
-        <form action="" class="form" id="form-pemilik-resto">
+        <form
+          class="form form-daftar-pemilik-resto-hidden"
+          id="form-daftar-pemilik-resto"
+        >
           <label for="username">Username</label>
           <input type="text" name="username" placeholder="username" />
           <label for="password">Password</label>
@@ -122,16 +123,23 @@
           <input type="text" name="nama" placeholder="nama" />
           <label for="tel">No Telepon</label>
           <input type="tel" name="tel" placeholder="+62 xxx xxxx xxxx" />
-          <button>LANJUT</button>
+          <button id="button-lanjut-daftar-resto">LANJUT</button>
+        </form>
+        <form
+          class="form form-daftar-resto-hidden"
+          id="form-daftar-resto"
+          method="POST"
+        >
+          <label for="name">Nama restoran</label>
+          <input type="text" name="name" placeholder="nama restoran kamu" />
+          <label for="tel">No Telepon</label>
+          <input type="tel" name="tel" placeholder="xxxxxxxxxxx" />
+          <label for="resto-address">Alamat</label>
+          <textarea name="address" id="address" cols="30" rows="4"></textarea>
+          <button id="daftar-resto-button">DAFTAR</button>
         </form>
       </div>
     </div>
-    <script>
-      document.getElementById("daftar-button").onclick = function (e) {
-        e.preventDefault();
-        console.log("hai");
-        location.href = "./homepage-profile.html";
-      };
-    </script>
+    <script src="./signup.js"></script>
   </body>
 </html>
