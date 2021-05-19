@@ -55,7 +55,7 @@
         <button>TELUSURI</button>
       </div>
       <div class="cards">
-      <?php 
+        <?php 
               $db = mysqli_connect('localhost','root', 'subhan2122', 'noq');
                 $query = mysqli_query($db, "select * from restoran");
                 while($resto = mysqli_fetch_array($query))
@@ -76,30 +76,14 @@
     </div>
     <div class="modal-bg">
     	<div class="modal" style="height: 55%">
-      <?php
-        $user = $_SESSION['username'];
-        $query = mysqli_query($db, "select nama,email,no_hp,password from users where username='$user'");
-        $users = mysqli_fetch_array($query);
-        ?>
-			<form method="post" action="profile_edit.php" class="form" enctype="multipart/form-data">
+			<form method="post" action="image_profile_edit.php" class="form" enctype="multipart/form-data">
 				<?php include('error.php'); ?>
-        <div class="input-group">
-					<input type="hidden" name="username" value="<?php echo $user ?>">
+                <div class="input-group">
+					<label>Foto Profil</label>
+					<input type="file" name="user_image" accept=".png, .jpg, .jpeg">
 				</div>
 				<div class="input-group">
-					<label>Nama</label>
-					<input type="text" name="nama" value="<?php echo $users['nama']; ?>">
-				</div>
-				<div class="input-group">
-					<label>Email</label>
-					<input type="email" name="email" value="<?php echo $users['email']; ?>">
-				</div>
-        <div class="input-group">
-					<label>Nomor HP</label>
-					<input type="text" name="no_hp" value="<?php echo $users['no_hp']; ?>">
-				</div>
-				<div class="input-group">
-					<button type="submit" class="btn" name="edit">Update</button>
+					<button type="submit" class="btn" name="img_edit">Update</button>
           <a href="./profile.php">Kembali</a>
 				</div>
 			</form>

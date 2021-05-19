@@ -76,30 +76,22 @@
     </div>
     <div class="modal-bg">
     	<div class="modal" style="height: 55%">
-      <?php
-        $user = $_SESSION['username'];
-        $query = mysqli_query($db, "select nama,email,no_hp,password from users where username='$user'");
-        $users = mysqli_fetch_array($query);
-        ?>
-			<form method="post" action="profile_edit.php" class="form" enctype="multipart/form-data">
+			<form method="post" action="pass_edit.php" class="form" enctype="multipart/form-data">
 				<?php include('error.php'); ?>
-        <div class="input-group">
-					<input type="hidden" name="username" value="<?php echo $user ?>">
-				</div>
+                    <div class="input-group">
+                        <label>Current Password</label>
+                        <input type="password" name="current_password">
+                    </div>
+                    <div class="input-group">
+                        <label>New Password</label>
+                        <input type="password" name="new_password">
+                    </div>
+                    <div class="input-group">
+                        <label>Confirm Password</label>
+                        <input type="password" name="new_password_1">
+                    </div>
 				<div class="input-group">
-					<label>Nama</label>
-					<input type="text" name="nama" value="<?php echo $users['nama']; ?>">
-				</div>
-				<div class="input-group">
-					<label>Email</label>
-					<input type="email" name="email" value="<?php echo $users['email']; ?>">
-				</div>
-        <div class="input-group">
-					<label>Nomor HP</label>
-					<input type="text" name="no_hp" value="<?php echo $users['no_hp']; ?>">
-				</div>
-				<div class="input-group">
-					<button type="submit" class="btn" name="edit">Update</button>
+					<button type="submit" class="btn" name="pass_edit">Update</button>
           <a href="./profile.php">Kembali</a>
 				</div>
 			</form>

@@ -86,7 +86,7 @@
     </div>
 	<div class="modal-bg">
     	<div class="modal" style="height: 55%">
-			<form method="post" action="signup.php" class="form">
+			<form method="post" action="signup.php" class="form" enctype="multipart/form-data">
 				<?php include('error.php'); ?>
 				<div class="input-group">
 				<label>Nama</label>
@@ -111,6 +111,10 @@
 				<div class="input-group">
 				<label>Nomor Handphone</label>
 				<input type="text" name="no_hp">
+				</div>
+        <div class="input-group">
+					<label>Foto Profil</label>
+					<input type="file" name="user_image" accept=".png, .jpg, .jpeg">
 				</div>
 				<div class="input-group">
 				<button type="submit" class="btn" name="reg_user">Register</button>

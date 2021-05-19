@@ -1,8 +1,9 @@
 <?php include('server.php');
   $user = $_SESSION['username'];
-  $query = mysqli_query($db, "select username,nama,email,no_hp from users where username='$user'");
+  $query = mysqli_query($db, "select username,nama,email,no_hp,user_image from users where username='$user'");
   $user = mysqli_fetch_assoc($query);
 
+  $res_img = "user_images/".$user['user_image'];
   $username = $user['username'];
   $email = $user['email'];
   $nama = $user['nama'];
@@ -35,12 +36,11 @@
     <div class="profile-container">
       <div class="image-biodata-container">
         <div class="edit-profile">
-          <div class="profile-image">
-            <div class="transparent-background-image">
-              <img src="./images/akar-icons_edit.png" alt="edit icon" />
-            </div>
+          <div class="profile-image" style="background-image: url('<?php echo $res_img;?>');">
           </div>
+          <a href="./image_profile_edit.php">Edit Profile Picture</a>
           <a href="./profile_edit.php">Edit profile</a>
+          <a href="./pass_edit.php">Edit Password </a>
           <a href="./homepage.php">Kembali</a>
         </div>
         <div class="biodata">

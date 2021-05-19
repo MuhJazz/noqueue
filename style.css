@@ -20,7 +20,7 @@ body {
 .image-avatar {
   text-align: right;
   padding-top: 5px;
-  padding-right: 15px;
+  padding-right: 30px;
 }
 
 .image-avatar img {
@@ -168,13 +168,16 @@ button {
   align-items: center;
 }
 
-.modal-container {
-  width: 250px;
-  max-width: 2500px;
-  margin: 1rem;
-  padding: 2rem;
-  background: #ffffff;
+.modal {
+  background-color: white;
   border-radius: 8px;
+  padding: 30px;
+  padding-bottom: 50px;
+  width: 20%;
+}
+
+.modal-hidden {
+  display: none;
 }
 
 .form {
@@ -182,17 +185,11 @@ button {
   flex-direction: column;
 }
 
-.form-daftar-pemilik-resto-hidden,
-.form-daftar-resto-hidden {
-  display: none;
-}
-
 .form > label {
   font-size: 20px;
 }
 
-.form > input,
-.biodata > input {
+.form > input {
   border-radius: 5px;
   width: 98%;
   border: 1px solid;
@@ -242,11 +239,11 @@ textarea {
   height: 200px;
   width: 200px;
   border-radius: 50%;
-  background-image: url("./images/profile-picture.png");
   background-size: cover;
 }
 
 .transparent-background-image {
+  position: fixed;
   height: 200px;
   width: 200px;
   border-radius: 50%;
@@ -269,14 +266,6 @@ textarea {
 .biodata > p {
   margin: 0px;
   margin-bottom: 10px;
-}
-
-.biodata > input {
-  width: 200px;
-}
-
-.biodata > button {
-  align-self: flex-end;
 }
 
 .riwayat-pemesanan {

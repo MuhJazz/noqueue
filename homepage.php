@@ -21,24 +21,37 @@
   }
 ?>
     <header class="header">
-      <div class="auth-container">
+    <?php 
+              $db = mysqli_connect('localhost','root', 'subhan2122', 'noq');
+              $user=$_SESSION['username'];
+              $query = mysqli_query($db, "select user_image from users where username='$user'");
+              while($users = mysqli_fetch_array($query))
+              {?> 
+                <?php $usr_img = "user_images/".$users['user_image'];?>
+                <div class="image-avatar">
+                    <a href="./profile.php">
+                     <img src= <?php echo $usr_img;?> alt='image-avatar' />
+                    </a>
+        <?php }?>
+        <div class="auth-container" style="display: inline;">
         <a id="masuk" href="./profile.php"><?php echo $_SESSION['username']; ?></a>
-				<!-- notification message -->
-		<?php if (isset($_SESSION['success'])) : ?>
-		<div class="error success" >
-			<h3>
-			<?php 
-				echo $_SESSION['success']; 
-				unset($_SESSION['success']);
-			?>
-			</h3>
-		</div>
-		<?php endif ?>
+		<!-- notification message -->
+        <?php if (isset($_SESSION['success'])) : ?>
+        <div class="error success" >
+          <h3>
+          <?php 
+            echo $_SESSION['success']; 
+            unset($_SESSION['success']);
+          ?>
+          </h3>
+        </div>
+        <?php endif ?>
 
 		<!-- logged in user information -->
-		<?php  if (isset($_SESSION['username'])) : ?>
-			<a id="logout" href="index.php?logout='1'" style="color: red;">logout</a>
-		<?php endif ?>
+        <?php  if (isset($_SESSION['username'])) : ?>
+          <a id="logout" href="index.php?logout='1'" style="color: red;">logout</a>
+        <?php endif ?>
+    </div>
       </div>
       <img style="position: absolute" src="./images/logo.png" alt="logo" />
       <div class="center">
@@ -47,19 +60,24 @@
         <span class="motto">Makan enak tanpa antre</span>
       </div>
       <div class="search-location">
-        <select name="location" id="location">
-          <option value="bogor">Bogor</option>
-          <option value="jakarta">Jakarta</option>
-          <option value="depok">Depok</option>
-          <option value="bekasi">Bekasi</option>
-        </select>
-        <div class="search-bar">
-          <input
-            class="text"
-            type="text"
-            placeholder="Find your nearest restaurant..."
-          />
-        </div>
+      <?php 
+                $db = mysqli_connect('localhost','root', 'subhan2122', 'noq');
+                $query = mysqli_query($db, "select * from restoran_loc");
+                ?>
+                    <select name="location" id="location">
+                    <?php
+                        while($resto = mysqli_fetch_array($query))
+                        {
+                            ?>
+                            <option name="res" value = "<?= $resto['loc_id'];?>">
+                            <?php 
+                                echo $resto['loc_name']; ?>
+                            </option>
+                            <?php
+                        }
+                    ?>
+                    </select>
+                    <button type="submit" class="btn" name="filter">Cari</button>
       </div>
     </header>
     <div class="content">
@@ -68,54 +86,24 @@
         <button>TELUSURI</button>
       </div>
       <div class="cards">
-        <div class="card">
-          <span
-            class="card-image"
-            style="background-image: url(./images/resto1.jpeg)"
-          ></span>
-          <div class="card-content">
-            <span class="nama-resto">Resto1</span>
-            <span class="alamat">Alamat1</span>
-            <span class="rate">5.0/5.0</span>
-          </div>
-        </div>
-        <div class="card">
-          <span
-            class="card-image"
-            style="background-image: url(./images/resto2.jpeg)"
-          ></span>
-          <div class="card-content">
-            <span class="nama-resto">Resto2</span>
-            <span class="alamat">Alamat2</span>
-            <span class="rate">4.0/5.0</span>
-          </div>
-        </div>
-        <div class="card">
-          <span
-            class="card-image"
-            style="background-image: url(./images/resto3.jpeg)"
-          ></span>
-          <div class="card-content">
-            <span class="nama-resto">Resto3</span>
-            <span class="alamat">Alamat3</span>
-            <span class="rate">3.0/5.0</span>
-          </div>
-        </div>
-        <div class="card">
-          <span
-            class="card-image"
-            style="background-image: url(./images/resto4.jpeg)"
-          ></span>
-          <div class="card-content">
-            <span class="nama-resto">Resto4</span>
-            <span class="alamat">Alamat4</span>
-            <span class="rate">2.0/5.0</span>
-          </div>
-        </div>
+       <?php 
+              $db = mysqli_connect('localhost','root', 'subhan2122', 'noq');
+                $query = mysqli_query($db, "select * from restoran");
+                while($resto = mysqli_fetch_array($query))
+                {?>
+                 <?php $res_img = "images/".$resto['resto_image'];?>
+                  <div class="card">
+                    <span
+                      class="card-image"
+                      style="background-image: url('<?php echo $res_img;?>');"
+                    ></span>
+                    <div class="card-content">
+                      <span class="nama-resto"><?php echo $resto['resto_name'];?></span>
+                      <span class="alamat"><?php echo $resto['resto_address'];?></span>
+                    </div>
+                  </div>
+               <?php }?>
       </div>
     </div>
   </body>
 </html>
-
-
-		
