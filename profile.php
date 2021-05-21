@@ -19,11 +19,11 @@
     <title>Profile</title>
   </head>
   <body>
-    <header class="header">
+    <header class="header" style="background-image: url(./admin/images/cover-resto.jpeg)">
       <a href="./homepage.php">
         <img
           style="position: absolute; top: 0px; left: 0px"
-          src="./images/logo.png"
+          src="./admin/images/logo.png"
           alt="logo"
         />
       </a>

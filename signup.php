@@ -41,7 +41,7 @@
         <div class="card">
           <span
             class="card-image"
-            style="background-image: url(./images/resto1.jpeg)"
+            style="background-image: url(./admin/images/resto1.jpeg)"
           ></span>
           <div class="card-content">
             <span class="nama-resto">Resto1</span>

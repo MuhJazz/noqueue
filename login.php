@@ -9,8 +9,8 @@
     <title>Home Page</title>
   </head>
   <body>
-    <header class="header">
-      <img style="position: absolute" src="./images/logo.png" alt="logo" />
+  <header class="header" style="background-image: url(./admin/images/cover-resto.jpeg)">
+      <img style="position: absolute" src="./admin/images/logo.png" alt="logo" />
       <div class="center">
         <span class="judul">NoQ!</span>
         <br />
@@ -41,7 +41,7 @@
         <div class="card">
           <span
             class="card-image"
-            style="background-image: url(./images/resto1.jpeg)"
+            style="background-image: url(./admin/images/resto1.jpeg)"
           ></span>
           <div class="card-content">
             <span class="nama-resto">Resto1</span>
@@ -52,7 +52,7 @@
         <div class="card">
           <span
             class="card-image"
-            style="background-image: url(./images/resto2.jpeg)"
+            style="background-image: url(./admin/images/resto2.jpeg)"
           ></span>
           <div class="card-content">
             <span class="nama-resto">Resto2</span>
@@ -63,7 +63,7 @@
         <div class="card">
           <span
             class="card-image"
-            style="background-image: url(./images/resto3.jpeg)"
+            style="background-image: url(./admin/images/resto3.jpeg)"
           ></span>
           <div class="card-content">
             <span class="nama-resto">Resto3</span>
@@ -74,7 +74,7 @@
         <div class="card">
           <span
             class="card-image"
-            style="background-image: url(./images/resto4.jpeg)"
+            style="background-image: url(./admin/images/resto4.jpeg)"
           ></span>
           <div class="card-content">
             <span class="nama-resto">Resto4</span>

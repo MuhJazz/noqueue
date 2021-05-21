@@ -3,7 +3,7 @@ body {
 }
 
 .header {
-  background-image: url("./images/cover-resto.jpeg");
+  background-image: url("./admin/images/cover-resto.jpeg");
   background-size: cover;
   height: 300px;
   padding-top: 10px;

@@ -1,0 +1,281 @@
+body {
+  margin: 0;
+}
+
+.header {
+  background-image: url("./admin/images/cover-resto.jpeg");
+  background-size: cover;
+  height: 300px;
+  padding-top: 10px;
+}
+
+.auth-container {
+  text-align: right;
+}
+
+.auth-container > a {
+  color: white;
+}
+
+.image-avatar {
+  text-align: right;
+  padding-top: 5px;
+  padding-right: 30px;
+}
+
+.image-avatar img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+#masuk {
+  padding-right: 45px;
+  text-decoration: none;
+}
+
+#daftar {
+  padding-right: 35px;
+  text-decoration: none;
+}
+
+#logout {
+  padding-right: 25px;
+  text-decoration: none;
+}
+
+.center {
+  text-align: center;
+}
+
+.center > span {
+  color: white;
+}
+
+.judul {
+  font-size: 8rem;
+}
+
+.motto {
+  font-size: 2rem;
+}
+
+.search-location {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.search-bar {
+  height: 40px;
+  width: 500px;
+  border-radius: 0px 8px 8px 0px;
+  background: #fff;
+  padding-left: 10px;
+  border: 1px solid;
+}
+
+.text {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  font-size: 16px;
+  line-height: 40px;
+  width: 500px;
+}
+
+.content {
+  height: 400px;
+  padding-top: 20px;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.recommendation-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 75px;
+}
+
+h3 {
+  margin: 0px;
+  font-size: 2rem;
+}
+
+button {
+  height: 30px;
+  width: 100px;
+  background-color: aqua;
+  border-radius: 8px;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 30px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 240px;
+  background-color: blue;
+  border-radius: 8px;
+  background-color: #ffff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-image {
+  border-radius: 8px;
+  background-size: cover;
+  width: 200px;
+  height: 140px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.nama-resto {
+  padding: 4px;
+}
+
+.alamat {
+  padding: 4px;
+}
+
+.rate {
+  margin-top: 20px;
+  margin-left: 4px;
+}
+
+.modal-bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 8px;
+  padding: 30px;
+  padding-bottom: 50px;
+  width: 20%;
+}
+
+.modal-hidden {
+  display: none;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form > label {
+  font-size: 20px;
+}
+
+.form > input {
+  border-radius: 5px;
+  width: 98%;
+  border: 1px solid;
+  height: 25px;
+  margin-bottom: 20px;
+}
+
+textarea {
+  resize: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.form > button {
+  align-self: flex-end;
+}
+
+.form > a {
+  font-size: 14px;
+  color: black;
+  font-weight: 300;
+}
+
+/* profile page */
+.profile-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.image-biodata-container {
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  margin-top: 60px;
+  margin-left: 40px;
+}
+
+.edit-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.profile-image {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.transparent-background-image {
+  position: fixed;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  margin-right: 20px;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.biodata {
+  display: flex;
+  flex-direction: column;
+}
+
+.biodata > h2 {
+  margin-bottom: 15px;
+}
+
+.biodata > p {
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+.riwayat-pemesanan {
+  height: 250px;
+  width: 200px;
+  border: blue solid;
+  margin-top: 40px;
+  margin-right: 40px;
+}
+
+.riwayat-pemesanan > h2 {
+  text-align: center;
+}

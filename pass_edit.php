@@ -9,7 +9,7 @@
     <title>Home Page</title>
   </head>
   <body>
-    <header class="header">
+  <header class="header" style="background-image: url(./admin/images/cover-resto.jpeg)">
     <?php 
               $db = mysqli_connect('localhost','root', 'subhan2122', 'noq');
               $user=$_SESSION['username'];
@@ -25,7 +25,7 @@
       <a href="./index.php">
         <img
           style="position: absolute; top: 0px; left: 0px"
-          src="./images/logo.png"
+          src="./admin/images/logo.png"
           alt="logo"
       /></a>
       <div class="center">
@@ -60,7 +60,7 @@
                 $query = mysqli_query($db, "select * from restoran");
                 while($resto = mysqli_fetch_array($query))
                 {?>
-                 <?php $res_img = "images/".$resto['resto_image'];?>
+                 <?php $res_img = "admin/images/".$resto['resto_image'];?>
                   <div class="card">
                     <span
                       class="card-image"
