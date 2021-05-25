@@ -124,6 +124,11 @@
 				<input type="text" name="nomor_resto">
 				</div>
 
+        <div class="input-group">
+				<label>Open Resto</label>
+				<input type="text" name="open_resto" placeholder="08.00-21.00">
+				</div>
+
 				<div class="input-group">
 				<label>Foto Resto</label>
 				<input type="file" name="resto_image" accept=".png, .jpg, .jpeg">

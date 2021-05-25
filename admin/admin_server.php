@@ -19,6 +19,7 @@ if(!$db){
     $resto_name = mysqli_real_escape_string($db, $_POST['nama_resto']);
     $resto_address = mysqli_real_escape_string($db, $_POST['alamat_resto']);
     $resto_number = mysqli_real_escape_string($db, $_POST['nomor_resto']);
+    $resto_open = mysqli_real_escape_string($db, $_POST['open_resto']);
     $img = mysqli_real_escape_string($db, $_FILES['resto_image']['name']);
   
     if(empty($resto_name))
@@ -27,9 +28,12 @@ if(!$db){
       array_push($errors, "Masukan Alamat");
     if(empty($resto_number))
       array_push($errors, "Masukan Nomor");
-  
+    if(empty($resto_open))
+      array_push($errors, "Masukan Jam Buka Resto");
+      
     if (count($errors) == 0) {
-        $query = "INSERT INTO restoran (resto_name,resto_address,resto_number,resto_image,loc_id) VALUES ('$resto_name','$resto_address','$resto_number','$img','$lokasi_resto')";
+        $query = "INSERT INTO restoran (resto_name,resto_address,resto_number,resto_image,resto_open,loc_id) 
+        VALUES ('$resto_name','$resto_address','$resto_number','$img','$resto_open','$lokasi_resto')";
         $results = mysqli_query($db, $query);
         if($results)
         {
@@ -92,7 +96,7 @@ if(!$db){
           move_uploaded_file($_FILES['menu_image']['tmp_name'], "menu_images/$img");
         }
         $_SESSION['username'] = $username;
-        header('location: homepage.php');
+        header('location: menu.php');
       }
   }
 ?>
