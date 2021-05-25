@@ -22,5 +22,5 @@ document.getElementById("daftar-user-button").onclick = function (e) {
 
 document.getElementById("daftar-resto-button").onclick = function (e) {
   e.preventDefault();
-  location.href = "./homepage-resto.html";
+  location.href = "./mainpage-resto.html";
 };
