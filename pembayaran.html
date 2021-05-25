@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="image-avatar">
+        <a href="./profile.html">
+          <img src="./images/profile-picture.png" alt="image-avatar" />
+        </a>
+      </div>
+      <a href="./index.html"> <img style="position: absolute; top: 0px; left: 0px" src="./images/logo.png" alt="logo" /></a>
+      <div class="center">
+        <span class="judul">NoQ!</span>
+        <br />
+        <span class="motto">Makan enak tanpa antre</span>
+      </div>
+      <div class="search-location">
+        <select name="location" id="location">
+          <option value="bogor">Bogor</option>
+          <option value="jakarta">Jakarta</option>
+          <option value="depok">Depok</option>
+          <option value="bekasi">Bekasi</option>
+        </select>
+        <div class="search-bar">
+          <input class="text" type="text" placeholder="Find your nearest restaurant..." />
+        </div>
+      </div>
+    </header>
+    <div class="content">
+      <h3>PILIH METODE PEMBAYARAN</h3>
+      <form action="" style="text-align: center">
+        <div class="flex-row" style="justify-content: center; margin-top: 20px; margin-bottom: 40px">
+          <div class="flex-column pembayaran-input-container">
+            <img src="./images/atm-card.png" alt="atm-card" style="width: 100px; height: 82px" />
+            <label for="atm">Transfer ATM</label>
+            <input type="radio" id="atm" name="metode-pembayaran" value="atm" />
+          </div>
+          <div class="flex-column pembayaran-input-container">
+            <img src="./images/logo-ovo.png" alt="logo-ovo" style="width: 100px; height: 100px" />
+            <input type="radio" id="ovo" name="metode-pembayaran" value="ovo" />
+          </div>
+          <div class="flex-column pembayaran-input-container">
+            <img src="./images/logo-gopay.png" alt="logo-gopay" style="width: 100px; height: 100px" />
+            <input type="radio" id="gopay" name="metode-pembayaran" value="gopay" />
+          </div>
+        </div>
+        <button id="button-lanjut-bayar">LANJUT</button>
+      </form>
+      <div id="modal-bg-tampilan-pemesanan" class="hidden modal-bg">
+        <div id="container-tampilan-pemesanan" class="modal-container">
+          <div class="flex-column">
+            <h4 style="margin: 0px 0px 10px 0px">NAMA RESTORAN</h4>
+            <p>id pemesanan</p>
+            <p>dd/mm/yy</p>
+            <p>jam/menit/detik</p>
+            <hr width="100%" />
+            <p>Nama pembeli</p>
+            <p>PESANAN</p>
+            <div class="container-rincian-pesanan"></div>
+            <p style="text-align: end">475.300 IDR</p>
+            <button id="button-bayar" style="margin-left: auto; margin-top: 20px">BAYAR</button>
+          </div>
+        </div>
+      </div>
+      <div id="modal-bg-pesanan-berhasil" class="hidden modal-bg">
+        <div id="container-pesanan-berhasil" class="modal-container">
+          <div class="flex-column" style="justify-content: center; align-items: center">
+            <img src="./images/bell-pesanan-berhasil.png" alt="bell" style="width: 150px; height: 150px" />
+            <p>PESANAN KAMU BERHASIL,</p>
+            <p>KAMI TUNGGU KEHADIRANNYA</p>
+            <button id="button-tutup" onclick="window.location.href = './homepage-profile.html'" style="margin-top: 20px">TUTUP</button>
+          </div>
+        </div>
+      </div>
+      <hr style="margin: 100px 0px" />
+    </div>
+    <script>
+      const buttonLanjut = document.querySelector("#button-lanjut-bayar");
+      const buttonBayar = document.querySelector("#button-bayar");
+      const buttonTutup = document.querySelector("#button-tutup");
+      const modalBgTampilanPemesanan = document.querySelector("#modal-bg-tampilan-pemesanan");
+      const modalBgPesananBerhasil = document.querySelector("#modal-bg-pesanan-berhasil");
+      const containerTampilanPemesanan = document.querySelector("#container-tampilan-pemesanan");
+      const containerPesananBerhasil = document.querySelector("#container-pesanan-berhasil");
+
+      buttonLanjut.addEventListener("click", (e) => {
+        e.preventDefault();
+        modalBgTampilanPemesanan.classList.remove("hidden");
+      });
+
+      buttonBayar.addEventListener("click", (e) => {
+        e.preventDefault();
+        modalBgTampilanPemesanan.classList.add("hidden");
+        modalBgPesananBerhasil.classList.remove("hidden");
+      });
+
+      // menutup container-tampilan-pemesanan saat user mengklik di luar container-tampilan-pemesanan
+      document.addEventListener("click", (e) => {
+        isTampilanPemesananContainerClicked = containerTampilanPemesanan.contains(e.target);
+        isbuttonLanjutClicked = buttonLanjut.contains(e.target);
+        isbuttonBayarClicked = buttonBayar.contains(e.target);
+        if (!isbuttonLanjutClicked && !modalBgTampilanPemesanan.classList.contains("hidden") && !isTampilanPemesananContainerClicked) {
+          console.log("tampilan pemesanan gak diklik");
+          modalBgTampilanPemesanan.classList.add("hidden");
+        }
+      });
+    </script>
+  </body>
+</html>
