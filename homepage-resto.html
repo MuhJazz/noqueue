@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="header-homepage-resto">
+      <div class="container-notif-profile">
+        <img src="./images/notif-icon.png" alt="notif-icon" style="height: 50px; width: 50px; margin-top: 5px; margin-right: 15px" />
+        <div class="image-avatar">
+          <a href="./profile.html">
+            <img src="./images/profile-picture.png" alt="image-avatar" />
+          </a>
+        </div>
+      </div>
+      <div class="center" style="position: absolute; margin-left: auto; margin-right: auto; left: 0; right: 0">
+        <span class="judul" style="padding-top: 0px">NoQ!</span>
+        <br />
+        <h3 style="color: white">NAMA RESTORAN</h3>
+      </div>
+      <a href="./homepage-resto.html"> <img style="position: absolute; top: 0px; left: 0px" src="./images/logo.png" alt="logo" /></a>
+    </header>
+    <!-- navigation content -->
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button
+          class="nav-link active"
+          id="nav-masterData-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-masterData"
+          type="button"
+          role="tab"
+          aria-controls="nav-masterData"
+          aria-selected="true"
+          style="width: auto; background-color: #e6f4f1; border-radius: 0px"
+        >
+          Master Data
+        </button>
+        <button
+          class="nav-link"
+          id="nav-dataTransaksi-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-dataTransaksi"
+          type="button"
+          role="tab"
+          aria-controls="nav-dataTransaksi"
+          aria-selected="false"
+          style="width: auto; background-color: #ffb990; border-radius: 0px"
+        >
+          Data Transaksi
+        </button>
+        <button
+          class="nav-link"
+          id="nav-statusPemesanan-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-statusPemesanan"
+          type="button"
+          role="tab"
+          aria-controls="nav-statusPemesanan"
+          aria-selected="false"
+          style="width: auto; background-color: #e1ffff; border-radius: 0px"
+        >
+          Status Pemesanan
+        </button>
+        <button
+          class="nav-link"
+          id="nav-dataLaporan-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-dataLaporan"
+          type="button"
+          role="tab"
+          aria-controls="nav-dataLaporan"
+          aria-selected="false"
+          style="width: auto; background-color: #94b0b2; border-radius: 0px"
+        >
+          Data Laporan
+        </button>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div
+        class="tab-pane fade show active"
+        id="nav-masterData"
+        role="tabpanel"
+        aria-labelledby="nav-masterData-tab"
+        style="background-color: #e6f4f1; min-height: calc(100vh - 330px)"
+      ></div>
+      <div
+        class="tab-pane fade"
+        id="nav-dataTransaksi"
+        role="tabpanel"
+        aria-labelledby="nav-dataTransaksi-tab"
+        style="background-color: #ffb990; min-height: calc(100vh - 330px)"
+      ></div>
+      <div
+        class="tab-pane fade"
+        id="nav-statusPemesanan"
+        role="tabpanel"
+        aria-labelledby="nav-statusPemesanan-tab"
+        style="background-color: #e1ffff; min-height: calc(100vh - 330px)"
+      ></div>
+      <div
+        class="tab-pane fade"
+        id="nav-dataLaporan"
+        role="tabpanel"
+        aria-labelledby="nav-dataLaporan-tab"
+        style="background-color: #94b0b2; min-height: calc(100vh - 330px)"
+      ></div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
