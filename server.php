@@ -28,7 +28,6 @@ if (isset($_POST['reg_user'])) {
     if (empty($username)) { array_push($errors, "Username is required"); }
     if (empty($email)) { array_push($errors, "Email is required"); }
     if (empty($password_1)) { array_push($errors, "Password is required"); }
-    if (empty($img)) { array_push($errors, "Foto Profil is required"); }
     if ($password_1 != $password_2) {
       array_push($errors, "Password tidak sama");
     }
@@ -139,6 +138,11 @@ if(isset($_POST['img_edit']))
   }
   if(count($errors) == 0)
       {
+        $delete = mysqli_query($db, "select user_image from users where username='$user'");
+        $del = mysqli_fetch_assoc($delete);
+        $del_img = "user_images/".$del['user_image'];
+        unlink($del_img);
+        
         $query = "UPDATE users SET user_image='$img' WHERE username='$user'";
         $result = mysqli_query($db,$query);
         if($result)
