@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="image-avatar">
+        <a href="./profile.html">
+          <img src="./images/profile-picture.png" alt="image-avatar" />
+        </a>
+      </div>
+      <a href="./index.html"> <img style="position: absolute; top: 0px; left: 0px" src="./images/logo.png" alt="logo" /></a>
+      <div class="center">
+        <span class="judul">NoQ!</span>
+        <br />
+        <span class="motto">Makan enak tanpa antre</span>
+      </div>
+      <div class="search-location">
+        <select name="location" id="location">
+          <option value="bogor">Bogor</option>
+          <option value="jakarta">Jakarta</option>
+          <option value="depok">Depok</option>
+          <option value="bekasi">Bekasi</option>
+        </select>
+        <div class="search-bar">
+          <input class="text" type="text" placeholder="Find your nearest restaurant..." />
+        </div>
+      </div>
+    </header>
+    <div class="content">
+      <div class="restaurant-images">
+        <img src="./images/resto1.jpeg" alt="img-resto" width="200" height="200" />
+        <img src="./images/resto-detail-2.png" alt="img-resto" width="200" height="200" />
+        <img src="./images/resto-detail-3.png" alt="img-resto" width="200" height="200" />
+        <img src="./images/resto-detail-4.png" alt="img-resto" width="200" height="200" />
+        <div class="more-image-container">
+          <div class="transparent-box">
+            <h1 style="color: white">3+</h1>
+          </div>
+        </div>
+      </div>
+      <div class="atribut-restoran">
+        <div class="flex-row">
+          <h1>Nama Restoran</h1>
+          <div class="flex-row rate">
+            <img src="./images/star-icon.png" alt="star-icon" width="20px" height="20px" />
+            <h4>5.0/5.0</h4>
+          </div>
+        </div>
+        <div class="flex-column">
+          <div class="lokasi-resto">
+            <h4>Dramaga, Babakan Raya</h4>
+          </div>
+          <div class="flex-row">
+            <img src="./images/clock.png" alt="clock-icon" style="width: 20px; height: 20px; margin-right: 10px" />
+            <div class="jam-buka-resto">
+              <h4>08.00 - 21.00</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-tabs" style="margin-top: 20px">
+        <button id="menu-link">MENU</button>
+        <button id="review-link">REVIEW</button>
+        <button id="location-link">LOCATION</button>
+      </div>
+      <div id="tab-content-container">
+        <div id="menu-content">
+          <div class="menu-container">
+            <div class="menu-cards">
+              <div class="card">
+                <span class="card-image" style="background-image: url(./images/menu1.png)"></span>
+                <div class="card-content">
+                  <span class="nama-menu">Salty Popcorn</span>
+                  <span class="harga-menu">55.000</span>
+                </div>
+              </div>
+              <div class="card">
+                <span class="card-image" style="background-image: url(./images/menu2.png)"></span>
+                <div class="card-content">
+                  <span class="nama-menu">Caramel Popcorn</span>
+                  <span class="harga-menu">75.000</span>
+                </div>
+              </div>
+              <div class="card">
+                <span class="card-image" style="background-image: url(./images/menu3.png)"></span>
+                <div class="card-content">
+                  <span class="nama-menu">Nama Menu</span>
+                  <span class="harga-menu">100.000</span>
+                </div>
+              </div>
+              <div class="card">
+                <span class="card-image" style="background-color: gray"></span>
+                <div class="card-content">
+                  <span class="nama-menu">Nama Menu</span>
+                  <span class="harga-menu">100.000</span>
+                </div>
+              </div>
+              <div class="card">
+                <span class="card-image" style="background-color: gray"></span>
+                <div class="card-content">
+                  <span class="nama-menu">Nama Menu</span>
+                  <span class="harga-menu">100.000</span>
+                </div>
+              </div>
+              <div class="card">
+                <span class="card-image" style="background-color: gray"></span>
+                <div class="card-content">
+                  <span class="nama-menu">Nama Menu</span>
+                  <span class="harga-menu">100.000</span>
+                </div>
+              </div>
+              <div class="card">
+                <span class="card-image" style="background-color: gray"></span>
+                <div class="card-content">
+                  <span class="nama-menu">Nama Menu</span>
+                  <span class="harga-menu">100.000</span>
+                </div>
+              </div>
+              <div class="card">
+                <span class="card-image" style="background-color: gray"></span>
+                <div class="card-content">
+                  <span class="nama-menu">Nama Menu</span>
+                  <span class="harga-menu">100.000</span>
+                </div>
+              </div>
+            </div>
+            <div class="kategori-pemesanan-container">
+              <div class="kategori">
+                <h2 style="padding-left: 10px; margin-top: 10px; margin-bottom: 10px">KATEGORI</h2>
+                <div class="category-input-container" style="padding-left: 10px; padding-top: 10px; border-top: 1px solid">
+                  <form action="">
+                    <input type="checkbox" id="category1" name="category1" value="rekomendasi" />
+                    <label for="category1">Rekomendasi</label><br />
+                    <input type="checkbox" id="category2" name="category2" value="menu-utama" />
+                    <label for="category2">Menu utama</label><br />
+                    <input type="checkbox" id="category3" name="category3" value="makanan-ringan" />
+                    <label for="category3">Makanan ringan</label><br />
+                    <input type="checkbox" id="category4" name="category4" value="minuman" />
+                    <label for="category4">Minuman</label><br />
+                    <input type="checkbox" id="category5" name="category5" value="penutup" />
+                    <label for="category5">Penutup</label><br />
+                    <input type="checkbox" id="category6" name="category6" value="kopi" />
+                    <label for="category6">Kopi</label><br />
+                  </form>
+                </div>
+              </div>
+              <div class="pemesanan">
+                <h2 style="padding-left: 10px; margin-top: 10px; margin-bottom: 10px">PEMESANAN</h2>
+                <div class="pemesanan-input-container" style="padding-left: 10px; padding-top: 10px; border-top: 1px solid">
+                  <div class="input-group">
+                    <label for="menu1">Nasi Goreng</label>
+                    <div class="add-remove-container">
+                      <button id="remove-item-button" style="display: inline-block; padding: 0px">-</button>
+                      <div
+                        id="jumlah-item"
+                        style="display: inline-block; height: 20px; width: 20px; background-color: white; border: 1px solid; text-align: center"
+                      >
+                        0
+                      </div>
+                      <button id="add-item-button" style="display: inline-block; padding: 0px">+</button>
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="menu1">Es Teh Manis</label>
+                    <div class="add-remove-container">
+                      <button id="remove-item-button" style="display: inline-block; padding: 0px">-</button>
+                      <div
+                        id="jumlah-item"
+                        style="display: inline-block; height: 20px; width: 20px; background-color: white; border: 1px solid; text-align: center"
+                      >
+                        0
+                      </div>
+                      <button id="add-item-button" style="display: inline-block; padding: 0px">+</button>
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="menu1">Menu Name</label>
+                    <div class="add-remove-container">
+                      <button id="remove-item-button" style="display: inline-block; padding: 0px">-</button>
+                      <div
+                        id="jumlah-item"
+                        style="display: inline-block; height: 20px; width: 20px; background-color: white; border: 1px solid; text-align: center"
+                      >
+                        0
+                      </div>
+                      <button id="add-item-button" style="display: inline-block; padding: 0px">+</button>
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="menu1">Menu Name</label>
+                    <div class="add-remove-container">
+                      <button id="remove-item-button" style="display: inline-block; padding: 0px">-</button>
+                      <div
+                        id="jumlah-item"
+                        style="display: inline-block; height: 20px; width: 20px; background-color: white; border: 1px solid; text-align: center"
+                      >
+                        0
+                      </div>
+                      <button id="add-item-button" style="display: inline-block; padding: 0px">+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="review-content" class="hidden">
+          <div class="review-container">REVIEW</div>
+        </div>
+        <div id="location-content" class="hidden">
+          <div class="location-container">LOCATION</div>
+        </div>
+      </div>
+      <div class="pemesanan-bottom-container" style="margin: 0px 200px">
+        <h2 style="text-decoration: underline; margin-bottom: 10px">PEMESANAN</h2>
+        <div
+          class="form-pemesanan-container"
+          style="border: 2px solid aqua; border-radius: 8px; padding-top: 20px; padding-left: 10px; padding-right: 10px; padding-bottom: 25px"
+        >
+          <form action="./pembayaran.html">
+            <div class="flex-wrap">
+              <div class="dropdown-container">
+                <img src="./images/clock.png" alt="clock-icon" />
+                <input type="time" id="waktu-pemesanan" name="waktu-pemesanan" style="width: 136px" />
+              </div>
+              <div class="dropdown-container">
+                <img src="./images/crosshair.png" alt="crosshair-icon" />
+                <select name="crosshair" id="crosshair">
+                  <option value="none" selected disabled hidden>PILIH</option>
+                  <option value="opsi1">opsi1</option>
+                  <option value="opsi2">opsi2</option>
+                  <option value="opsi3">opsi3</option>
+                </select>
+              </div>
+              <div class="dropdown-container">
+                <img src="./images/user.png" alt="user-icon" />
+                <select name="jumlah-orang" id="jumlah-orang">
+                  <option value="none" selected disabled hidden>PILIH</option>
+                  <option value="jumlah-orang1">1 - 2 Orang</option>
+                  <option value="jumlah-orang2">2 - 4 Orang</option>
+                  <option value="jumlah-orang3">4 - 6 Orang</option>
+                  <option value="jumlah-orang4">6 Lebih Orang</option>
+                </select>
+              </div>
+              <div class="dropdown-container">
+                <img src="./images/table.png" alt="table-icon" />
+                <select name="meja" id="meja">
+                  <option value="none" selected disabled hidden>PILIH</option>
+                  <option value="opsi1">opsi1</option>
+                  <option value="opsi2">opsi2</option>
+                  <option value="opsi3">opsi3</option>
+                </select>
+              </div>
+              <div class="dropdown-container">
+                <img src="./images/edit.png" alt="edit-icon" />
+                <input type="text" id="catatan" name="catatan" placeholder="KETIK DISINI" />
+              </div>
+            </div>
+
+            <hr style="margin: 20px 40px" />
+            <div class="flex-row harga-pemesanan-container">
+              <img src="./images/money.png" alt="money-icon" style="width: 25px; height: 25px; margin-right: 5px" />
+              <p id="total-harga-pemesanan" style="padding: 5px 0px; margin: 0px auto 0px 0px">475.300 IDR</p>
+              <button type="submit" style="margin-right: 40px">PESAN</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <hr style="margin: 100px 0px" />
+    </div>
+    <script>
+      // nav tabs
+      const menuLink = document.querySelector("#menu-link");
+      const reviewLink = document.querySelector("#review-link");
+      const locationLink = document.querySelector("#location-link");
+
+      // content tab container
+      const tabContent = document.querySelector("#tab-content-container");
+
+      // masing-masing content tab
+      const menuContent = document.querySelector("#menu-content");
+      const reviewContent = document.querySelector("#review-content");
+      const locationContent = document.querySelector("#location-content");
+
+      // Proses saat button diklik
+
+      // saat menu diklik akan memunculkan konten menu
+      menuLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        tabContent.style.backgroundColor = "#e1ffff"; // mengubah warna content tab container
+        menuContent.classList.remove("hidden");
+        reviewContent.classList.add("hidden");
+        locationContent.classList.add("hidden");
+      });
+
+      // saat review diklik akan memunculkan konten review
+      reviewLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        tabContent.style.backgroundColor = "#94b0b2"; // mengubah warna content tab container
+        reviewContent.classList.remove("hidden");
+        menuContent.classList.add("hidden");
+        locationContent.classList.add("hidden");
+      });
+
+      // saat location diklik akan memunculkan konten location
+      locationLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        tabContent.style.backgroundColor = "#ffb990"; // mengubah warna content tab container
+        locationContent.classList.remove("hidden");
+        menuContent.classList.add("hidden");
+        reviewContent.classList.add("hidden");
+      });
+
+      // menambah dan mengurangi item
+      const removeButton = document.querySelector("#remove-item-button");
+      const addButton = document.querySelector("#add-item-button");
+      let jumlahItem = document.querySelector("#jumlah-item").innerHTML;
+      removeButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (jumlahItem > 0) {
+          jumlahItem--;
+        }
+        document.querySelector("#jumlah-item").innerHTML = jumlahItem.toString();
+      });
+      addButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        jumlahItem++;
+        console.log(jumlahItem);
+        document.querySelector("#jumlah-item").innerHTML = jumlahItem.toString();
+      });
+    </script>
+  </body>
+</html>
