@@ -104,7 +104,7 @@
                   <div class="recommendation-container">
                       <h3>Rekomendasi untuk kamu!</h3>
                   </div>
-                  <a href=# style="text-decoration:none; color:black;">
+                  <a href="#" style="text-decoration:none; color:black;">
                     <div class="cards">
                     <?php
                     if(!empty($_POST['location']))
@@ -131,7 +131,7 @@
             else{?>
               <?php $query = mysqli_query($db, "select * from restoran");?>
                 <div class="content">
-                <a href=# style="text-decoration:none; color:black;">
+                <a href="#" style="text-decoration:none; color:black;">
                   <div class="cards">
                   <?php
                           while($resto = mysqli_fetch_array($query))
