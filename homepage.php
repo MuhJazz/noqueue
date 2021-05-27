@@ -27,10 +27,21 @@
               $query = mysqli_query($db, "select user_image from users where username='$user'");
               while($users = mysqli_fetch_array($query))
               {?> 
-                <?php $usr_img = "user_images/".$users['user_image'];?>
+                <?php $usr_img = "user_images/".$users['user_image'];
+                      $def_img = "user_images/default.png";
+                ?>
                 <div class="image-avatar">
                     <a href="./profile.php">
-                     <img src= <?php echo $usr_img;?> alt='image-avatar' />
+                     <img src= <?php 
+                     if(!empty($users['user_image']))
+                     {
+                      echo $usr_img;
+                     }
+                     else
+                     {
+                      echo $def_img;
+                     }
+                     ?> alt='image-avatar' />
                     </a>
         <?php }?>
         <div class="auth-container" style="display: inline;">
@@ -53,7 +64,9 @@
         <?php endif ?>
     </div>
       </div>
+      <a href="homepage.php">
       <img style="position: absolute" src="./admin/images/logo.png" alt="logo" />
+        </a>
       <div class="center">
         <span class="judul">NoQ!</span>
         <br />
@@ -63,7 +76,6 @@
       </div>
       <div class="search-location">
       <?php 
-                $db = mysqli_connect('localhost','root', 'subhan2122', 'noq');
                 $query = mysqli_query($db, "select * from restoran_loc");
                 ?>
                 <form method="post" action="">
@@ -88,10 +100,11 @@
               $db = mysqli_connect('localhost','root', 'subhan2122', 'noq');
                 if(isset($_POST['filter']))
                 {?>
-                  <div class="content">
+                <div class="content">
                   <div class="recommendation-container">
-                              <h3>Rekomendasi untuk kamu!</h3>
-                            </div>
+                      <h3>Rekomendasi untuk kamu!</h3>
+                  </div>
+                  <a href="#" style="text-decoration:none; color:black;">
                     <div class="cards">
                     <?php
                     if(!empty($_POST['location']))
@@ -107,8 +120,9 @@
                                 style="background-image: url('<?php echo $res_img;?>');"
                                 ></span>
                                 <div class="card-content">
-                                <span class="nama-resto"><?php echo $resto['resto_name'];?></span>
+                                <h3 class="nama-resto"><?php echo $resto['resto_name'];?></h3>
                                 <span class="alamat"><?php echo $resto['resto_address'];?></span>
+                                <span class="alamat"><?php echo $resto['resto_open'];?></span>
                                 </div>
                             </div>
                         <?php }?>
@@ -116,25 +130,29 @@
           <?php }
             else{?>
               <?php $query = mysqli_query($db, "select * from restoran");?>
-              <div class="content">
-                <div class="cards">
-                <?php
-                        while($resto = mysqli_fetch_array($query))
-                        {?>
-                        <?php $res_img = "admin/images/".$resto['resto_image'];?>
-                        <div class="card">
-                            <span
-                            class="card-image"
-                            style="background-image: url('<?php echo $res_img;?>');"
-                            ></span>
-                            <div class="card-content">
-                            <span class="nama-resto"><?php echo $resto['resto_name'];?></span>
-                            <span class="alamat"><?php echo $resto['resto_address'];?></span>
-                            </div>
-                        </div>
-                    <?php }?>
-           <?php }?>
+                <div class="content">
+                <a href="#" style="text-decoration:none; color:black;">
+                  <div class="cards">
+                  <?php
+                          while($resto = mysqli_fetch_array($query))
+                          {?>
+                          <?php $res_img = "admin/images/".$resto['resto_image'];?>
+                          <div class="card">
+                              <span
+                              class="card-image"
+                              style="background-image: url('<?php echo $res_img;?>');"
+                              ></span>
+                              <div class="card-content">
+                                <h3 class="nama-resto"><?php echo $resto['resto_name'];?></h3>
+                                <span class="alamat"><?php echo $resto['resto_address'];?></span>
+                                <span class="alamat"><?php echo $resto['resto_open'];?></span>
+                              </div>
+                          </div>
+                  <?php }?>
+                  </div>
+                </div></a>
+              <?php }?>
       </div>
-    </div>
+    </div></a>
   </body>
 </html>

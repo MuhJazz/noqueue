@@ -116,7 +116,7 @@
 
 				<div class="input-group">
 				<label>Harga Menu</label>
-				<input type="text" name="harga_menu">
+				<input type="text" placeholder="Rp.50.000" name="harga_menu" value="<?php echo "Rp."?>">
 				</div>
 
 				<div class="input-group">
