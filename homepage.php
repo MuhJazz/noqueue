@@ -136,7 +136,7 @@
                           while($resto = mysqli_fetch_array($query))
                           {?>
                           <?php $res_img = "admin/images/".$resto['resto_image'];?>
-                          <a href="menu-resto.php?resto_id=<?php echo $resto['resto_id']?>" style="text-decoration:none; color:black;">
+                          <a href="menu-resto.php?resto_id=<?= $resto['resto_id']?>" style="text-decoration:none; color:black;">
                           <div class="card">
                               <span
                               class="card-image"

@@ -7,7 +7,7 @@ $email    = "";
 $errors = array(); 
 
 // connect to the database
-$db = mysqli_connect('localhost','root', 'subhan2122', 'noq');
+$db = mysqli_connect('localhost','root', '', 'noq');
 if(!$db){
     die("Unable to connect to database!");
 }
@@ -187,4 +187,60 @@ if(isset($_POST['img_edit']))
         }
       }
   }
+
+  //ADD CART
+  $menu_ids = array();  
+  if(isset($_POST['add_to_cart']))
+  { 
+    if(isset($_SESSION['cart']))
+    {
+      $count = count($_SESSION['cart']); 
+      $menu_ids = array_column($_SESSION['cart'],'menu_id');
+      if(!in_array($_GET['menu_id'], $menu_ids))
+      {
+        $_SESSION['cart'][$count] = array(
+          'resto_id' => $_GET['resto_id'],
+          'menu_id' => $_GET['menu_id'],
+          'nama_menu' => $_POST['nama_menu'],
+          'harga_menu' => $_POST['harga_menu'],
+          'qty_menu' => $_POST['qty_menu']
+        );
+      }
+      else
+      {
+        for($i=0 ; $i < count($menu_ids); $i++)
+        {
+          if($menu_ids[$i]==$_GET['menu_id'])
+          {
+            $_SESSION['cart'][$i]['qty_menu'] += $_POST['qty_menu'];
+          }
+        }
+      }
+    }
+    else
+    {
+      $_SESSION['cart'][0] = array(
+        'resto_id' => $_GET['resto_id'],
+        'menu_id' => $_GET['menu_id'],
+        'nama_menu' => $_POST['nama_menu'],
+        'harga_menu' => $_POST['harga_menu'],
+        'qty_menu' => $_POST['qty_menu']
+      );
+    }
+  }
+  if(isset($_GET['action']))  
+  {
+    if($_GET['action']=='del-cart')
+    {
+      foreach($_SESSION['cart'] as $key => $m)
+      {
+        if($m['menu_id'] == $_GET['menu_id'])
+        {
+          unset($_SESSION['cart'][$key]);
+        }
+      }
+      $_SESSION['cart'] = array_values($_SESSION['cart']);
+    }
+  }
+
 ?>

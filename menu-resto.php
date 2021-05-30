@@ -32,6 +32,7 @@
   if (isset($_GET['logout'])) {
   	session_destroy();
   	unset($_SESSION['username']);
+    unset($_SESSION['cart']);
   	header("location: index.php");
   }
 ?>
@@ -126,19 +127,33 @@
         <div id="menu-content">
           <div class="menu-container">
             <div class="menu-cards">
-              <div class="card">
-                <?php $query = mysqli_query($db,"select * from menu where res_id = '$res_id'");?>
-                <?php 
+            <?php $query = mysqli_query($db,"select * from menu where res_id = '$res_id'");
+              if(!empty($_SESSION['cart']))
+              {
+                foreach($_SESSION['cart'] as $key => $value)
+                { 
+                  if($value['resto_id']!=$res_id)
+                  {
+                    unset($_SESSION['cart']);
+                  }
+                }
+              }
                 while($menu = mysqli_fetch_array($query))
                 {?>
+                <div class="card">
                 <?php $menu_img = "admin/menu_images/".$menu['menu_image'];?>
                 <span class="card-image" style="background-image: url(<?php echo $menu_img?>)"></span>
                 <div class="card-content">
                   <span class="nama-menu"><?php echo $menu['menu_name'];?></span>
-                  <span class="harga-menu"><?php echo $menu['menu_price'];?></span>
+                  <span class="harga-menu"><?php echo number_format($menu['menu_price'],2);?></span>
+                <form method="post" action="menu-resto.php?action=add&menu_id=<?php echo $menu['menu_id'];?>&resto_id=<?php echo $_GET['resto_id']?>">
+                  <input type="number" name="qty_menu" value="1" min="1">
+                  <input type="hidden" name="nama_menu" value="<?php echo $menu['menu_name'];?>">
+                  <input type="hidden" name="harga_menu" value="<?php echo $menu['menu_price'];?>">
+                  <input class="harga-menu" type="submit" name="add_to_cart" value="Tambah ke Keranjang">
+                </form>
                 </div>
-                <?php }?>
-              </div>
+              </div><?php }?>
             </div>
             <div class="kategori-pemesanan-container">
               <div class="kategori">
@@ -163,58 +178,35 @@
               <div class="pemesanan">
                 <h2 style="padding-left: 10px; margin-top: 10px; margin-bottom: 10px">PEMESANAN</h2>
                 <div class="pemesanan-input-container" style="padding-left: 10px; padding-top: 10px; border-top: 1px solid">
-                  <div class="input-group">
-                    <label for="menu1">Nasi Goreng</label>
-                    <div class="add-remove-container">
-                      <button id="remove-item-button" style="display: inline-block; padding: 0px">-</button>
-                      <div
-                        id="jumlah-item"
-                        style="display: inline-block; height: 20px; width: 20px; background-color: white; border: 1px solid; text-align: center"
-                      >
-                        0
+                <?php 
+                  if(!empty($_SESSION['cart']))
+                  {
+                    $total = 0;
+                    foreach($_SESSION['cart'] as $key => $value)
+                    { 
+                      ?>
+                      <div class="input-group">
+                      <label for="menu1"><?php echo $value['nama_menu'];?></label>
+                      <div class="add-remove-container">
+                        <div
+                          id="jumlah-item"
+                          style="display: inline-block; height: 20px; width: 20px; background-color: white; border: 1px solid; text-align: center"
+                        >
+                          <?php echo $value['qty_menu'];?>
+                        </div>
                       </div>
-                      <button id="add-item-button" style="display: inline-block; padding: 0px">+</button>
+                      <label for="menu1"><?php echo number_format($value['harga_menu']*$value['qty_menu']);?></label>
+                      <a href="menu-resto.php?action=del-cart&menu_id=<?php echo $value['menu_id'];?>&resto_id=<?php echo $value['resto_id']?>" for="menu1"><?php echo "remove"?></a>
                     </div>
-                  </div>
-                  <div class="input-group">
-                    <label for="menu1">Es Teh Manis</label>
-                    <div class="add-remove-container">
-                      <button id="remove-item-button" style="display: inline-block; padding: 0px">-</button>
-                      <div
-                        id="jumlah-item"
-                        style="display: inline-block; height: 20px; width: 20px; background-color: white; border: 1px solid; text-align: center"
-                      >
-                        0
-                      </div>
-                      <button id="add-item-button" style="display: inline-block; padding: 0px">+</button>
-                    </div>
-                  </div>
-                  <div class="input-group">
-                    <label for="menu1">Menu Name</label>
-                    <div class="add-remove-container">
-                      <button id="remove-item-button" style="display: inline-block; padding: 0px">-</button>
-                      <div
-                        id="jumlah-item"
-                        style="display: inline-block; height: 20px; width: 20px; background-color: white; border: 1px solid; text-align: center"
-                      >
-                        0
-                      </div>
-                      <button id="add-item-button" style="display: inline-block; padding: 0px">+</button>
-                    </div>
-                  </div>
-                  <div class="input-group">
-                    <label for="menu1">Menu Name</label>
-                    <div class="add-remove-container">
-                      <button id="remove-item-button" style="display: inline-block; padding: 0px">-</button>
-                      <div
-                        id="jumlah-item"
-                        style="display: inline-block; height: 20px; width: 20px; background-color: white; border: 1px solid; text-align: center"
-                      >
-                        0
-                      </div>
-                      <button id="add-item-button" style="display: inline-block; padding: 0px">+</button>
-                    </div>
-                  </div>
+                    <?php 
+                  $total=$total+($value['harga_menu']*$value['qty_menu']);
+                  }?>
+                <?php }
+                else{
+                  $total = 0;
+                  echo "Belum memasukkan makanan";
+                }
+                ?>
                 </div>
               </div>
             </div>
@@ -267,8 +259,16 @@
             <hr style="margin: 20px 40px" />
             <div class="flex-row harga-pemesanan-container">
               <img src="./admin/images/money.png" alt="money-icon" style="width: 25px; height: 25px; margin-right: 5px" />
-              <p id="total-harga-pemesanan" style="padding: 5px 0px; margin: 0px auto 0px 0px">475.300 IDR</p>
-              <button type="submit" style="margin-right: 40px">PESAN</button>
+              <p id="total-harga-pemesanan" style="padding: 5px 0px; margin: 0px auto 0px 0px"><?php echo number_format($total,2);?></p>
+              <?php
+              if(isset($_SESSION['cart']))
+              {
+                if(count($_SESSION['cart'])>0)
+                {?>
+                  <button type="submit" style="margin-right: 40px">PESAN</button>
+                <?php }
+              }
+              ?>
             </div>
           </form>
         </div>
