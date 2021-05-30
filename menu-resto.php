@@ -196,7 +196,7 @@
                         </div>
                       </div>
                       <label for="menu1"><?php echo number_format($value['harga_menu']*$value['qty_menu']);?></label>
-                      <a href="menu-resto.php?action=del-cart&menu_id=<?php echo $value['menu_id'];?>&resto_id=<?php echo $value['resto_id']?>" for="menu1"><?php echo "remove"?></a>
+                      <a href="menu-resto.php?action=del-cart&menu_id=<?php echo $value['menu_id'];?>&resto_id=<?php echo $value['resto_id']?>" for="menu1"><?php echo "Hapus menu"?></a>
                     </div>
                     <?php 
                   $total=$total+($value['harga_menu']*$value['qty_menu']);
