@@ -9,7 +9,7 @@
     <title>Home Page</title>
   </head>
   <body>
-  <header class="header" style="background-image: url(./admin/images/cover-resto.jpeg)">
+    <header class="header" style="background-image: url(./admin/images/cover-resto.jpeg)">
     <?php 
               $db = mysqli_connect('localhost','root', 'subhan2122', 'noq');
               $user=$_SESSION['username'];
@@ -75,19 +75,19 @@
       </div>
     </div>
     <div class="modal-bg">
-    	<div class="modal" style="height: 55%">
-			<form method="post" action="image_profile_edit.php" class="form" enctype="multipart/form-data">
+        <div class="modal-container">
+            <form method="post" action="image_profile_edit.php" class="form" enctype="multipart/form-data">
 				<?php include('error.php'); ?>
                 <div class="input-group">
 					<label>Foto Profil</label>
-					<input type="file" name="user_image" accept=".png, .jpg, .jpeg">
+					<input type="file" name="user_image" accept=".png, .jpg, .jpeg" style="margin: 10px 0px;">
 				</div>
 				<div class="input-group">
 					<button type="submit" class="btn" name="img_edit">Update</button>
           <a href="./profile.php">Kembali</a>
-				</div>
+			  </div>
 			</form>
-		</div>
-	</div>
+        </div>
+    </div>
   </body>
 </html>
