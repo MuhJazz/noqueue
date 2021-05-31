@@ -75,7 +75,7 @@
       </div>
     </div>
     <div class="modal-bg">
-    	<div class="modal" style="height: 55%">
+    	<div class="modal-container">
 			<form method="post" action="pass_edit.php" class="form" enctype="multipart/form-data">
 				<?php include('error.php'); ?>
                     <div class="input-group">

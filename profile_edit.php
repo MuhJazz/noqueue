@@ -75,7 +75,7 @@
       </div>
     </div>
     <div class="modal-bg">
-    	<div class="modal" style="height: 55%">
+    	<div class="modal-container">
       <?php
         $user = $_SESSION['username'];
         $query = mysqli_query($db, "select nama,email,no_hp,password from users where username='$user'");
