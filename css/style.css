@@ -1,0 +1,528 @@
+body {
+  margin: 0;
+  height: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0px;
+}
+
+/* flex class */
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* homepage */
+
+.header {
+  background-image: url("./images/cover-resto.jpeg");
+  background-size: cover;
+  height: 300px;
+  padding-top: 10px;
+}
+
+.auth-container {
+  text-align: right;
+}
+
+.auth-container > a {
+  color: white;
+}
+
+.image-avatar {
+  text-align: right;
+  padding-top: 5px;
+  padding-right: 15px;
+}
+
+.image-avatar img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+#masuk {
+  padding-right: 45px;
+  text-decoration: none;
+}
+
+#daftar {
+  padding-right: 35px;
+  text-decoration: none;
+}
+
+#logout {
+  padding-right: 25px;
+  text-decoration: none;
+}
+
+.center {
+  text-align: center;
+}
+
+.center > span {
+  color: white;
+}
+
+.judul {
+  font-size: 8rem;
+}
+
+.motto {
+  font-size: 2rem;
+}
+
+.search-location {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.search-bar {
+  height: 40px;
+  width: 500px;
+  border-radius: 0px 8px 8px 0px;
+  background: #fff;
+  padding-left: 10px;
+  border: 1px solid;
+}
+
+.text {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  font-size: 16px;
+  line-height: 40px;
+  width: 500px;
+}
+
+.content {
+  padding-top: 20px;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.recommendation-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 75px;
+}
+
+h3 {
+  margin: 0px;
+  font-size: 2rem;
+}
+
+button {
+  height: 30px;
+  width: 100px;
+  background-color: aqua;
+  border-radius: 8px;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 30px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 240px;
+  background-color: blue;
+  border-radius: 8px;
+  background-color: #ffff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-image {
+  border-radius: 8px;
+  background-size: cover;
+  width: 200px;
+  height: 140px;
+}
+
+.card-content {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.nama-resto,
+.alamat,
+.rate {
+  margin: 4px;
+}
+
+.rate {
+  margin-top: auto;
+}
+
+.modal-bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container {
+  width: 250px;
+  max-width: 2500px;
+  margin: 1rem;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 8px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-daftar-pemilik-resto-hidden,
+.form-daftar-resto-hidden {
+  display: none;
+}
+
+.form > label {
+  font-size: 20px;
+}
+
+.form > input,
+.biodata > input {
+  border-radius: 5px;
+  width: 98%;
+  border: 1px solid;
+  height: 25px;
+  margin-bottom: 20px;
+}
+
+textarea {
+  resize: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.form > button {
+  align-self: flex-end;
+}
+
+.form > a {
+  font-size: 14px;
+  color: black;
+  font-weight: 300;
+}
+
+/* profile page */
+
+.profile-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.image-biodata-container {
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  margin-top: 60px;
+  margin-left: 40px;
+}
+
+.edit-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.profile-image {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background-image: url("./images/profile-picture.png");
+  background-size: cover;
+}
+
+.transparent-background-image {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  margin-right: 20px;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.biodata {
+  display: flex;
+  flex-direction: column;
+}
+
+.biodata > h2 {
+  margin-bottom: 15px;
+}
+
+.biodata > p {
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+.biodata > input {
+  width: 200px;
+}
+
+.biodata > button {
+  align-self: flex-end;
+}
+
+.riwayat-pemesanan {
+  height: 250px;
+  width: 200px;
+  border: blue solid;
+  margin-top: 40px;
+  margin-right: 40px;
+}
+
+.riwayat-pemesanan > h2 {
+  text-align: center;
+}
+
+/* Homepage(Resto) */
+
+.header-homepage-resto {
+  background-color: aqua;
+  height: 300px;
+}
+
+.container-notif-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  border: none;
+}
+
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
+  border: none;
+  isolation: isolate;
+}
+
+/* Restaurant Detail */
+.restaurant-images {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.more-image-container {
+  width: 200px;
+  height: 200px;
+  background-image: url("./images/resto-detail-5.png");
+  background-size: cover;
+}
+
+.transparent-box {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#menu-link {
+  background-color: #e1ffff;
+}
+
+#review-link {
+  background-color: #94b0b2;
+}
+
+#location-link {
+  background-color: #ffb990;
+}
+
+#tab-content-container {
+  background-color: #e1ffff;
+  padding: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.menu-cards {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.menu-cards > .card {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  width: 180px;
+}
+
+.menu-cards .card-image {
+  width: 180px;
+  height: 200px;
+}
+
+.card-content > .nama-menu {
+  margin: 10px;
+}
+
+.card-content > .harga-menu {
+  margin-top: auto;
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.review-container {
+  width: 100%;
+  height: 400px;
+  text-align: center;
+}
+
+.location-container {
+  width: 100%;
+  height: 400px;
+  text-align: center;
+}
+
+.kategori-pemesanan-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.kategori-pemesanan-container .kategori,
+.pemesanan {
+  width: 200px;
+  height: 240px;
+  border: 1px solid;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.kategori-pemesanan-container .pemesanan {
+  margin-top: 20px;
+}
+
+.pemesanan-input-container button {
+  background-color: white;
+  border-radius: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.pemesanan-input-container .input-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.pemesanan-input-container .add-remove-container {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.dropdown-container {
+  margin-right: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+}
+
+.dropdown-container select,
+.dropdown-container input {
+  width: 150px;
+  height: 25px;
+  background-color: white;
+  border: 1px solid aqua;
+  border-radius: 4px;
+  padding-left: 10px;
+  margin-right: 10px;
+  color: rgba(0, 0, 0, 0.5);
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Safari, Chrome, Opera */
+  -webkit-appearance: none;
+}
+
+.dropdown-container select:focus,
+.dropdown-container input {
+  outline: none;
+}
+
+/* for IE10 */
+.dropdown-container select::-ms-expand {
+  display: none;
+}
+
+.dropdown-container label {
+  margin-right: 20px;
+}
+
+.dropdown-container option {
+  color: black;
+}
+
+.dropdown-container img {
+  width: 25px;
+  height: 25px;
+  margin-right: 30px;
+}
+
+/* Pembayaran Page*/
+.pembayaran-input-container {
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  border: 1px solid;
+  border-radius: 8px;
+  margin: 0px 20px;
+}
+
+.pembayaran-input-container input {
+  margin-top: 10px;
+  transform: scale(1.5);
+}
