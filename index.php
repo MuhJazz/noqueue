@@ -1,3 +1,4 @@
+<?php include ('server.php')?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,7 +10,6 @@
   </head>
   <body>
   <?php 
-  session_start();
   if (!isset($_SESSION['username'])) {
   	$_SESSION['msg'] = "You must log in first";
   	header('location: login.php');
@@ -20,101 +20,139 @@
   	header("location: index.php");
   }
 ?>
-    <header class="header">
-      <div class="auth-container">
-				<!-- notification message -->
-		<?php if (isset($_SESSION['success'])) : ?>
-		<div class="error success" >
-			<h3>
-			<?php 
-				echo $_SESSION['success']; 
-				unset($_SESSION['success']);
-			?>
-			</h3>
-		</div>
-		<?php endif ?>
+    <header class="header" style="background-image: url(./admin/images/cover-resto.jpeg)">
+    <?php 
+              $user=$_SESSION['username'];
+              $query = mysqli_query($db, "select user_image from users where username='$user'");
+              while($users = mysqli_fetch_array($query))
+              {?> 
+                <?php $usr_img = "user_images/".$users['user_image'];
+                      $def_img = "user_images/default.png";
+                ?>
+                <div class="image-avatar">
+                    <a href="./profile.php">
+                     <img src= <?php 
+                     if(!empty($users['user_image']))
+                     {
+                      echo $usr_img;
+                     }
+                     else
+                     {
+                      echo $def_img;
+                     }
+                     ?> alt='image-avatar' />
+                    </a>
+        <?php }?>
+        <div class="auth-container" style="display: inline;">
+        <a id="masuk" href="./profile.php"><?php echo $_SESSION['username']; ?></a>
+		<!-- notification message -->
+        <?php if (isset($_SESSION['success'])) : ?>
+        <div class="error success" >
+          <h3>
+          <?php 
+            echo $_SESSION['success']; 
+            unset($_SESSION['success']);
+          ?>
+          </h3>
+        </div>
+        <?php endif ?>
 
 		<!-- logged in user information -->
-		<?php  if (isset($_SESSION['username'])) : ?>
-			<a id="logout" href="index.php?logout='1'" style="color: red;">logout</a>
-		<?php endif ?>
+        <?php  if (isset($_SESSION['username'])) : ?>
+          <a id="logout" href="index.php?logout='1'" style="color: red;">logout</a>
+        <?php endif ?>
+    </div>
       </div>
-      <img style="position: absolute" src="./images/logo.png" alt="logo" />
+      <a href="homepage.php">
+      <img style="position: absolute" src="./admin/images/logo.png" alt="logo" />
+        </a>
       <div class="center">
         <span class="judul">NoQ!</span>
         <br />
         <span class="motto">Makan enak tanpa antre</span>
+        <br />
+        <a style="color: white">Silahkan Cari Kota Anda Terlebih Dahulu</a>
       </div>
       <div class="search-location">
-        <select name="location" id="location">
-          <option value="bogor">Bogor</option>
-          <option value="jakarta">Jakarta</option>
-          <option value="depok">Depok</option>
-          <option value="bekasi">Bekasi</option>
-        </select>
-        <div class="search-bar">
-          <input
-            class="text"
-            type="text"
-            placeholder="Find your nearest restaurant..."
-          />
-        </div>
+      <?php 
+                $query = mysqli_query($db, "select * from restoran_loc");
+                ?>
+                <form method="post" action="">
+                    <select name="location" id="location">
+                    <?php
+                        while($resto = mysqli_fetch_array($query))
+                        {
+                            ?>
+                            <option value = "<?php echo $resto['loc_id'];?>">
+                            <?php 
+                                echo $resto['loc_name']; ?>
+                            </option>
+                            <?php
+                        }
+                    ?>
+                    </select>
+                    <button type="submit" class="btn" name="filter">Cari</button>
+                </form>
       </div>
     </header>
-    <div class="content">
-      <div class="recommendation-container">
-        <h3>Rekomendasi untuk kamu!</h3>
-        <button>TELUSURI</button>
+       <?php 
+                if(isset($_POST['filter']))
+                {?>
+                <div class="content">
+                  <div class="recommendation-container">
+                      <h3>Rekomendasi untuk kamu!</h3>
+                  </div>
+                    <div class="cards">
+                    <?php
+                    if(!empty($_POST['location']))
+                    {
+                        $selected = $_POST['location'];
+                        $query = mysqli_query($db, "select * from restoran where loc_id='$selected'");
+                            while($resto = mysqli_fetch_array($query))
+                            {?>
+                            <?php $res_img = "admin/images/".$resto['resto_image'];
+                                  $res_id = $resto['resto_id'];
+                            ?>
+                            <a href="menu-resto.php?resto_id=<?php echo $resto['resto_id']?>" style=" text-decoration:none; color:black;">
+                            <div class="card">
+                                <span
+                                class="card-image"
+                                style="background-image: url('<?php echo $res_img;?>');"
+                                ></span>
+                                <div class="card-content">
+                                  <h3 class="nama-resto"><?php echo $resto['resto_name'];?></h3>
+                                  <span class="alamat"><?php echo $resto['resto_address'];?></span>
+                                  <span class="alamat"><?php echo $resto['resto_open'];?></span>
+                                </div>
+                            </div></a>
+                        <?php }?>
+              <?php }?>
+          <?php }
+            else{?>
+              <?php $query = mysqli_query($db, "select * from restoran");?>
+                <div class="content">
+                  <div class="cards">
+                  <?php
+                          while($resto = mysqli_fetch_array($query))
+                          {?>
+                          <?php $res_img = "admin/images/".$resto['resto_image'];?>
+                          <a href="menu-resto.php?resto_id=<?= $resto['resto_id']?>" style="text-decoration:none; color:black;">
+                          <div class="card">
+                              <span
+                              class="card-image"
+                              style="background-image: url('<?php echo $res_img;?>');"
+                              ></span>
+                              <div class="card-content">
+                                <h3 class="nama-resto"><?php echo $resto['resto_name'];?></h3>
+                                <span class="alamat"><?php echo $resto['resto_address'];?></span>
+                                <span class="alamat"><?php echo $resto['resto_open'];?></span>
+                              </div>
+                          </div></a>
+                  <?php }?>
+                  </div>
+                </div>
+              <?php }?>
       </div>
-      <div class="cards">
-        <div class="card">
-          <span
-            class="card-image"
-            style="background-image: url(./images/resto1.jpeg)"
-          ></span>
-          <div class="card-content">
-            <span class="nama-resto">Resto1</span>
-            <span class="alamat">Alamat1</span>
-            <span class="rate">5.0/5.0</span>
-          </div>
-        </div>
-        <div class="card">
-          <span
-            class="card-image"
-            style="background-image: url(./images/resto2.jpeg)"
-          ></span>
-          <div class="card-content">
-            <span class="nama-resto">Resto2</span>
-            <span class="alamat">Alamat2</span>
-            <span class="rate">4.0/5.0</span>
-          </div>
-        </div>
-        <div class="card">
-          <span
-            class="card-image"
-            style="background-image: url(./images/resto3.jpeg)"
-          ></span>
-          <div class="card-content">
-            <span class="nama-resto">Resto3</span>
-            <span class="alamat">Alamat3</span>
-            <span class="rate">3.0/5.0</span>
-          </div>
-        </div>
-        <div class="card">
-          <span
-            class="card-image"
-            style="background-image: url(./images/resto4.jpeg)"
-          ></span>
-          <div class="card-content">
-            <span class="nama-resto">Resto4</span>
-            <span class="alamat">Alamat4</span>
-            <span class="rate">2.0/5.0</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    </div></a>
   </body>
 </html>
-
-
-		
