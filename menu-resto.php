@@ -24,7 +24,7 @@
     <title>Profile</title>
   </head>
   <body>
-    <?php 
+  <?php 
   if (!isset($_SESSION['username'])) {
   	$_SESSION['msg'] = "You must log in first";
   	header('location: login.php');
@@ -37,18 +37,17 @@
   }
 ?>
     <header class="header" style="background-image: url(./admin/images/cover-resto.jpeg)">
-      <?php 
+    <?php 
               $user=$_SESSION['username'];
               $query = mysqli_query($db, "select user_image from users where username='$user'");
               while($users = mysqli_fetch_array($query))
-              {?>
-      <?php $usr_img = "user_images/".$users['user_image'];
+              {?> 
+                <?php $usr_img = "user_images/".$users['user_image'];
                       $def_img = "user_images/default.png";
                 ?>
-      <div class="image-avatar">
-        <a href="./profile.php">
-          <img src=
-          <?php 
+                <div class="image-avatar">
+                    <a href="./profile.php">
+                     <img src= <?php 
                      if(!empty($users['user_image']))
                      {
                       echo $usr_img;
@@ -57,32 +56,35 @@
                      {
                       echo $def_img;
                      }
-                     ?>
-          alt='image-avatar' />
-        </a>
+                     ?> alt='image-avatar' />
+                    </a>
         <?php }?>
-        <div class="auth-container" style="display: inline">
-          <a id="masuk" href="./profile.php"><?php echo $_SESSION['username']; ?></a>
-          <!-- notification message -->
-          <?php if (isset($_SESSION['success'])) : ?>
-          <div class="error success">
-            <h3>
-              <?php 
+        <div class="auth-container" style="display: inline;">
+        <a id="masuk" href="./profile.php"><?php echo $_SESSION['username']; ?></a>
+		<!-- notification message -->
+        <?php if (isset($_SESSION['success'])) : ?>
+        <div class="error success" >
+          <h3>
+          <?php 
             echo $_SESSION['success']; 
             unset($_SESSION['success']);
           ?>
-            </h3>
-          </div>
-          <?php endif ?>
-
-          <!-- logged in user information -->
-          <?php  if (isset($_SESSION['username'])) : ?>
-          <a id="logout" href="index.php?logout='1'" style="color: red">logout</a>
-          <?php endif ?>
+          </h3>
         </div>
+        <?php endif ?>
+
+		<!-- logged in user information -->
+        <?php  if (isset($_SESSION['username'])) : ?>
+          <a id="logout" href="index.php?logout='1'" style="color: red;">logout</a>
+        <?php endif ?>
+    </div>
       </div>
       <a href="./homepage.php">
-        <img style="position: absolute; top: 0px; left: 0px" src="./admin/images/logo.png" alt="logo" />
+        <img
+          style="position: absolute; top: 0px; left: 0px"
+          src="./admin/images/logo.png"
+          alt="logo"
+        />
       </a>
       <div class="center">
         <span class="judul">NoQ!</span>
@@ -93,7 +95,8 @@
     <div class="content">
       <div class="restaurant-images">
         <img src="<?php echo $res_img;?>" alt="img-resto" width="800" height="500" />
-        <div class="more-image-container"></div>
+        <div class="more-image-container">
+        </div>
       </div>
       <div class="atribut-restoran">
         <div class="flex-row">
@@ -111,6 +114,9 @@
             <img src="./admin/images/clock.png" alt="clock-icon" style="width: 20px; height: 20px; margin-right: 10px" />
             <div class="jam-buka-resto">
               <h4><?php echo $res_open;?></h4>
+            <a href="homepage.php" style="text-decoration:none">
+              <h4>Kembali Melihat Resto</h4>
+            </a>
             </div>
           </div>
         </div>
@@ -124,26 +130,33 @@
         <div id="menu-content">
           <div class="menu-container">
             <div class="menu-cards">
-              <?php $query = mysqli_query($db,"select * from menu where res_id = '$res_id'");
+            <?php $query = mysqli_query($db,"select * from menu where res_id = '$res_id'");
               if(!empty($_SESSION['cart']))
               {
-                foreach($_SESSION['cart'] as $key =>
-              $value) { if($value['resto_id']!=$res_id) { unset($_SESSION['cart']); } } } while($menu = mysqli_fetch_array($query)) {?>
-              <div class="card">
+                foreach($_SESSION['cart'] as $key => $value)
+                { 
+                  if($value['resto_id']!=$res_id)
+                  {
+                    unset($_SESSION['cart']);
+                  }
+                }
+              }
+                while($menu = mysqli_fetch_array($query))
+                {?>
+                <div class="card">
                 <?php $menu_img = "admin/menu_images/".$menu['menu_image'];?>
                 <span class="card-image" style="background-image: url(<?php echo $menu_img?>)"></span>
                 <div class="card-content">
                   <span class="nama-menu"><?php echo $menu['menu_name'];?></span>
                   <span class="harga-menu"><?php echo number_format($menu['menu_price'],2);?></span>
-                  <form method="post" action="menu-resto.php?action=add&menu_id=<?php echo $menu['menu_id'];?>&resto_id=<?php echo $_GET['resto_id']?>">
-                    <input type="number" name="qty_menu" value="1" min="1" />
-                    <input type="hidden" name="nama_menu" value="<?php echo $menu['menu_name'];?>" />
-                    <input type="hidden" name="harga_menu" value="<?php echo $menu['menu_price'];?>" />
-                    <input class="harga-menu" type="submit" name="add_to_cart" value="Tambah ke Keranjang" />
-                  </form>
+                <form method="post" action="menu-resto.php?action=add&menu_id=<?php echo $menu['menu_id'];?>&resto_id=<?php echo $_GET['resto_id']?>">
+                  <input type="number" name="qty_menu" value="1" min="1">
+                  <input type="hidden" name="nama_menu" value="<?php echo $menu['menu_name'];?>">
+                  <input type="hidden" name="harga_menu" value="<?php echo $menu['menu_price'];?>">
+                  <input class="harga-menu" type="submit" name="add_to_cart" value="Tambah ke Keranjang">
+                </form>
                 </div>
-              </div>
-              <?php }?>
+              </div><?php }?>
             </div>
             <div class="kategori-pemesanan-container">
               <div class="kategori">
@@ -168,31 +181,30 @@
               <div class="pemesanan">
                 <h2 style="padding-left: 10px; margin-top: 10px; margin-bottom: 10px">PEMESANAN</h2>
                 <div class="pemesanan-input-container" style="padding-left: 10px; padding-top: 10px; border-top: 1px solid">
-                  <?php 
+                <?php 
                   if(!empty($_SESSION['cart']))
                   {
                     $total = 0;
-                    foreach($_SESSION['cart'] as $key =>
-                  $value) { ?>
-                  <div class="input-group">
-                    <label for="menu1"><?php echo $value['nama_menu'];?></label>
-                    <div class="add-remove-container">
-                      <div
-                        id="jumlah-item"
-                        style="display: inline-block; height: 20px; width: 20px; background-color: white; border: 1px solid; text-align: center"
-                      >
-                        <?php echo $value['qty_menu'];?>
+                    foreach($_SESSION['cart'] as $key => $value)
+                    { 
+                      ?>
+                      <div class="input-group">
+                      <label for="menu1"><?php echo $value['nama_menu'];?></label>
+                      <div class="add-remove-container">
+                        <div
+                          id="jumlah-item"
+                          style="display: inline-block; height: 20px; width: 20px; background-color: white; border: 1px solid; text-align: center"
+                        >
+                          <?php echo $value['qty_menu'];?>
+                        </div>
                       </div>
+                      <label for="menu1"><?php echo number_format($value['harga_menu']*$value['qty_menu']);?></label>
+                      <a href="menu-resto.php?action=del-cart&menu_id=<?php echo $value['menu_id'];?>&resto_id=<?php echo $value['resto_id']?>" for="menu1"><?php echo "Hapus menu"?></a>
                     </div>
-                    <label for="menu1"><?php echo number_format($value['harga_menu']*$value['qty_menu']);?></label>
-                    <a href="menu-resto.php?action=del-cart&menu_id=<?php echo $value['menu_id'];?>&resto_id=<?php echo $value['resto_id']?>" for="menu1"
-                      ><?php echo "Hapus menu"?></a
-                    >
-                  </div>
-                  <?php 
+                    <?php 
                   $total=$total+($value['harga_menu']*$value['qty_menu']);
                   }?>
-                  <?php }
+                <?php }
                 else{
                   $total = 0;
                   echo "Belum memasukkan makanan";
@@ -216,7 +228,7 @@
           class="form-pemesanan-container"
           style="border: 2px solid aqua; border-radius: 8px; padding-top: 20px; padding-left: 10px; padding-right: 10px; padding-bottom: 25px"
         >
-          <form>
+          <form action="./pembayaran.html">
             <div class="flex-wrap">
               <div class="dropdown-container">
                 <img src="./admin/images/clock.png" alt="clock-icon" />
@@ -234,99 +246,12 @@
               </div>
               <div class="dropdown-container">
                 <img src="./admin/images/table.png" alt="table-icon" />
-                <button type="button" id="button-tampilkan-meja" style="text-align: left">PILIH</button>
-              </div>
-              <div id="modal-bg-pilihan-meja" class="hidden modal-bg">
-                <div id="container-pilihan-meja" class="modal-container" style="width: fit-content">
-                  <div class="flex-column">
-                    <div class="tables">
-                      <div class="flex-row">
-                        <div class="left-tables flex-column">
-                          <div class="meja-kursi meja-kursi-kiri">
-                            <div class="flex-row">
-                              <div class="meja-kiri"></div>
-                              <div class="flex-column" style="justify-content: center; align-items: center">
-                                <div class="kursi kursi-kiri"></div>
-                                <div class="kursi kursi-kiri"></div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="meja-kursi meja-kursi-kiri">
-                            <div class="flex-row">
-                              <div class="meja-kiri"></div>
-                              <div class="flex-column" style="justify-content: center; align-items: center">
-                                <div class="kursi kursi-kiri"></div>
-                                <div class="kursi kursi-kiri"></div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="meja-kursi meja-kursi-kiri">
-                            <div class="flex-row">
-                              <div class="meja-kiri penuh"></div>
-                              <div class="flex-column" style="justify-content: center; align-items: center">
-                                <div class="kursi kursi-kiri penuh"></div>
-                                <div class="kursi kursi-kiri penuh"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="center-tables flex-column" style="justify-content: center; align-items: center; margin: 50px">
-                          <div class="meja-kursi meja-kursi-tengah">
-                            <div class="flex-row">
-                              <div class="flex-column" style="justify-content: center; align-items: center">
-                                <div class="kursi kursi-tengah penuh" style="margin-right: 10px; margin-bottom: 10px"></div>
-                                <div class="kursi kursi-tengah penuh" style="margin-right: 10px; margin-bottom: 10px"></div>
-                              </div>
-                              <div class="flex-column">
-                                <div class="kursi kursi-tengah penuh" style="margin-bottom: 10px; align-self: center"></div>
-                                <div class="meja-tengah penuh"></div>
-                                <div class="kursi kursi-tengah penuh" style="margin-top: 10px; align-self: center"></div>
-                              </div>
-                              <div class="flex-column" style="justify-content: center; align-items: center">
-                                <div class="kursi kursi-tengah penuh" style="margin-left: 10px; margin-bottom: 10px"></div>
-                                <div class="kursi kursi-tengah penuh" style="margin-left: 10px; margin-bottom: 10px"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="right-tables flex-column">
-                          <div class="meja-kursi meja-kursi-kanan" style="margin-bottom: auto">
-                            <div class="flex-column">
-                              <div class="flex-row" style="justify-content: space-between">
-                                <div class="kursi kursi-kanan"></div>
-                                <div class="kursi kursi-kanan"></div>
-                              </div>
-                              <div class="meja-kanan"></div>
-                              <div class="flex-row" style="justify-content: space-between">
-                                <div class="kursi kursi-kanan"></div>
-                                <div class="kursi kursi-kanan"></div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="meja-kursi meja-kursi-kanan">
-                            <div class="flex-column">
-                              <div class="flex-row" style="justify-content: space-between">
-                                <div class="kursi kursi-kanan"></div>
-                                <div class="kursi kursi-kanan"></div>
-                              </div>
-                              <div class="meja-kanan"></div>
-                              <div class="flex-row" style="justify-content: space-between">
-                                <div class="kursi kursi-kanan"></div>
-                                <div class="kursi kursi-kanan"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flex-row" style="margin-top: 50px">
-                      <select name="lantai" id="lantai" style="margin-right: auto">
-                        <option value="none" selected disabled hidden>Lantai 1</option>
-                      </select>
-                      <button>PILIH</button>
-                    </div>
-                  </div>
-                </div>
+                <select name="meja" id="meja">
+                  <option value="none" selected disabled hidden>PILIH</option>
+                  <option value="opsi1">opsi1</option>
+                  <option value="opsi2">opsi2</option>
+                  <option value="opsi3">opsi3</option>
+                </select>
               </div>
               <div class="dropdown-container">
                 <img src="./admin/images/edit.png" alt="edit-icon" />
@@ -341,9 +266,10 @@
               <?php
               if(isset($_SESSION['cart']))
               {
-                if(count($_SESSION['cart'])>0) {?>
-              <button type="submit" style="margin-right: 40px">PESAN</button>
-              <?php }
+                if(count($_SESSION['cart'])>0)
+                {?>
+                  <button type="submit" style="margin-right: 40px">PESAN</button>
+                <?php }
               }
               ?>
             </div>
@@ -366,9 +292,9 @@
       const reviewContent = document.querySelector("#review-content");
       const locationContent = document.querySelector("#location-content");
 
-      // Proses saat tab link diklik
+      // Proses saat button diklik
 
-      // saat menu tab diklik akan memunculkan konten menu
+      // saat menu diklik akan memunculkan konten menu
       menuLink.addEventListener("click", (e) => {
         e.preventDefault();
         tabContent.style.backgroundColor = "#e1ffff"; // mengubah warna content tab container
@@ -377,7 +303,7 @@
         locationContent.classList.add("hidden");
       });
 
-      // saat review tab diklik akan memunculkan konten review
+      // saat review diklik akan memunculkan konten review
       reviewLink.addEventListener("click", (e) => {
         e.preventDefault();
         tabContent.style.backgroundColor = "#94b0b2"; // mengubah warna content tab container
@@ -386,7 +312,7 @@
         locationContent.classList.add("hidden");
       });
 
-      // saat location tab diklik akan memunculkan konten location
+      // saat location diklik akan memunculkan konten location
       locationLink.addEventListener("click", (e) => {
         e.preventDefault();
         tabContent.style.backgroundColor = "#ffb990"; // mengubah warna content tab container
@@ -396,81 +322,21 @@
       });
 
       // menambah dan mengurangi item
-      // const removeButton = document.querySelector("#remove-item-button");
-      // const addButton = document.querySelector("#add-item-button");
-      // let jumlahItem = document.querySelector("#jumlah-item").innerHTML;
-      // removeButton.addEventListener("click", (e) => {
-      //   e.preventDefault();
-      //   if (jumlahItem > 0) {
-      //     jumlahItem--;
-      //   }
-      //   document.querySelector("#jumlah-item").innerHTML = jumlahItem.toString();
-      // });
-      // addButton.addEventListener("click", (e) => {
-      //   e.preventDefault();
-      //   jumlahItem++;
-      //   console.log(jumlahItem);
-      //   document.querySelector("#jumlah-item").innerHTML = jumlahItem.toString();
-      // });
-
-      // menampilkan pilihan meja yang tersedia
-      const modalBgPilihanMeja = document.querySelector("#modal-bg-pilihan-meja");
-      const containerPilihanMeja = document.querySelector("#container-pilihan-meja");
-      const buttonTampilkanMeja = document.querySelector("#button-tampilkan-meja");
-      buttonTampilkanMeja.addEventListener("click", (e) => {
+      const removeButton = document.querySelector("#remove-item-button");
+      const addButton = document.querySelector("#add-item-button");
+      let jumlahItem = document.querySelector("#jumlah-item").innerHTML;
+      removeButton.addEventListener("click", (e) => {
         e.preventDefault();
-        console.log("click");
-        modalBgPilihanMeja.classList.remove("hidden");
-      });
-      document.addEventListener("click", (e) => {
-        const isContainerPilihanMejaClicked = containerPilihanMeja.contains(e.target);
-        const isbuttonTampilkanMejaClicked = buttonTampilkanMeja.contains(e.target);
-        if (!isbuttonTampilkanMejaClicked && !isContainerPilihanMejaClicked) {
-          console.log("hidden");
-          modalBgPilihanMeja.classList.add("hidden");
+        if (jumlahItem > 0) {
+          jumlahItem--;
         }
+        document.querySelector("#jumlah-item").innerHTML = jumlahItem.toString();
       });
-
-      // memilih meja
-      //kiri
-      const listMejaKursiKiri = [...document.getElementsByClassName("meja-kursi-kiri")];
-      const listMejaKiri = [...document.getElementsByClassName("meja-kiri")];
-      const listKursiKiri = [...document.getElementsByClassName("kursi-kiri")];
-      listMejaKursiKiri.forEach((mejaKursiKiri, i) => {
-        mejaKursiKiri.addEventListener("click", () => {
-          if (listMejaKiri[i].classList.contains("dipilih")) {
-            listMejaKiri[i].classList.remove("dipilih");
-            listKursiKiri[i * 2].classList.remove("dipilih");
-            listKursiKiri[i * 2 + 1].classList.remove("dipilih");
-          } else {
-            if (!listMejaKiri[i].classList.contains("penuh")) {
-              listMejaKiri[i].classList.add("dipilih");
-              listKursiKiri[i * 2].classList.add("dipilih");
-              listKursiKiri[i * 2 + 1].classList.add("dipilih");
-            }
-          }
-        });
-      });
-      // kanan
-      const listMejaKursiKanan = [...document.getElementsByClassName("meja-kursi-kanan")];
-      const listMejaKanan = [...document.getElementsByClassName("meja-kanan")];
-      const listKursiKanan = [...document.getElementsByClassName("kursi-kanan")];
-      listMejaKursiKanan.forEach((mejaKursiKanan, i) => {
-        mejaKursiKanan.addEventListener("click", () => {
-          if (listMejaKanan[i].classList.contains("dipilih")) {
-            listMejaKanan[i].classList.remove("dipilih");
-            for (let j = i * 4; j < i * 4 + 4; j++) {
-              listKursiKanan[j].classList.remove("dipilih");
-            }
-          } else {
-            if (!listMejaKanan[i].classList.contains("penuh")) {
-              listMejaKanan[i].classList.add("dipilih");
-              for (let j = i * 4; j < i * 4 + 4; j++) {
-                listKursiKanan[j].classList.add("dipilih");
-              }
-            }
-          }
-        });
+      addButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        jumlahItem++;
+        console.log(jumlahItem);
+        document.querySelector("#jumlah-item").innerHTML = jumlahItem.toString();
       });
     </script>
   </body>
