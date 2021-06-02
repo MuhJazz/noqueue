@@ -11,7 +11,6 @@
   <body>
   <header class="header" style="background-image: url(./admin/images/cover-resto.jpeg)">
     <?php 
-              $db = mysqli_connect('localhost','root', 'subhan2122', 'noq');
               $user=$_SESSION['username'];
               $query = mysqli_query($db, "select user_image from users where username='$user'");
               while($users = mysqli_fetch_array($query))
@@ -22,7 +21,7 @@
                      <img src= <?php echo $usr_img;?> alt='image-avatar' />
                     </a>
         <?php }?>
-      <a href="./index.php">
+      <a href="./homepage.php">
         <img
           style="position: absolute; top: 0px; left: 0px"
           src="./admin/images/logo.png"
@@ -34,46 +33,86 @@
         <span class="motto">Makan enak tanpa antre</span>
       </div>
       <div class="search-location">
-        <select name="location" id="location">
-          <option value="bogor">Bogor</option>
-          <option value="jakarta">Jakarta</option>
-          <option value="depok">Depok</option>
-          <option value="bekasi">Bekasi</option>
-        </select>
-        <div class="search-bar">
-          <input
-            class="text"
-            type="text"
-            placeholder="Find your nearest restaurant..."
-          />
-        </div>
+      <?php 
+                $query = mysqli_query($db, "select * from restoran_loc");
+                ?>
+                <form method="post" action="">
+                    <select name="location" id="location">
+                    <?php
+                        while($resto = mysqli_fetch_array($query))
+                        {
+                            ?>
+                            <option value = "<?php echo $resto['loc_id'];?>">
+                            <?php 
+                                echo $resto['loc_name']; ?>
+                            </option>
+                            <?php
+                        }
+                    ?>
+                    </select>
+                    <button type="submit" class="btn" name="filter">Cari</button>
+                </form>
       </div>
     </header>
-    <div class="content">
-      <div class="recommendation-container">
-        <h3>Rekomendasi untuk kamu!</h3>
-        <button>TELUSURI</button>
-      </div>
-      <div class="cards">
-      <?php 
-              $db = mysqli_connect('localhost','root', 'subhan2122', 'noq');
-                $query = mysqli_query($db, "select * from restoran");
-                while($resto = mysqli_fetch_array($query))
+    <?php 
+                if(isset($_POST['filter']))
                 {?>
-                 <?php $res_img = "admin/images/".$resto['resto_image'];?>
-                  <div class="card">
-                    <span
-                      class="card-image"
-                      style="background-image: url('<?php echo $res_img;?>');"
-                    ></span>
-                    <div class="card-content">
-                      <span class="nama-resto"><?php echo $resto['resto_name'];?></span>
-                      <span class="alamat"><?php echo $resto['resto_address'];?></span>
-                    </div>
+                <div class="content">
+                  <div class="recommendation-container">
+                      <h3>Rekomendasi untuk kamu!</h3>
                   </div>
-               <?php }?>
+                    <div class="cards">
+                    <?php
+                    if(!empty($_POST['location']))
+                    {
+                        $selected = $_POST['location'];
+                        $query = mysqli_query($db, "select * from restoran where loc_id='$selected'");
+                            while($resto = mysqli_fetch_array($query))
+                            {?>
+                            <?php $res_img = "admin/images/".$resto['resto_image'];
+                                  $res_id = $resto['resto_id'];
+                            ?>
+                            <a href="menu-resto.php?resto_id=<?php echo $resto['resto_id']?>" style=" text-decoration:none; color:black;">
+                            <div class="card">
+                                <span
+                                class="card-image"
+                                style="background-image: url('<?php echo $res_img;?>');"
+                                ></span>
+                                <div class="card-content">
+                                  <h3 class="nama-resto"><?php echo $resto['resto_name'];?></h3>
+                                  <span class="alamat"><?php echo $resto['resto_address'];?></span>
+                                  <span class="alamat"><?php echo $resto['resto_open'];?></span>
+                                </div>
+                            </div></a>
+                        <?php }?>
+              <?php }?>
+          <?php }
+            else{?>
+              <?php $query = mysqli_query($db, "select * from restoran");?>
+                <div class="content">
+                  <div class="cards">
+                  <?php
+                          while($resto = mysqli_fetch_array($query))
+                          {?>
+                          <?php $res_img = "admin/images/".$resto['resto_image'];?>
+                          <a href="menu-resto.php?resto_id=<?= $resto['resto_id']?>" style="text-decoration:none; color:black;">
+                          <div class="card">
+                              <span
+                              class="card-image"
+                              style="background-image: url('<?php echo $res_img;?>');"
+                              ></span>
+                              <div class="card-content">
+                                <h3 class="nama-resto"><?php echo $resto['resto_name'];?></h3>
+                                <span class="alamat"><?php echo $resto['resto_address'];?></span>
+                                <span class="alamat"><?php echo $resto['resto_open'];?></span>
+                              </div>
+                          </div></a>
+                  <?php }?>
+                  </div>
+                </div>
+              <?php }?>
       </div>
-    </div>
+    </div></a>
     <div class="modal-bg">
     	<div class="modal-container">
       <?php
