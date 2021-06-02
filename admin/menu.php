@@ -85,13 +85,13 @@
       </div>
     </div>
 	<div class="modal-bg">
-    	<div class="modal" style="height: 55%">
+    	<div class="modal-container" style="height: 55%">
 			<form method="post" action="menu.php" class="form" enctype="multipart/form-data">
 				<?php include('error.php'); ?>
                 <div class="input-group">
                 <label>Nama Resto</label>
                 <?php 
-                $db = mysqli_connect('localhost','root', 'subhan2122', 'noq');
+                $db = mysqli_connect('localhost','root', '', 'noq');
                 $query = mysqli_query($db, "select * from restoran");
                 ?>
                     <select name="nama_resto">
@@ -116,7 +116,7 @@
 
 				<div class="input-group">
 				<label>Harga Menu</label>
-				<input type="text" placeholder="Rp.50.000" name="harga_menu" value="<?php echo "Rp."?>">
+				<input type="text" placeholder="50000" name="harga_menu">
 				</div>
 
 				<div class="input-group">

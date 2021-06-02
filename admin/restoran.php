@@ -85,7 +85,7 @@
       </div>
     </div>
 	<div class="modal-bg">
-    	<div class="modal" style="height: 55%">
+    	<div class="modal-container" style="height: 55%">
 			<form method="post" action="restoran.php" class="form" enctype="multipart/form-data">
 				<?php include('error.php'); ?>
                 <div class="input-group">
