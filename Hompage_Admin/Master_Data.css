@@ -1,5 +1,25 @@
+body {
+  margin: 0px;
+}
+
+/* flex class */
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
 .header {
-  background-color: #48DDE7;
+  background-color: #48dde7;
   background-size: cover;
   height: 150px;
   padding: 5px;
@@ -57,12 +77,12 @@
 
 #master-link {
   background-color: #e1ffff;
-   font-size: 20px;
-   border: none;
-   border-radius: 10px;
-   padding: 15px 137px;
-   display: inline-block;
-   margin: -5px 2px
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 137px;
+  display: inline-block;
+  margin: -5px 2px;
 }
 
 #transaksi-link {
@@ -72,17 +92,17 @@
   border-radius: 10px;
   padding: 15px 137px;
   display: inline-block;
-  margin: -5px 2px
+  margin: -5px 2px;
 }
 
 #laporan-link {
   background-color: #94b0b2;
-   font-size: 20px;
-   border: none;
-   border-radius: 10px;
-   padding: 15px 137px;
-   display: inline-block;
-   margin: -5px 2px
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 137px;
+  display: inline-block;
+  margin: -5px 2px;
 }
 
 #tab-content-container {
@@ -94,16 +114,20 @@
   padding: 80px 502px;
   display: inline-flex;
   margin: -5px 2px;
-  margin-left: 30px; 
+  margin-left: 30px;
+}
+
+.hidden {
+  display: none;
 }
 
 .kotak1 {
   width: 140px;
   height: 200px;
-  background-color: #FFB990;
+  background-color: #ffb990;
   line-height: 80px;
   text-align: center;
-  font-size: 20px; 
+  font-size: 20px;
   border: none;
   border-radius: 10px;
 }
@@ -111,10 +135,10 @@
 .kotak2 {
   width: 140px;
   height: 200px;
-  background-color: #FFB990;
+  background-color: #ffb990;
   line-height: 80px;
   text-align: center;
-  font-size: 20px; 
+  font-size: 20px;
   border: none;
   border-radius: 10px;
   float: left;
@@ -123,9 +147,9 @@
 .data-kategori-menu {
   width: 140px;
   height: 140px;
-  background-color: #FFf;
+  background-color: #fff;
   line-height: 80px;
-  font-size: 20px; 
+  font-size: 20px;
   border: none;
   border-radius: 10px 10px 0px 0px;
 }
@@ -133,9 +157,9 @@
 .data-menu {
   width: 140px;
   height: 140px;
-  background-color: #FFf;
+  background-color: #fff;
   line-height: 80px;
-  font-size: 20px; 
+  font-size: 20px;
   border: none;
   border-radius: 10px 10px 0px 0px;
 }
@@ -157,4 +181,3 @@
 hr {
   margin-top: 30px;
 }
-
