@@ -4,7 +4,7 @@
    		<meta charset="UTF-8" />
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      	<link rel="stylesheet" href="MASTER DATA.css" />
+      	<link rel="stylesheet" href="Master_Data.css" />
       	<title>Homepage admin</title>
   </head>
   <body>
@@ -28,10 +28,9 @@
          </div>
 
     </header>
-
     <div class="nav-tabs" style="margin-top: 30px; margin-left: 28px;">
-    	<a href="MASTER DATA.html">
-      		  <button id="master-link">Master Data</button>
+    	<a href="Master_Data.html">
+      		<button id="master-link">Master Data</button>
     	</a>
     	<a href="./profile.html">
         	<button id="transaksi-link">Data Transaksi</button>
@@ -42,40 +41,88 @@
     </div>
 
     <div id="tab-content-container">
-      <div id="menu-conten1" style="margin-top: -30px; margin-left: -110px;"> 
-    	<div class="kotak1">
-    		<a href="./profile.html">
-    			<div class="data-kategori-menu">
-       				<div class="card">
-       					<script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
-       					<span class="iconify" data-inline="false" data-icon="bx:bxs-food-menu" style="font-size: 120px; color: black; margin-top: 10px"></span>
-       				</div>
-      			</div>
-      		</a>
-      		<div class="card-content1">
-      			<span class="nama-data">DATA KATEGORI MENU</span>
-      		</div>
-      	</div>
-      </div>
-
-      <div id="menu-conten2" style="margin-top: -30px; margin-left: 100px;"> 
-      	<div class="kotak2">
-    		<a href="./profile.html">
-    			<div class="data-menu">
-       				<div class="card">
-       					<script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
-       					<span class="iconify" data-inline="false" data-icon="ic:baseline-menu-book" style="font-size: 120px; color: black;"></span>
-       				</div>
-      			</div>
-      		</a>
-      		<div class="card-content2">
-      			<span class="nama-data">DATA MENU</span>
-      		</div>
-      	</div>
-      </div>
-
+		<div id="master-content">
+			<div class="master-container flex-row">
+				<div id="menu-content1" style="margin-top: -30px; margin-left: -110px;"> 
+					<div class="kotak1">
+						<a href="./profile.html">
+							<div class="data-kategori-menu">
+								   <div class="card">
+									   <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+									   <span class="iconify" data-inline="false" data-icon="bx:bxs-food-menu" style="font-size: 120px; color: black; margin-top: 10px"></span>
+								   </div>
+							  </div>
+						  </a>
+						  <div class="card-content1">
+							  <span class="nama-data">DATA KATEGORI MENU</span>
+						  </div>
+					  </div>
+				  </div>		
+				  <div id="menu-content2" style="margin-top: -30px; margin-left: 100px;"> 
+					  <div class="kotak2">
+						<a href="./profile.html">
+							<div class="data-menu">
+								   <div class="card">
+									   <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+									   <span class="iconify" data-inline="false" data-icon="ic:baseline-menu-book" style="font-size: 120px; color: black;"></span>
+								   </div>
+							  </div>
+						  </a>
+						  <div class="card-content2">
+							  <span class="nama-data">DATA MENU</span>
+						  </div>
+					  </div>
+				  </div>
+			</div>
+			
+		</div>
+		<div id="transaksi-content" class="hidden">Transaksi</div>
+		<div id="laporan-content" class="hidden">Laporan</div>
+   
     </div>
-      <hr class="garis" width="95%" align="center">
+	<script>
+		// nav tabs
+		const masterDataLink = document.querySelector("#master-link");
+		const dataTransaksiLink = document.querySelector("#transaksi-link");
+		const dataLaporanLink = document.querySelector("#laporan-link");
+  
+		// content tab container
+		const tabContent = document.querySelector("#tab-content-container");
+  
+		// masing-masing content tab
+		const masterDataContent = document.querySelector("#master-content");
+		const dataTransaksiContent = document.querySelector("#transaksi-content");
+		const dataLaporanContent = document.querySelector("#laporan-content");
+  
+		// Proses saat tab link diklik
+  
+		// saat master-data tab diklik akan memunculkan konten master-data
+		masterDataLink.addEventListener("click", (e) => {
+		  e.preventDefault();
+		  tabContent.style.backgroundColor = "#e6f4f1"; // mengubah warna content tab container
+		  masterDataContent.classList.remove("hidden");
+		  dataTransaksiContent.classList.add("hidden");
+		  dataLaporanContent.classList.add("hidden");
+		});
+  
+		// saat data-transaksi tab diklik akan memunculkan konten data-transaksi
+		dataTransaksiLink.addEventListener("click", (e) => {
+		  e.preventDefault();
+		  tabContent.style.backgroundColor = "#ffb990"; // mengubah warna content tab container
+		  dataTransaksiContent.classList.remove("hidden");
+		  masterDataContent.classList.add("hidden");
+		  dataLaporanContent.classList.add("hidden");
+		});
+  
+		// saat data-laporan tab diklik akan memunculkan konten data-laporan
+		dataLaporanLink.addEventListener("click", (e) => {
+		  e.preventDefault();
+		  tabContent.style.backgroundColor = "#94b0b2"; // mengubah warna content tab container
+		  dataLaporanContent.classList.remove("hidden");
+		  masterDataContent.classList.add("hidden");
+		  dataTransaksiContent.classList.add("hidden");
+		});
+	  </script>
   </body>
 </html>
 </html>
