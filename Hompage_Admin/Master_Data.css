@@ -82,7 +82,7 @@ p {
 /* content */
 
 .content {
-  padding: 10px 20px;
+  padding: 10px 28.5px;
 }
 
 #master-link {
@@ -239,10 +239,81 @@ a {
   border-radius: 10px;
 }
 
+#button-edit {
+  background-color: green;
+  border: none;
+  border-radius: 5px 5px 5px 5px;
+  display: inline-block;
+  margin: 0px 2px;
+  height: fit-content;
+  width: fit-content;
+}
+
+#button-hapus {
+  background-color: red;
+  border: none;
+  border-radius: 5px 5px 5px 5px;
+  display: inline-block;
+  margin: 0px 2px;
+  height: fit-content;
+  width: fit-content;
+}
+
+#button-status {
+  background-color: red;
+  border: none;
+  border-radius: 5px 5px 5px 5px;
+  display: inline-block;
+  margin: 0px 2px;
+  height: 30px;
+  width: fit-content;
+  color: white;
+  text-align: center;
+}
+
+
+
+
 /* Data Laporan */
 .laporan-container {
   padding: 10px 20px;
   background-color: white;
   height: 500px;
   border-radius: 10px;
+}
+
+.button-cetak {
+  padding: 10px 5px;
+  margin-top: auto;
+  margin-left: auto;
+}
+
+#button-cetaklaporan {
+  background-color: green;
+  border: none;
+  border-radius: 5px 5px 5px 5px;
+  display: inline-block;
+  margin: 0px 2px;
+  height: 30px;
+  width: fit-content;
+  color: white;
+  text-align: center;
+}
+
+.button-cari {
+  padding: 10px 5px;
+  margin-top: auto;
+  margin-left: -570px;
+}
+
+#button-carilaporan {
+  background-color: #94b0b2;
+  border: none;
+  border-radius: 5px 5px 5px 5px;
+  display: inline-block;
+  margin: 0px 2px;
+  height: fit-content;
+  width: fit-content;
+  color: white;
+  text-align: center;
 }
