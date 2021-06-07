@@ -75,57 +75,172 @@
 					</div>
 				</div>	
 			</div>
-			<div id="transaksi-content" class="hidden"> 
-					<div class="transaksi-container">
-						<div class="flex-row">
-							<h2>DATA TRANSAKSI PEMESANAN</h2>
-							<img src="./images/exit.png" alt="exit-icon" height="25px" width="25px" style="margin-left: auto" />
-						  </div>
-						  <hr />
-						  <div class="flex-row">
-							<img src="./images/menu-icon.png" alt="menu-icon" height="20px" width="20px" style="margin-left: 20px; margin-right: 10px" />
-							<p style="font-size: 20px; padding: 0px">Pemesanan Menu</p>
-						  </div>
-						  <div class="flex-row">
-							<a href="#"
-							  ><div class="button-tambah-data flex-row">
-								<img src="./images/plus-icon.png" alt="plus-icon" height="20px" width="20px" style="margin-right: 10px" />
-								<p style="font-size: 20px">Tambah Data</p>
-							  </div></a
-							>
-							<input type="text" placeholder="Search" style="border-radius: 4px; width: 120px; height: 20px; margin-top: auto; margin-left: auto" />
-						  </div>
-						  <table>
-							<tr>
-							  <th>No</th>
-							  <th>Tanggal</th>
-							  <th>No. Meja</th>
-							  <th>Atas Nama</th>
-							  <th>Total</th>
-							  <th>Harga</th>
-							  <th>Edit</th>
-							  <th>Hapus</th>
-							</tr>
-							<tr>
-							  <td>1</td>
-							  <td>2012-12-01</td>
-							  <td>1</td>
-							  <td>Anggun</td>
-							  <td>Rp4.000</td>
-							  <td>Belum Bayar</td>
-							  <td>Edit-icon</td>
-							  <td>Hapus-icon</td>
-							</tr>
-						  </table>
-					</div>
-			</div>
-			<div id="laporan-content" class="hidden"> 
-				<div class="laporan-container">
-				</div>
-			</div>
-		</div>
-	</div>
-	<script>
+	<div id="transaksi-content" class="hidden"> 
+          	<div class="transaksi-container">
+            		<div class="flex-row">
+             			 <h2 style="margin-top: 0px">DATA TRANSAKSI PEMESANAN</h2>
+              				<img src="./images/exit.png" alt="exit-icon" height="26px" width="26px" style="margin-left: auto" />
+             		</div>
+             	 	<hr width="100%" align="center" style="margin-top: -10px; border: solid;">
+             		<div class="flex-row">
+                  		<div class="menu-icon">
+                   			<script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+                    			<span class="iconify" data-inline="false" data-icon="bx:bx-menu" style="font-size: 24px; color: black;"></span>
+                  		</div>
+             			<p style="font-size: 20px; padding: 0px">Pemesanan Menu</p>
+             		</div>
+              	<div class="flex-row">
+                	<a href="#">
+                   		<div class="button-tambah-data flex-row">
+                        		<img src="./images/plus-icon.png" alt="plus-icon" height="25px" width="25px" style="margin-right: 10px;" />
+                        		<p style="font-size: 21px; margin-right: 5px">Tambah Data</p>
+                    		</div>
+                  	</a>
+                  	<input type="text" placeholder="Search" style="border-radius: 4px; width: 120px; height: 20px; margin-top: auto; margin-left: auto" />
+              </div>
+              <table>
+		<tr>
+			<th>No</th>
+			<th>Tanggal</th>
+			<th>No. Meja</th>
+			<th>Atas Nama</th>
+			<th>Total</th>
+			<th>Harga</th>
+			<th>Edit</th>
+			<th>Hapus</th>
+		</tr>
+              	<tr>
+			<td>1</td>
+			<td>2012-12-01</td>
+			<td>1</td>
+			<td>Anggun</td>
+			<td>Rp4.000</td>
+			<td>
+				<button id="button-status" class="link">Belum Bayar</button>
+			</td>
+			<td>
+				<button id="button-edit" class="link">
+					<img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" >
+				</button>
+			</td>
+			<td>
+				<button id="button-hapus" class="link">
+					<img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" >
+			  	</button>
+			</td>
+		</tr>
+              	<tr>
+			<td>2</td>
+			<td>2021-12-21</td>
+			<td>3</td>
+			<td>Aulia</td>
+			<td>Rp40.000</td>
+			<td>
+			  	<button id="button-status" class="link">Belum Bayar</button>
+			</td>
+			<td>
+			  	<button id="button-edit" class="link">
+			    		<img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" >
+			  	</button>
+			</td>
+			<td>
+			  	<button id="button-hapus" class="link">
+			    		<img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" >
+			 	</button>
+			</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>2021-12-21</td>
+			<td>5</td>
+			<td>Feni</td>
+			<td>Rp40.000</td>
+			<td>
+			  	<button id="button-status" class="link">Belum Bayar</button>
+			</td>
+			<td>
+			  	<button id="button-edit" class="link">
+			    		<img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" >
+			  	</button>
+			</td>
+			<td>
+			  	<button id="button-hapus" class="link">
+			    		<img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" >
+			  	</button>
+			</td>
+		</tr>
+	</table>
+
+          </div>
+      </div>
+
+      <div id="laporan-content" class="hidden"> 
+      	<div class="laporan-container">
+        	<div class="flex-row">
+              		<h2 style="margin-top: 0px">DATA LAPORAN PEMESANAN</h2>
+              		<img src="./images/exit.png" alt="exit-icon" height="26px" width="26px" style="margin-left: auto" />
+              	</div>
+              		<hr width="100%" align="center" style="margin-top: -10px; border: solid;">
+              	<div class="flex-row">
+                 	<input type="date" style="border-radius: 4px; width: 150px; height: 25px; margin-top: 10px; margin-right: auto" />
+                  	<input type="date" style="border-radius: 4px; width: 150px; height: 25px; margin-top: 10px; margin-right: 600px" />
+                 	<a href="#">
+                    		<div class="button-cari flex-row">
+                        		<button id="button-carilaporan" class="link" >
+                          			<script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+                    					<span class="iconify" data-inline="false" data-icon="akar-icons:search" style="font-size: 24px; color: white;"></span>
+                        		</button>
+                    		</div>
+                  	</a>
+                  	<a href="#">
+                    		<div class="button-cetak flex-row">
+                        		<button id="button-cetaklaporan" class="link" >Cetak Laporan Pemesanan</button>
+                    		</div>
+                  	</a>
+              </div>
+              	<table>
+              		<tr>
+				<th>No</th>
+				<th>Tanggal</th>
+				<th>Nama Menu</th>
+				<th>Atas Nama</th>
+				<th>Harga</th>
+				<th>Jumlah Beli</th>
+				<th>Total</th>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2012-12-01</td>
+				<td>Kopi</td>
+				<td>Anggun</td>
+				<td>Rp4.000</td>
+				<td>1 porsi</td>
+				<td>Rp4.000</td>
+			 </tr>
+			 <tr>
+				<td>2</td>
+				<td>2021-12-21</td>
+				<td>Es Teh</td>
+				<td>Aulia</td>
+				<td>Rp10.000</td>
+				<td>3 porsi</td>
+				<td>Rp30.000</td>
+			 </tr>
+			 <tr>
+				<td>3</td>
+				<td>2021-12-21</td>
+				<td>Teh Panas</td>
+				<td>Aulia</td>
+				<td>Rp10.000</td>
+				<td>1 porsi</td>
+				<td>Rp10.000</td>
+			 </tr>
+		</table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
 		// nav tabs
 		const masterDataLink = document.querySelector("#master-link");
 		const dataTransaksiLink = document.querySelector("#transaksi-link");
