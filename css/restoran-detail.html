@@ -289,9 +289,9 @@
       const reviewContent = document.querySelector("#review-content");
       const locationContent = document.querySelector("#location-content");
 
-      // Proses saat button diklik
+      // Proses saat tab link diklik
 
-      // saat menu diklik akan memunculkan konten menu
+      // saat menu tab diklik akan memunculkan konten menu
       menuLink.addEventListener("click", (e) => {
         e.preventDefault();
         tabContent.style.backgroundColor = "#e1ffff"; // mengubah warna content tab container
@@ -300,7 +300,7 @@
         locationContent.classList.add("hidden");
       });
 
-      // saat review diklik akan memunculkan konten review
+      // saat review tab diklik akan memunculkan konten review
       reviewLink.addEventListener("click", (e) => {
         e.preventDefault();
         tabContent.style.backgroundColor = "#94b0b2"; // mengubah warna content tab container
@@ -309,7 +309,7 @@
         locationContent.classList.add("hidden");
       });
 
-      // saat location diklik akan memunculkan konten location
+      // saat location tab diklik akan memunculkan konten location
       locationLink.addEventListener("click", (e) => {
         e.preventDefault();
         tabContent.style.backgroundColor = "#ffb990"; // mengubah warna content tab container
@@ -320,7 +320,7 @@
 
       // menambah dan mengurangi item
       const removeButton = document.querySelector("#remove-item-button");
-      const addButton = document.querySelector("#add-item-button");
+      // const addButton = document.querySelector("#add-item-button");
       let jumlahItem = document.querySelector("#jumlah-item").innerHTML;
       removeButton.addEventListener("click", (e) => {
         e.preventDefault();
@@ -329,11 +329,70 @@
         }
         document.querySelector("#jumlah-item").innerHTML = jumlahItem.toString();
       });
-      addButton.addEventListener("click", (e) => {
+      // addButton.addEventListener("click", (e) => {
+      //   e.preventDefault();
+      //   jumlahItem++;
+      //   console.log(jumlahItem);
+      //   document.querySelector("#jumlah-item").innerHTML = jumlahItem.toString();
+      // });
+
+      // menampilkan pilihan meja yang tersedia
+      const modalBgPilihanMeja = document.querySelector("#modal-bg-pilihan-meja");
+      const containerPilihanMeja = document.querySelector("#container-pilihan-meja");
+      const buttonTampilkanMeja = document.querySelector("#button-tampilkan-meja");
+      buttonTampilkanMeja.addEventListener("click", (e) => {
         e.preventDefault();
-        jumlahItem++;
-        console.log(jumlahItem);
-        document.querySelector("#jumlah-item").innerHTML = jumlahItem.toString();
+        modalBgPilihanMeja.classList.remove("hidden");
+      });
+      document.addEventListener("click", (e) => {
+        const isContainerPilihanMejaClicked = containerPilihanMeja.contains(e.target);
+        const isbuttonTampilkanMejaClicked = buttonTampilkanMeja.contains(e.target);
+        if (!isbuttonTampilkanMejaClicked && !isContainerPilihanMejaClicked) {
+          console.log("hidden");
+          modalBgPilihanMeja.classList.add("hidden");
+        }
+      });
+
+      // memilih meja
+      //kiri
+      const listMejaKursiKiri = [...document.getElementsByClassName("meja-kursi-kiri")];
+      const listMejaKiri = [...document.getElementsByClassName("meja-kiri")];
+      const listKursiKiri = [...document.getElementsByClassName("kursi-kiri")];
+      listMejaKursiKiri.forEach((mejaKursiKiri, i) => {
+        mejaKursiKiri.addEventListener("click", () => {
+          if (listMejaKiri[i].classList.contains("dipilih")) {
+            listMejaKiri[i].classList.remove("dipilih");
+            listKursiKiri[i * 2].classList.remove("dipilih");
+            listKursiKiri[i * 2 + 1].classList.remove("dipilih");
+          } else {
+            if (!listMejaKiri[i].classList.contains("penuh")) {
+              listMejaKiri[i].classList.add("dipilih");
+              listKursiKiri[i * 2].classList.add("dipilih");
+              listKursiKiri[i * 2 + 1].classList.add("dipilih");
+            }
+          }
+        });
+      });
+      // kanan
+      const listMejaKursiKanan = [...document.getElementsByClassName("meja-kursi-kanan")];
+      const listMejaKanan = [...document.getElementsByClassName("meja-kanan")];
+      const listKursiKanan = [...document.getElementsByClassName("kursi-kanan")];
+      listMejaKursiKanan.forEach((mejaKursiKanan, i) => {
+        mejaKursiKanan.addEventListener("click", () => {
+          if (listMejaKanan[i].classList.contains("dipilih")) {
+            listMejaKanan[i].classList.remove("dipilih");
+            for (let j = i * 4; j < i * 4 + 4; j++) {
+              listKursiKanan[j].classList.remove("dipilih");
+            }
+          } else {
+            if (!listMejaKanan[i].classList.contains("penuh")) {
+              listMejaKanan[i].classList.add("dipilih");
+              for (let j = i * 4; j < i * 4 + 4; j++) {
+                listKursiKanan[j].classList.add("dipilih");
+              }
+            }
+          }
+        });
       });
     </script>
   </body>
