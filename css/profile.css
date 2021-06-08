@@ -1,0 +1,75 @@
+/* profile page */
+
+.profile-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.image-biodata-container {
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  margin-top: 60px;
+  margin-left: 40px;
+}
+
+.edit-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.profile-image {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background-image: url("./images/profile-picture.png");
+  background-size: cover;
+}
+
+.transparent-background-image {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  margin-right: 20px;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.biodata {
+  display: flex;
+  flex-direction: column;
+}
+
+.biodata > h2 {
+  margin-bottom: 15px;
+}
+
+.biodata > p {
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+.biodata > input {
+  width: 200px;
+}
+
+.biodata > button {
+  align-self: flex-end;
+}
+
+.riwayat-pemesanan {
+  height: 250px;
+  width: 200px;
+  border: blue solid;
+  margin-top: 40px;
+  margin-right: 40px;
+}
+
+.riwayat-pemesanan > h2 {
+  text-align: center;
+}

@@ -1,0 +1,38 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-daftar-pemilik-resto-hidden,
+.form-daftar-resto-hidden {
+  display: none;
+}
+
+.form > label {
+  font-size: 20px;
+}
+
+.form > input,
+.biodata > input {
+  border-radius: 5px;
+  width: 98%;
+  border: 1px solid;
+  height: 25px;
+  margin-bottom: 20px;
+}
+
+textarea {
+  resize: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.form > button {
+  align-self: flex-end;
+}
+
+.form > a {
+  font-size: 14px;
+  color: black;
+  font-weight: 300;
+}

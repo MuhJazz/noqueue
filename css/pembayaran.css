@@ -1,0 +1,15 @@
+/* Pembayaran Page*/
+.pembayaran-input-container {
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  border: 1px solid;
+  border-radius: 8px;
+  margin: 0px 20px;
+}
+
+.pembayaran-input-container input {
+  margin-top: 10px;
+  transform: scale(1.5);
+}
