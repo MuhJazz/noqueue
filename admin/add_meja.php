@@ -1,4 +1,7 @@
-<?php include('admin_server.php') ?>
+<?php include('admin_server.php'); 
+$res = mysqli_query($db,"select * from restoran");
+$meja_resto = mysqli_fetch_assoc($res);
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -86,10 +89,8 @@
     </div>
 	<div class="modal-bg">
     	<div class="modal-container" style="height: 55%">
-			<form method="post" action="menu.php" class="form" enctype="multipart/form-data">
-				<?php include('error.php'); ?>
-                <div class="input-group">
-                <label>Nama Resto</label>
+			<form method="post" action="add_meja.php" class="form">
+      <?php include('error.php'); ?>
                 <?php 
                 $query = mysqli_query($db, "select * from restoran");
                 ?>
@@ -107,29 +108,14 @@
                     ?>
                     </select>
                 </div>
-                
+
 				<div class="input-group">
-				<label>Nama Menu</label>
-				<input type="text" name="nama_menu">
+				<label>Nama Meja</label>
+				<input type="text" name="nama_meja">
 				</div>
 
-				<div class="input-group">
-				<label>Harga Menu</label>
-				<input type="text" placeholder="50000" name="harga_menu">
-				</div>
-
-				<div class="input-group">
-				<label>Deskripsi Menu</label>
-				<input type="text" name="desc_menu">
-				</div>
-
-				<div class="input-group">
-				<label>Foto Menu</label>
-				<input type="file" name="menu_image" accept=".png, .jpg, .jpeg">
-			    </div> 
-
-				<div class="input-group">
-				<button type="submit" class="btn" name="add_menu">Tambah Menu</button>
+            <input type="hidden" name="id_resto" value="<?php echo $meja_resto['resto_id'];?>"> 
+				<button type="submit" class="btn" name="meja_resto">add meja</button>
 				</div>
 			</form>
 		</div>

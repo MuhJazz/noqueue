@@ -91,7 +91,6 @@
                 <div class="input-group">
                 <label>Lokasi Kota</label>
                 <?php 
-                $db = mysqli_connect('localhost','root', 'subhan2122', 'noq');
                 $query = mysqli_query($db, "select * from restoran_loc");
                 ?>
                     <select name="lokasi_resto">
@@ -100,8 +99,7 @@
                         {
                             ?>
                             <option value = "<?= $resto['loc_id'];?>">
-                            <?php 
-                                echo $resto['loc_name']; ?>
+                            <?php  echo $resto['loc_name']; ?>
                             </option>
                             <?php
                         }
@@ -128,11 +126,22 @@
 				<label>Open Resto</label>
 				<input type="text" name="open_resto" placeholder="08.00-21.00">
 				</div>
+        
+				<div class="input-group">
+				<label>QR Code OVO</label>
+				<input type="file" name="resto_ovo" accept=".png, .jpg, .jpeg">
+			  </div> 
+
+        <div class="input-group">
+				<label>QR Code Gopay</label>
+				<input type="file" name="resto_gopay" accept=".png, .jpg, .jpeg">
+			  </div> 
 
 				<div class="input-group">
 				<label>Foto Resto</label>
 				<input type="file" name="resto_image" accept=".png, .jpg, .jpeg">
-			    </div> 
+			  </div> 
+          
 
 				<div class="input-group">
 				<button type="submit" class="btn" name="add_resto">Tambah Resto</button>
