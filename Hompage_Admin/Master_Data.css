@@ -86,13 +86,14 @@ p {
 }
 
 #master-link {
-  background-color: #E6F4F1;
+  background-color: #e6f4f1;
   font-size: 20px;
   border: none;
   border-radius: 10px 10px 0px 0px;
   padding: 15px 137px;
   display: inline-block;
   margin: 0px 2px;
+  cursor: pointer;
 }
 
 #transaksi-link {
@@ -103,6 +104,7 @@ p {
   padding: 15px 137px;
   display: inline-block;
   margin: 0px 2px;
+  cursor: pointer;
 }
 
 #laporan-link {
@@ -113,10 +115,11 @@ p {
   padding: 15px 137px;
   display: inline-block;
   margin: 0px 2px;
+  cursor: pointer;
 }
 
 #tab-content-container {
-  background-color: #E6F4F1;
+  background-color: #e6f4f1;
   height: fit-content;
   border: none;
   border-radius: 5px 5px 0px 0px;
@@ -125,7 +128,7 @@ p {
 
 /* Master Data */
 
-.master-container {
+#menu-contents {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -197,6 +200,82 @@ hr {
   margin-top: 30px;
 }
 
+#kategori-menu-container,
+#menu-container {
+  padding: 10px 20px;
+  background-color: white;
+  height: 500px;
+  border-radius: 10px;
+}
+
+.modal-bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container {
+  width: 250px;
+  max-width: 2500px;
+  margin: 1rem;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 8px;
+}
+
+/* style untuk <select> */
+select {
+  width: 100%;
+  height: 25px;
+  background-color: #ffff;
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 0px 10px;
+  margin-bottom: 30px;
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Safari, Chrome, Opera */
+  -webkit-appearance: none;
+}
+
+form > input {
+  margin-bottom: 30px;
+}
+
+/* for IE10 */
+select::-ms-expand {
+  display: none;
+}
+
+select:focus {
+  outline: none;
+}
+
+.button-simpan {
+  padding: 0.3em 0.6em;
+  background-color: aqua;
+  font-size: 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="reset"] {
+  padding: 0.3em 1.5em;
+  background-color: #ccab58;
+  font-size: 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
 /* Table */
 table {
   border-collapse: collapse;
@@ -247,6 +326,7 @@ a {
   margin: 0px 2px;
   height: fit-content;
   width: fit-content;
+  cursor: pointer;
 }
 
 #button-hapus {
@@ -257,10 +337,10 @@ a {
   margin: 0px 2px;
   height: fit-content;
   width: fit-content;
+  cursor: pointer;
 }
 
-#button-status {
-  background-color: red;
+.button-status {
   border: none;
   border-radius: 5px 5px 5px 5px;
   display: inline-block;
@@ -269,10 +349,16 @@ a {
   width: fit-content;
   color: white;
   text-align: center;
+  cursor: pointer;
 }
 
+.belum-bayar {
+  background-color: red;
+}
 
-
+.sudah-bayar {
+  background-color: green;
+}
 
 /* Data Laporan */
 .laporan-container {
