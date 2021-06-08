@@ -252,13 +252,13 @@ if(isset($_POST['checkout']))
   $user = $_SESSION['username'];
   $payment = $_POST['metode_pembayaran'];
   $res = $_GET['resto_id'];
-  if(empty($time))
-  {
-    array_push($errors, "Silahkan Pilih Waktu Makan Ditempat");
-  }
   if(empty($meja))
   {
     array_push($errors, "Silahkan Pilih Meja");
+  }
+  if(empty($payment))
+  {
+    array_push($errors, "Silahkan Pilih Metode Pembayaran");
   }
   if(count($errors)==0)
   {
@@ -287,6 +287,10 @@ if(isset($_POST['checkout']))
       }
     }
   }
+  else
+  {
+    header("location:homepage.php");
+  }
 }
 // PEMBAYARAN
 if(isset($_POST['bayar']))
@@ -312,6 +316,23 @@ if(isset($_POST['bayar']))
          unset($_SESSION['cart']);
          unset($_SESSION['orderid']);
       }
+    }
+  }
+}
+
+// BACK
+if(isset($_POST['kembali']))
+{
+  $id = $_SESSION['orderid'];
+  $query = mysqli_query($db,"delete from order_menu_resto where order_id ='$id'");
+  if($query)
+  {
+    $delor = mysqli_query($db,"delete from order_resto where order_id ='$id'");
+    if($delor)
+    {
+      unset($_SESSION['cart']);
+      unset($_SESSION['orderid']);
+      header("Location: homepage.php");
     }
   }
 }

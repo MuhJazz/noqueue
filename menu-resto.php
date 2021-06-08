@@ -222,7 +222,7 @@
                   <div class="flex-row" style="justify-content: center; margin-top: 20px; margin-bottom: 40px">
                       <div class="flex-column pembayaran-input-container">
                       <img src="./admin/images/logo-ovo.png" alt="logo-ovo" style="width: 100px; height: 100px" />
-                      <input type="radio" id="ovo" name="metode_pembayaran" value="ovo" />
+                      <input type="radio" id="ovo" name="metode_pembayaran" value="ovo" checked/>
                     </div>
                    <?php }
                    if(!empty($cek['qr_gopay']))
@@ -288,7 +288,9 @@
               <?php
               if(isset($_SESSION['cart']))
               {
-                if(count($_SESSION['cart'])>0)
+                $query = mysqli_query($db, "select * from meja_resto where res_id='$res_id'");
+                $m = mysqli_fetch_assoc($query);
+                if(count($_SESSION['cart'])>0 && $m['meja_status']=='free' )
                 {?>
                   <input type="submit" name="checkout" style="margin-right: 40px">
                 <?php }?>

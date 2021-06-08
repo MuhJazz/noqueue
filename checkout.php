@@ -88,6 +88,8 @@
           $order = mysqli_fetch_assoc($res);
           $ovo_img = "admin/qr_ovo_resto/".$pay['qr_ovo'];
           $gopay_img = "admin/qr_gopay_resto/".$pay['qr_gopay'];
+          if(!empty($order['order_payment']))
+          {
             if($order['order_payment'] == 'ovo')
             {?>
               <img src = <?php echo $ovo_img;?> style="width:150px;height:150px"/>
@@ -96,6 +98,11 @@
             {?>
               <img src = <?php echo $gopay_img;?> style="width:150px;height:150px"/>
             <?php }
+          }
+          else
+          {
+            echo 'Anda belum memilih opsi pembayaran';
+          }
           ?>
         <div class="input-group">
 					<label>Upload Bukti Bayar</label>
@@ -103,10 +110,30 @@
 				</div>
         <span>Total yang harus dibayar</span>
         <span><?php echo $order['order_total'];?></span>
-				<div class="input-group">
-					<button type="submit" class="btn" name="bayar">Bayar</button>
-			  </div>
-        <a href="menu-resto.php?action=add&resto_id=<?php echo $_GET['resto_id']?>">Kembali</a>
+        <?php
+        $query = mysqli_query($db,"select * from order_resto where order_id ='$id'");
+        $ceks = mysqli_fetch_assoc($query);
+        if($query)
+        {
+          if(empty($ceks['order_waktu']))
+          {
+            echo 'Anda belum menentukan waktu datang';
+          }
+          elseif(empty($ceks['order_payment']))
+          {
+            echo 'Anda belum memilih opsi pembayaran';
+          }
+          else
+          {?>
+          <div class="input-group">
+            <button type="submit" class="btn" name="bayar">Bayar</button>
+          </div>
+          <?php }
+        }
+        ?>
+          <div class="input-group">
+            <button type="submit" class="btn" name="kembali">Kembali</button>
+          </div>
 			</form>
         </div>
     </div>
