@@ -340,7 +340,7 @@
                       <select name="lantai" id="lantai" style="margin-right: auto">
                         <option value="none" selected disabled hidden>Lantai 1</option>
                       </select>
-                      <button>PILIH</button>
+                      <button id="button-pilih-meja">PILIH</button>
                     </div>
                   </div>
                 </div>
@@ -441,6 +441,11 @@
       });
 
       // memilih meja
+      const buttonPilihMeja = document.querySelector("#button-pilih-meja");
+      buttonPilihMeja.addEventListener("click", (e) => {
+        e.preventDefault();
+        modalBgPilihanMeja.classList.add("hidden");
+      });
       //kiri
       const listMejaKursiKiri = [...document.getElementsByClassName("meja-kursi-kiri")];
       const listMejaKiri = [...document.getElementsByClassName("meja-kiri")];
