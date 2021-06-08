@@ -149,7 +149,7 @@
                 <div class="card-content">
                   <span class="nama-menu"><?php echo $menu['menu_name'];?></span>
                   <span class="harga-menu"><?php echo number_format($menu['menu_price'],2);?></span>
-                <form method="post" action="menu-resto.php?action=add&menu_id=<?php echo $menu['menu_id'];?>&resto_id=<?php echo $_GET['resto_id']?>">
+                <form method="post" action="menu-resto.php?action=add&menu_id=<?php echo $menu['menu_id'];?>&resto_id=<?php echo $_GET['resto_id'];?>">
                   <input type="number" name="qty_menu" value="1" min="1">
                   <input type="hidden" name="nama_menu" value="<?php echo $menu['menu_name'];?>">
                   <input type="hidden" name="harga_menu" value="<?php echo $menu['menu_price'];?>">
@@ -179,6 +179,7 @@
                 </div>
               </div>
               <div class="pemesanan">
+              <form method="post" action="checkout.php?resto_id=<?php echo $_GET['resto_id'];?>" enctype="multipart/form-data">
                 <h2 style="padding-left: 10px; margin-top: 10px; margin-bottom: 10px">PEMESANAN</h2>
                 <div class="pemesanan-input-container" style="padding-left: 10px; padding-top: 10px; border-top: 1px solid">
                 <?php 
@@ -202,7 +203,7 @@
                       <a href="menu-resto.php?action=del-cart&menu_id=<?php echo $value['menu_id'];?>&resto_id=<?php echo $value['resto_id']?>" for="menu1"><?php echo "Hapus menu"?></a>
                     </div>
                     <?php 
-                  $total=$total+($value['harga_menu']*$value['qty_menu']);
+                     $total=$total+($value['harga_menu']*$value['qty_menu']);
                   }?>
                 <?php }
                 else{
@@ -212,6 +213,30 @@
                 ?>
                 </div>
               </div>
+                  <?php 
+                    $query = mysqli_query($db,"select * from restoran where resto_id='$res_id'");
+                    $cek = mysqli_fetch_assoc($query);
+                    if(!empty($cek['qr_ovo']))
+                    {?>
+                    <h3>PILIH METODE PEMBAYARAN</h3>
+                  <div class="flex-row" style="justify-content: center; margin-top: 20px; margin-bottom: 40px">
+                      <div class="flex-column pembayaran-input-container">
+                      <img src="./admin/images/logo-ovo.png" alt="logo-ovo" style="width: 100px; height: 100px" />
+                      <input type="radio" id="ovo" name="metode_pembayaran" value="ovo" />
+                    </div>
+                   <?php }
+                   if(!empty($cek['qr_gopay']))
+                   {?>
+                    <div class="flex-column pembayaran-input-container">
+                      <img src="./admin/images/logo-gopay.png" alt="logo-gopay" style="width: 100px; height: 100px" />
+                      <input type="radio" id="gopay" name="metode_pembayaran" value="gopay" />
+                    </div>
+                    </div>
+                   <?php }
+                  ?>
+                  <span style="color:red">PERINGATAN !!! Jika ingin memesan makanan pukul 1 siang, tulis dalam 24-H format</span>
+                  <span style="color:red">Jam 1 Siang = 13.00, Jam 5 Sore =  17.00</span>
+                  <span style="color:red">Jika memesan diluar jam operasional tidak ada pengembalian uang dan pesanan tidak akan diproses</span>
             </div>
           </div>
         </div>
@@ -228,37 +253,34 @@
           class="form-pemesanan-container"
           style="border: 2px solid aqua; border-radius: 8px; padding-top: 20px; padding-left: 10px; padding-right: 10px; padding-bottom: 25px"
         >
-          <form action="./pembayaran.html">
             <div class="flex-wrap">
               <div class="dropdown-container">
                 <img src="./admin/images/clock.png" alt="clock-icon" />
-                <input type="time" id="waktu-pemesanan" name="waktu-pemesanan" style="width: 136px" />
-              </div>
-              <div class="dropdown-container">
-                <img src="./admin/images/user.png" alt="user-icon" />
-                <select name="jumlah-orang" id="jumlah-orang">
-                  <option value="none" selected disabled hidden>PILIH</option>
-                  <option value="jumlah-orang1">1 - 2 Orang</option>
-                  <option value="jumlah-orang2">2 - 4 Orang</option>
-                  <option value="jumlah-orang3">4 - 6 Orang</option>
-                  <option value="jumlah-orang4">6 Lebih Orang</option>
-                </select>
+                <input type="text" id="waktu-pemesanan" name="waktu_pemesanan" style="width: 136px" placeholder="13.00"/>
               </div>
               <div class="dropdown-container">
                 <img src="./admin/images/table.png" alt="table-icon" />
-                <select name="meja" id="meja">
-                  <option value="none" selected disabled hidden>PILIH</option>
-                  <option value="opsi1">opsi1</option>
-                  <option value="opsi2">opsi2</option>
-                  <option value="opsi3">opsi3</option>
-                </select>
+                <select name="meja_resto" id="location">
+                    <?php
+                      $query = mysqli_query($db, "select * from meja_resto where res_id='$res_id' and meja_status='free'");
+                        while($meja = mysqli_fetch_array($query))
+                        {
+                            ?>
+                            <option value = "<?php echo $meja['meja_id'];?>">
+                            <?php 
+                                echo $meja['meja_name']; ?>
+                            </option>
+                            <?php
+                        }
+                    ?>
+                    </select>
               </div>
               <div class="dropdown-container">
                 <img src="./admin/images/edit.png" alt="edit-icon" />
                 <input type="text" id="catatan" name="catatan" placeholder="KETIK DISINI" />
               </div>
             </div>
-
+            <input type="hidden" name="total_payment" value="<?php echo $total;?>">
             <hr style="margin: 20px 40px" />
             <div class="flex-row harga-pemesanan-container">
               <img src="./admin/images/money.png" alt="money-icon" style="width: 25px; height: 25px; margin-right: 5px" />
@@ -268,9 +290,9 @@
               {
                 if(count($_SESSION['cart'])>0)
                 {?>
-                  <button type="submit" style="margin-right: 40px">PESAN</button>
-                <?php }
-              }
+                  <input type="submit" name="checkout" style="margin-right: 40px">
+                <?php }?>
+              <?php }
               ?>
             </div>
           </form>

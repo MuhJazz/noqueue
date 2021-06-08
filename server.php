@@ -242,5 +242,77 @@ if(isset($_POST['img_edit']))
       $_SESSION['cart'] = array_values($_SESSION['cart']);
     }
   }
+// ADD ORDER
+if(isset($_POST['checkout']))
+{
+  $time = $_POST['waktu_pemesanan'];
+  $meja = $_POST['meja_resto'];
+  $ctt = $_POST['catatan'];
+  $total = $_POST['total_payment'];
+  $user = $_SESSION['username'];
+  $payment = $_POST['metode_pembayaran'];
+  $res = $_GET['resto_id'];
+  if(empty($time))
+  {
+    array_push($errors, "Silahkan Pilih Waktu Makan Ditempat");
+  }
+  if(empty($meja))
+  {
+    array_push($errors, "Silahkan Pilih Meja");
+  }
+  if(count($errors)==0)
+  {
+    $order = "INSERT INTO order_resto (order_user, order_total, order_meja, order_waktu, order_catatan, order_payment, res_id) 
+    VALUES('$user','$total', '$meja', '$time', '$ctt', '$payment', '$res')";
 
+    if(mysqli_query($db,$order))
+    {
+      $orderid = mysqli_insert_id($db);
+      if(!empty($_SESSION['cart']))
+      {
+        foreach($_SESSION['cart'] as $key => $value)
+        {
+          $m_id = $value['menu_id'];
+          $m_p = $value['harga_menu'];
+          $m_qty = $value['qty_menu'];
+          $r_id = $value['resto_id'];
+          $orderItem = "INSERT INTO order_menu_resto (order_id, menu_id, menu_price, menu_qty, rest_id) 
+          VALUES('$orderid','$m_id','$m_p','$m_qty','$r_id')";
+          if(mysqli_query($db,$orderItem))
+          {
+            $_SESSION['orderid'] = $orderid;
+            echo 'Pesanan Ditambahkan';
+          }
+        }
+      }
+    }
+  }
+}
+// PEMBAYARAN
+if(isset($_POST['bayar']))
+{
+  $user = $_SESSION['username'];
+  $id = $_SESSION['orderid'];
+  $bukti = mysqli_real_escape_string($db,$_FILES['bukti']['name']);
+  if (empty($bukti)) {
+    array_push($errors, "Silahkan upload bukti bayar terlebih dahulu");
+  }
+  if(count($errors) == 0)
+  {
+    $test = mysqli_query($db,"select * from order_resto where order_id='$id'");
+    $htest = mysqli_fetch_assoc($test);
+    if(empty($htest['order_bukti_bayar']))
+    {
+      $query = "UPDATE order_resto SET order_bukti_bayar='$bukti', order_status='sedang verif' WHERE order_id='$id'";
+      $result = mysqli_query($db,$query);
+      if($result)
+      {
+         move_uploaded_file($_FILES['bukti']['tmp_name'], "admin/bukti_bayar/$bukti");
+         header("Location: homepage.php");
+         unset($_SESSION['cart']);
+         unset($_SESSION['orderid']);
+      }
+    }
+  }
+}
 ?>
