@@ -164,7 +164,7 @@
                       >
                         0
                       </div>
-                      <button id="add-item-button" style="display: inline-block; padding: 0px">+</button>
+                      <button class="add-item-button" style="display: inline-block; padding: 0px">+</button>
                     </div>
                   </div>
                   <div class="input-group">
@@ -177,7 +177,7 @@
                       >
                         0
                       </div>
-                      <button id="add-item-button" style="display: inline-block; padding: 0px">+</button>
+                      <button class="add-item-button" style="display: inline-block; padding: 0px">+</button>
                     </div>
                   </div>
                   <div class="input-group">
@@ -190,7 +190,7 @@
                       >
                         0
                       </div>
-                      <button id="add-item-button" style="display: inline-block; padding: 0px">+</button>
+                      <button class="add-item-button" style="display: inline-block; padding: 0px">+</button>
                     </div>
                   </div>
                   <div class="input-group">
@@ -203,7 +203,7 @@
                       >
                         0
                       </div>
-                      <button id="add-item-button" style="display: inline-block; padding: 0px">+</button>
+                      <button class="add-item-button" style="display: inline-block; padding: 0px">+</button>
                     </div>
                   </div>
                 </div>
@@ -251,12 +251,99 @@
               </div>
               <div class="dropdown-container">
                 <img src="./images/table.png" alt="table-icon" />
-                <select name="meja" id="meja">
-                  <option value="none" selected disabled hidden>PILIH</option>
-                  <option value="opsi1">opsi1</option>
-                  <option value="opsi2">opsi2</option>
-                  <option value="opsi3">opsi3</option>
-                </select>
+                <button id="button-tampilkan-meja">PILIH</button>
+              </div>
+              <div id="modal-bg-pilihan-meja" class="hidden modal-bg">
+                <div id="container-pilihan-meja" class="modal-container" style="width: fit-content">
+                  <div class="flex-column">
+                    <div class="tables">
+                      <div class="flex-row">
+                        <div class="left-tables flex-column">
+                          <div class="meja-kursi meja-kursi-kiri">
+                            <div class="flex-row">
+                              <div class="meja-kiri"></div>
+                              <div class="flex-column" style="justify-content: center; align-items: center">
+                                <div class="kursi kursi-kiri"></div>
+                                <div class="kursi kursi-kiri"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="meja-kursi meja-kursi-kiri">
+                            <div class="flex-row">
+                              <div class="meja-kiri"></div>
+                              <div class="flex-column" style="justify-content: center; align-items: center">
+                                <div class="kursi kursi-kiri"></div>
+                                <div class="kursi kursi-kiri"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="meja-kursi meja-kursi-kiri">
+                            <div class="flex-row">
+                              <div class="meja-kiri penuh"></div>
+                              <div class="flex-column" style="justify-content: center; align-items: center">
+                                <div class="kursi kursi-kiri penuh"></div>
+                                <div class="kursi kursi-kiri penuh"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="center-tables flex-column" style="justify-content: center; align-items: center; margin: 50px">
+                          <div class="meja-kursi meja-kursi-tengah">
+                            <div class="flex-row">
+                              <div class="flex-column" style="justify-content: center; align-items: center">
+                                <div class="kursi kursi-tengah penuh" style="margin-right: 10px; margin-bottom: 10px"></div>
+                                <div class="kursi kursi-tengah penuh" style="margin-right: 10px; margin-bottom: 10px"></div>
+                              </div>
+                              <div class="flex-column">
+                                <div class="kursi kursi-tengah penuh" style="margin-bottom: 10px; align-self: center"></div>
+                                <div class="meja-tengah penuh"></div>
+                                <div class="kursi kursi-tengah penuh" style="margin-top: 10px; align-self: center"></div>
+                              </div>
+                              <div class="flex-column" style="justify-content: center; align-items: center">
+                                <div class="kursi kursi-tengah penuh" style="margin-left: 10px; margin-bottom: 10px"></div>
+                                <div class="kursi kursi-tengah penuh" style="margin-left: 10px; margin-bottom: 10px"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="right-tables flex-column">
+                          <div class="meja-kursi meja-kursi-kanan" style="margin-bottom: auto">
+                            <div class="flex-column">
+                              <div class="flex-row" style="justify-content: space-between">
+                                <div class="kursi kursi-kanan"></div>
+                                <div class="kursi kursi-kanan"></div>
+                              </div>
+                              <div class="meja-kanan"></div>
+                              <div class="flex-row" style="justify-content: space-between">
+                                <div class="kursi kursi-kanan"></div>
+                                <div class="kursi kursi-kanan"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="meja-kursi meja-kursi-kanan">
+                            <div class="flex-column">
+                              <div class="flex-row" style="justify-content: space-between">
+                                <div class="kursi kursi-kanan"></div>
+                                <div class="kursi kursi-kanan"></div>
+                              </div>
+                              <div class="meja-kanan"></div>
+                              <div class="flex-row" style="justify-content: space-between">
+                                <div class="kursi kursi-kanan"></div>
+                                <div class="kursi kursi-kanan"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex-row" style="margin-top: 50px">
+                      <select name="lantai" id="lantai" style="margin-right: auto">
+                        <option value="none" selected disabled hidden>Lantai 1</option>
+                      </select>
+                      <button>PILIH</button>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="dropdown-container">
                 <img src="./images/edit.png" alt="edit-icon" />
