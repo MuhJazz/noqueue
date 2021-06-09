@@ -123,7 +123,7 @@ if($query)
               <p style="font-size: 20px; padding: 0px">Kategori Menu</p>
             </div>
             <div class="flex-row">
-              <a href="#">
+              <a href="tambah_kategori.html">
                 <div id="tambah-data-kategori" class="button-tambah-data flex-row">
                   <img src="./images/plus-icon.png" alt="plus-icon" height="25px" width="25px" style="margin-right: 10px" />
                   <p style="font-size: 21px; margin-right: 5px">Tambah Data</p>
@@ -177,7 +177,7 @@ if($query)
               <p style="font-size: 20px; padding: 0px">Daftar Menu</p>
             </div>
             <div class="flex-row">
-              <a href="#">
+              <a href="tambah_menu.html">
                 <div id="tambah-data-menu" class="button-tambah-data flex-row">
                   <img src="./images/plus-icon.png" alt="plus-icon" height="25px" width="25px" style="margin-right: 10px" />
                   <p style="font-size: 21px; margin-right: 5px">Tambah Data</p>
@@ -342,47 +342,7 @@ if($query)
                   <input type="text" name="cat" id="categories" />
                   <input type="hidden" name="rest_id" value="<?php echo $res_id;?>" />
                   <div class="flext-row" style="text-align: end">
-                    <a id="button-simpan-kategori" href="#">
-                      <input name="tambah_cat" class="button-simpan" type="submit" value="SIMPAN" />
-                    </a>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div id="modal-bg-menu" class="hidden">
-            <div class="modal-bg">
-              <div class="modal-container">
-                <form action="">
-                  <strong><label for="namakategori">Nama Kategori</label></strong
-                  ><br />
-                  <select name="categories" id="categories">
-                    <option value="none" selected disabled hidden>-Silahkan Pilih Nama Kategori-</option>
-                    <option value="rekomendasi">Rekomendasi</option>
-                    <option value="menuutama">Menu Utama</option>
-                    <option value="makananringan">Makanan Ringan</option>
-                    <option value="minuman">Minuman</option>
-                    <option value="penutup">Penutup</option>
-                    <option value="kopi">Kopi</option>
-                  </select>
-                  <strong><label for="namamenu">Nama Menu</label></strong
-                  ><br />
-                  <select name="menus" id="menus">
-                    <option value="none" selected disabled hidden></option>
-                    <option value="jusmangga">Jus Mangga</option>
-                  </select>
-                  <strong><label for="foto">Foto</label></strong
-                  ><br />
-                  <div class="image-container" style="height: 150px; width: 120px; border: 1px solid #000">
-                    <img id="image" class="image" src="" alt="foto-menu" style="height: 120px" />
-                  </div>
-                  <input type="file" class="changeimage" id="changeimage" accept=".png, .jpg, .jpeg" style="margin-bottom: 30px" />
-                  <strong><label for="harga">Harga</label></strong
-                  ><br />
-                  <input type="text" name="harga" style="width: 100%; padding-right: 0px" />
-                  <div class="flext-row" style="text-align: end; margin-top: 30px">
-                    <input id="button-simpan-menu" class="button-simpan" type="button" value="SIMPAN" />
-                    <input id="reset-menu" type="reset" />
+                    <input name="tambah_cat" class="button-simpan" type="submit" value="SIMPAN" />
                   </div>
                 </form>
               </div>
@@ -401,7 +361,7 @@ if($query)
               <p style="font-size: 20px; padding: 0px">Pemesanan Menu</p>
             </div>
             <div class="flex-row">
-              <a href="#">
+              <a href="tambah_transaksi.html">
                 <div id="tambah-data-transaksi" class="button-tambah-data flex-row">
                   <img src="./images/plus-icon.png" alt="plus-icon" height="25px" width="25px" style="margin-right: 10px" />
                   <p style="font-size: 21px; margin-right: 5px">Tambah Data</p>
@@ -511,8 +471,7 @@ if($query)
                       </tr>
                     </table>
                     <div class="flext-row" style="text-align: end; margin-top: 30px">
-                      <input id="button-simpan-transaksi" class="button-simpan" type="button" value="SIMPAN" />
-                      <input id="reset-transaksi" type="reset" />
+                      <input class="button-simpan" type="button" value="SIMPAN" />
                     </div>
                   </form>
                 </div>
@@ -645,17 +604,17 @@ if($query)
       });
 
       // Menambahkan Data Kategori Menu
-      const tambahDataKategori = document.querySelector("#tambah-data-kategori");
-      const modalBgKategori = document.querySelector("#modal-bg-kategori");
-      const buttonSimpanKategori = document.querySelector("#button-simpan-kategori");
-      tambahDataKategori.addEventListener("click", (e) => {
-        e.preventDefault();
-        modalBgKategori.classList.remove("hidden");
-      });
-      buttonSimpanKategori.addEventListener("click", (e) => {
-        e.preventDefault();
-        modalBgKategori.classList.add("hidden");
-      });
+      // const tambahDataKategori = document.querySelector("#tambah-data-kategori");
+      // const modalBgKategori = document.querySelector("#modal-bg-kategori");
+      // const buttonSimpanKategori = document.querySelector("#button-simpan-kategori");
+      // tambahDataKategori.addEventListener("click", (e) => {
+      //   e.preventDefault();
+      //   modalBgKategori.classList.remove("hidden");
+      // });
+      // buttonSimpanKategori.addEventListener("click", (e) => {
+      //   e.preventDefault();
+      //   modalBgKategori.classList.add("hidden");
+      // });
 
       // Edit Data Kategori Menu
       const editKategori = document.getElementsByClassName("edit-kategori");
@@ -667,17 +626,17 @@ if($query)
       });
 
       // Menambahkan Data Menu
-      const tambahDataMenu = document.querySelector("#tambah-data-menu");
-      const modalBgMenu = document.querySelector("#modal-bg-menu");
-      const buttonSimpanMenu = document.querySelector("#button-simpan-menu");
-      tambahDataMenu.addEventListener("click", (e) => {
-        e.preventDefault();
-        modalBgMenu.classList.remove("hidden");
-      });
-      buttonSimpanMenu.addEventListener("click", (e) => {
-        e.preventDefault();
-        modalBgMenu.classList.add("hidden");
-      });
+      // const tambahDataMenu = document.querySelector("#tambah-data-menu");
+      // const modalBgMenu = document.querySelector("#modal-bg-menu");
+      // const buttonSimpanMenu = document.querySelector("#button-simpan-menu");
+      // tambahDataMenu.addEventListener("click", (e) => {
+      //   e.preventDefault();
+      //   modalBgMenu.classList.remove("hidden");
+      // });
+      // buttonSimpanMenu.addEventListener("click", (e) => {
+      //   e.preventDefault();
+      //   modalBgMenu.classList.add("hidden");
+      // });
 
       // Edit Data Menu
       const editMenu = document.getElementsByClassName("edit-menu");
@@ -690,7 +649,7 @@ if($query)
 
       // keluar dari tampilan kategori menu
       const exitKategoriMenu = document.querySelector("#exit-kategori-menu");
-      const resetKategoriMenu = document.querySelector("#reset-kategori-menu");
+      // const resetKategoriMenu = document.querySelector("#reset-kategori-menu");
       exitKategoriMenu.addEventListener("click", (e) => {
         e.preventDefault();
         masterContainer.classList.remove("hidden");
@@ -703,36 +662,36 @@ if($query)
 
       // keluar dari tampilan menu
       const exitMenu = document.querySelector("#exit-menu");
-      const resetMenu = document.querySelector("#reset-menu");
+      // const resetMenu = document.querySelector("#reset-menu");
       exitMenu.addEventListener("click", (e) => {
         e.preventDefault();
         masterContainer.classList.remove("hidden");
         menuContainer.classList.add("hidden");
       });
-      resetMenu.addEventListener("click", (e) => {
-        e.preventDefault();
-        modalBgMenu.classList.add("hidden");
-      });
+      // resetMenu.addEventListener("click", (e) => {
+      //   e.preventDefault();
+      //   modalBgMenu.classList.add("hidden");
+      // });
 
       // Menambahkan Data Transaksi
-      const tambahDataTransaksi = document.querySelector("#tambah-data-transaksi");
-      const modalBgTransaksi = document.querySelector("#modal-bg-transaksi");
-      const buttonSimpanTransaksi = document.querySelector("#button-simpan-transaksi");
-      tambahDataTransaksi.addEventListener("click", (e) => {
-        e.preventDefault();
-        modalBgTransaksi.classList.remove("hidden");
-      });
-      buttonSimpanTransaksi.addEventListener("click", (e) => {
-        e.preventDefault();
-        modalBgTransaksi.classList.add("hidden");
-      });
+      //const tambahDataTransaksi = document.querySelector("#tambah-data-transaksi");
+      // const modalBgTransaksi = document.querySelector("#modal-bg-transaksi");
+      // const buttonSimpanTransaksi = document.querySelector("#button-simpan-transaksi");
+      // tambahDataTransaksi.addEventListener("click", (e) => {
+      //   e.preventDefault();
+      //   modalBgTransaksi.classList.remove("hidden");
+      // });
+      // buttonSimpanTransaksi.addEventListener("click", (e) => {
+      //   e.preventDefault();
+      //   modalBgTransaksi.classList.add("hidden");
+      // });
 
       // reset data transaksi
-      const resetTransaksi = document.querySelector("#reset-transaksi");
-      resetTransaksi.addEventListener("click", (e) => {
-        e.preventDefault();
-        modalBgTransaksi.classList.add("hidden");
-      });
+      // const resetTransaksi = document.querySelector("#reset-transaksi");
+      // resetTransaksi.addEventListener("click", (e) => {
+      //   e.preventDefault();
+      //   modalBgTransaksi.classList.add("hidden");
+      // });
 
       // Edit Data Transaksi
       const editTransaksi = document.getElementsByClassName("edit-transaksi");
