@@ -123,7 +123,7 @@ if($query)
               <p style="font-size: 20px; padding: 0px">Kategori Menu</p>
             </div>
             <div class="flex-row">
-              <a href="tambah_kategori.html">
+              <a href="tambah_kategori.php">
                 <div id="tambah-data-kategori" class="button-tambah-data flex-row">
                   <img src="./images/plus-icon.png" alt="plus-icon" height="25px" width="25px" style="margin-right: 10px" />
                   <p style="font-size: 21px; margin-right: 5px">Tambah Data</p>
@@ -177,7 +177,7 @@ if($query)
               <p style="font-size: 20px; padding: 0px">Daftar Menu</p>
             </div>
             <div class="flex-row">
-              <a href="tambah_menu.html">
+              <a href="tambah_menu.php">
                 <div id="tambah-data-menu" class="button-tambah-data flex-row">
                   <img src="./images/plus-icon.png" alt="plus-icon" height="25px" width="25px" style="margin-right: 10px" />
                   <p style="font-size: 21px; margin-right: 5px">Tambah Data</p>
@@ -361,7 +361,7 @@ if($query)
               <p style="font-size: 20px; padding: 0px">Pemesanan Menu</p>
             </div>
             <div class="flex-row">
-              <a href="tambah_transaksi.html">
+              <a href="tambah_transaksi.php">
                 <div id="tambah-data-transaksi" class="button-tambah-data flex-row">
                   <img src="./images/plus-icon.png" alt="plus-icon" height="25px" width="25px" style="margin-right: 10px" />
                   <p style="font-size: 21px; margin-right: 5px">Tambah Data</p>
