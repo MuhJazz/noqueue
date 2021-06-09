@@ -60,10 +60,24 @@ p {
   border-radius: 50%;
 }
 
+.kk {
+  margin-left: 1070px;
+  margin-right: auto;
+  margin-top: 30px;
+}
+
+.pesan {
+  width: fit-content;
+  height:   fit-content;
+  padding: 5px 5px;
+  background-color: white;
+  border-radius: 5px;
+}
+
 .center {
   margin-left: 500px;
   margin-right: auto;
-  margin-top: 15px;
+  margin-top: -40px;
 }
 
 .center > span {
