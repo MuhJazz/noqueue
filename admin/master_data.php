@@ -342,7 +342,9 @@ if($query)
                   <input type="text" name="cat" id="categories" />
                   <input type="hidden" name="rest_id" value="<?php echo $res_id;?>" />
                   <div class="flext-row" style="text-align: end">
-                    <input id="button-simpan-kategori" name="tambah_cat" class="button-simpan" type="submit" value="SIMPAN" />
+                    <a id="button-simpan-kategori" href="#">
+                      <input name="tambah_cat" class="button-simpan" type="submit" value="SIMPAN" />
+                    </a>
                   </div>
                 </form>
               </div>
@@ -760,3 +762,4 @@ if($query)
     </script>
   </body>
 </html>
+
