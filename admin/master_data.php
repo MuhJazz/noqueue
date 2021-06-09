@@ -23,7 +23,7 @@ if($query)
     <title>Homepage Admin</title>
   </head>
   <body>
-  <?php 
+    <?php 
   if (!isset($_SESSION['admin_username'])) {
   	$_SESSION['msg'] = "You must log in first";
   	header('location: login_admin.php');
@@ -36,26 +36,29 @@ if($query)
 ?>
     <header class="header">
       <div class="image-avatar">
-		<?php echo $admin;?>
-		<a id="logout" href="master_data.php?logout='1'" style="color: red;">logout</a>
-        	<img src="images/default.png" alt="image-avatar" />
+        <?php echo $admin;?>
+        <a id="logout" href="master_data.php?logout='1'" style="color: red">logout</a>
+        <img src="images/default.png" alt="image-avatar" />
       </div>
       <div class="container">
         <a href="./css/profile.html">
-          	<img class="notif" src="images/notif.svg" />
+          <img class="notif" src="images/notif.svg" />
         </a>
-		<a href="master_data.php">
-        <img class="img-responsive" src="images/logo.png"/>
-		</a>
+        <a href="master_data.php">
+          <img class="img-responsive" src="images/logo.png" />
+        </a>
       </div>
-      <div class="  kk"> 
-              <p class="pesan">1 Pesanan Masuk</p>
+      <div class="kk">
+        <p class="pesan">1 Pesanan Masuk</p>
       </div>
 
       <div class="center">
         <span class="judul">NoQ!</span>
         <br />
-        <span class="namaresto">Nama Resto Anda: <?php echo $resto['resto_name'];?></span>
+        <span class="namaresto"
+          >Nama Resto Anda:
+          <?php echo $resto['resto_name'];?></span
+        >
       </div>
     </header>
     <div class="content">
@@ -136,27 +139,27 @@ if($query)
                 <th>Hapus</th>
               </tr>
               <tr>
-			  <?php
+                <?php
 			 	$query = mysqli_query($db,"select * from menu_category where r_id = '$res_id'");
 				 $i = 1;
 				 while($cat = mysqli_fetch_assoc($query))
 				 {?>
-					<td><?php echo $i++?></td>
-					<td><?php echo $cat['category_name'];?></td>
-					<td>
-					<button id="button-edit" class="edit-kategori">
-						<img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" />
-					</button>
-					</td>
-					<td>
-					<button id="button-hapus" class="link">
-					<a href="deleteCat.php?category_id=<?php echo $cat['category_id'];?>">
-						<img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" />
-					</a>
-					</button>
-					</td>
-				</tr>
-				 <?php }
+                <td><?php echo $i++?></td>
+                <td><?php echo $cat['category_name'];?></td>
+                <td>
+                  <button id="button-edit" class="edit-kategori">
+                    <img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" />
+                  </button>
+                </td>
+                <td>
+                  <button id="button-hapus" class="link">
+                    <a href="deleteCat.php?category_id=<?php echo $cat['category_id'];?>">
+                      <img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" />
+                    </a>
+                  </button>
+                </td>
+              </tr>
+              <?php }
 			  ?>
             </table>
           </div>
@@ -336,10 +339,10 @@ if($query)
                 <form method="post" action="master_data.php">
                   <strong><label for="kategorimenu">Nama Kategori Menu</label></strong
                   ><br />
-  					<input type="text" name="cat" id="categories">
-  					<input type="hidden" name="rest_id" value="<?php echo $res_id;?>">
+                  <input type="text" name="cat" id="categories" />
+                  <input type="hidden" name="rest_id" value="<?php echo $res_id;?>" />
                   <div class="flext-row" style="text-align: end">
-                    <input name="tambah_cat" class="button-simpan" type="submit" value="SIMPAN" />
+                    <input id="button-simpan-kategori" name="tambah_cat" class="button-simpan" type="submit" value="SIMPAN" />
                   </div>
                 </form>
               </div>
@@ -691,10 +694,10 @@ if($query)
         masterContainer.classList.remove("hidden");
         kategoriMenuContainer.classList.add("hidden");
       });
-      resetKategoriMenu.addEventListener("click", (e) => {
-        e.preventDefault();
-        modalBgKategori.classList.add("hidden");
-      });
+      // resetKategoriMenu.addEventListener("click", (e) => {
+      //   e.preventDefault();
+      //   modalBgKategori.classList.add("hidden");
+      // });
 
       // keluar dari tampilan menu
       const exitMenu = document.querySelector("#exit-menu");
