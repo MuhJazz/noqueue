@@ -10,93 +10,15 @@
   </head>
   <body>
   <header class="header" style="background-image: url(./admin/images/cover-resto.jpeg)">
-      <img style="position: absolute" src="./admin/images/logo.png" alt="logo" />
+      <img style="position: absolute" src="./images/logo.png" alt="logo" />
       <div class="center">
         <span class="judul">NoQ!</span>
         <br />
         <span class="motto">Makan enak tanpa antre</span>
       </div>
       <div class="search-location">
-      <?php 
-                $query = mysqli_query($db, "select * from restoran_loc");
-                ?>
-                <form method="post" action="">
-                    <select name="location" id="location">
-                    <?php
-                        while($resto = mysqli_fetch_array($query))
-                        {
-                            ?>
-                            <option value = "<?php echo $resto['loc_id'];?>">
-                            <?php 
-                                echo $resto['loc_name']; ?>
-                            </option>
-                            <?php
-                        }
-                    ?>
-                    </select>
-                    <button type="submit" class="btn" name="filter">Cari</button>
-                </form>
       </div>
     </header>
-    <?php 
-                if(isset($_POST['filter']))
-                {?>
-                <div class="content">
-                  <div class="recommendation-container">
-                      <h3>Rekomendasi untuk kamu!</h3>
-                  </div>
-                    <div class="cards">
-                    <?php
-                    if(!empty($_POST['location']))
-                    {
-                        $selected = $_POST['location'];
-                        $query = mysqli_query($db, "select * from restoran where loc_id='$selected'");
-                            while($resto = mysqli_fetch_array($query))
-                            {?>
-                            <?php $res_img = "admin/images/".$resto['resto_image'];
-                                  $res_id = $resto['resto_id'];
-                            ?>
-                            <a href="menu-resto.php?resto_id=<?php echo $resto['resto_id']?>" style=" text-decoration:none; color:black;">
-                            <div class="card">
-                                <span
-                                class="card-image"
-                                style="background-image: url('<?php echo $res_img;?>');"
-                                ></span>
-                                <div class="card-content">
-                                  <h3 class="nama-resto"><?php echo $resto['resto_name'];?></h3>
-                                  <span class="alamat"><?php echo $resto['resto_address'];?></span>
-                                  <span class="alamat"><?php echo $resto['resto_open'];?></span>
-                                </div>
-                            </div></a>
-                        <?php }?>
-              <?php }?>
-          <?php }
-            else{?>
-              <?php $query = mysqli_query($db, "select * from restoran");?>
-                <div class="content">
-                  <div class="cards">
-                  <?php
-                          while($resto = mysqli_fetch_array($query))
-                          {?>
-                          <?php $res_img = "admin/images/".$resto['resto_image'];?>
-                          <a href="menu-resto.php?resto_id=<?= $resto['resto_id']?>" style="text-decoration:none; color:black;">
-                          <div class="card">
-                              <span
-                              class="card-image"
-                              style="background-image: url('<?php echo $res_img;?>');"
-                              ></span>
-                              <div class="card-content">
-                                <h3 class="nama-resto"><?php echo $resto['resto_name'];?></h3>
-                                <span class="alamat"><?php echo $resto['resto_address'];?></span>
-                                <span class="alamat"><?php echo $resto['resto_open'];?></span>
-                              </div>
-                          </div></a>
-                  <?php }?>
-                  </div>
-                </div>
-              <?php }?>
-      </div>
-    </div></a>
 	<div class="modal-bg">
     	<div class="modal-container">
 			<form method="post" action="login_admin.php" class="form">

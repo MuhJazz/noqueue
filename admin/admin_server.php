@@ -67,8 +67,8 @@ if (isset($_POST['login_admin'])) {
   if (count($errors) == 0) {
       $query = mysqli_query($db,"select * from admin_resto where admin_username='$adm_username' and admin_password='$adm_password'");
       if (mysqli_num_rows($query) == 1) {
-        $_SESSION['admin_username'] = $admin_username;
-        header('location: sign_admin.php');
+        $_SESSION['admin_username'] = $adm_username;
+        header('location: master_data.php');
       }else {
           array_push($errors, "Wrong username/password combination");
       }
@@ -190,4 +190,39 @@ if (isset($_POST['login_admin'])) {
           }
         }
     }
+
+  // ADD CATEGORY
+  if(isset($_POST['tambah_cat']))
+  {
+    $cat_name =  mysqli_real_escape_string($db,$_POST['cat']);
+    $rst_id = mysqli_real_escape_string($db,$_POST['rest_id']);
+
+    $user_check_query = "SELECT * FROM menu_category WHERE category_name='$cat_name' LIMIT 1";
+    $result = mysqli_query($db,$user_check_query);
+    $cat = mysqli_fetch_assoc($result);
+    if ($cat) 
+    { // if cat exists
+      if ($cat['category_name'] === $cat_name) 
+      {
+        array_push($errors, "Username telah diambil");
+        header("location: master_data.php");
+      }
+    }
+    if(empty($cat_name))
+    {
+      array_push($errors,"Masukan Kategori");
+    }
+
+    if (count($errors) == 0)
+    {
+      $query = "INSERT INTO menu_category (category_name,r_id) VALUES ('$cat_name','$rst_id')";
+      $result = mysqli_query($db,$query);
+      if($result)
+      {
+        echo "Kategori Berhasil Ditambahkan";
+      }
+    }
+  }
+
+// DEL CATEGORY
 ?>
