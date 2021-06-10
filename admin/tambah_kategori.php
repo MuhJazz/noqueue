@@ -336,13 +336,14 @@ if($query)
           <div id="modal-bg-kategori">
             <div class="modal-bg">
               <div class="modal-container">
-                <form method="post" action="master_data.php">
+                <form method="post" action="tambah_kategori.php">
                   <strong><label for="kategorimenu">Nama Kategori Menu</label></strong
                   ><br />
                   <input type="text" name="cat" id="categories" />
                   <input type="hidden" name="rest_id" value="<?php echo $res_id;?>" />
                   <div class="flext-row" style="text-align: end">
-                    <input name="tambah_cat" class="button-simpan" type="submit" value="SIMPAN" />
+                    <input name="tambah_cat" class="button-simpan" type="submit" value="SIMPAN"/>
+                    <a class="button-simpan" style="text-decoration:none" href="master_data.php">KEMBALI</a>
                   </div>
                 </form>
               </div>

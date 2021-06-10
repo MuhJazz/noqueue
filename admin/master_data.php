@@ -11,7 +11,34 @@ if($query)
 		$resto = mysqli_fetch_assoc($res);
 	}
 }
-
+$ctg = mysqli_query($db, "select * from menu where res_id = '$res_id'");
+if(!empty($ctg))
+{
+    $categ = mysqli_fetch_assoc($ctg);
+    if(!empty($categ['categ_id']))
+    {
+      $ctg_id = $categ['categ_id'];
+      $c = mysqli_query($db,"select * from menu_category where category_id = '$ctg_id'");
+      if($c)
+      {
+          $categories = mysqli_fetch_assoc($c);
+      }
+    }
+}
+$r = mysqli_query($db, "select * from order_resto where res_id = '$res_id'");
+if(!empty($r))
+{
+    $meja = mysqli_fetch_assoc($r);
+    if(!empty($meja['order_meja']))
+    {
+      $meja_id = $meja['order_meja'];
+      $m = mysqli_query($db,"select * from meja_resto where meja_id = '$meja_id'");
+      if($m)
+      {
+          $meja_resto = mysqli_fetch_assoc($m);
+      }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,18 +78,25 @@ if($query)
       <div class="kk">
         <p class="pesan">1 Pesanan Masuk</p>
       </div>
-
       <div class="center">
         <span class="judul">NoQ!</span>
         <br />
         <span class="namaresto"
           >Nama Resto Anda:
-          <?php echo $resto['resto_name'];?></span
-        >
+          <?php echo $resto['resto_name'];?> (<?php echo ($resto['resto_status']);?>)</span>
       </div>
     </header>
     <div class="content">
       <div class="nav-tabs" style="margin-top: 30px">
+      <form method="post" action="master_data.php?resto_id=<?php echo $res_id;?>">
+      <select name="status">
+        <option value="none" selected disabled hidden>-Status Restoran-</option>
+        <option value="buka">Buka</option>
+        <option value="tutup">Tutup</option>
+      </select>
+      <button type="submit" name="ubah_status">Ubah Status</button>
+      </form>
+      <a href="list_meja.php?resto_id=<?php echo $res_id;?>">List Meja Resto</a>
         <a href="#">
           <button id="master-link" class="link">Master Data</button>
         </a>
@@ -135,7 +169,6 @@ if($query)
               <tr>
                 <th>No</th>
                 <th>Nama Kategori</th>
-                <th>Edit</th>
                 <th>Hapus</th>
               </tr>
               <tr>
@@ -146,11 +179,6 @@ if($query)
 				 {?>
                 <td><?php echo $i++?></td>
                 <td><?php echo $cat['category_name'];?></td>
-                <td>
-                  <button id="button-edit" class="edit-kategori">
-                    <img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
                 <td>
                   <button id="button-hapus" class="link">
                     <a href="deleteCat.php?category_id=<?php echo $cat['category_id'];?>">
@@ -196,140 +224,33 @@ if($query)
                 <th>Hapus</th>
               </tr>
               <tr>
-                <td>1</td>
-                <td></td>
-                <td>Salty Popcorn</td>
-                <td>Gambar1</td>
-                <td></td>
+              <?php
+			 	$query = mysqli_query($db,"select * from menu where res_id = '$res_id'");
+				 $i = 1;
+				 while($menu = mysqli_fetch_assoc($query))
+				 {?>
+                <td><?php echo $i++;?></td>
+                <td><?php echo $categories['category_name'];?></td>
+                <td><?php echo $menu['menu_name'];?></td>
+                <td><img src="<?php echo "menu_images/".$menu['menu_image'];?>" style="height:100px;"></td>
+                <td><?php echo number_format($menu['menu_price'],2);?></td>
                 <td>
-                  <button id="button-edit" class="edit-menu">
-                    <img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" />
+                  <button>
+                    <a href="editMenu.php?menu_id=<?php echo $menu['menu_id'];?>">
+                      EDIT MENU
+                    </a> 
                   </button>
                 </td>
                 <td>
-                  <button id="button-hapus" class="link">
+                <button id="button-hapus" class="link">
+                <a href="deleteMen.php?menu_id=<?php echo $menu['menu_id'];?>">
                     <img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" />
-                  </button>
+                    </a>
+                    </button>
                 </td>
               </tr>
-              <tr>
-                <td>2</td>
-                <td></td>
-                <td>Caramel Popcorn</td>
-                <td>Gambar2</td>
-                <td></td>
-                <td>
-                  <button id="button-edit" class="edit-menu">
-                    <img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-                <td>
-                  <button id="button-hapus" class="link">
-                    <img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td></td>
-                <td>Nama Menu</td>
-                <td>Gambar3</td>
-                <td></td>
-                <td>
-                  <button id="button-edit" class="edit-menu">
-                    <img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-                <td>
-                  <button id="button-hapus" class="link">
-                    <img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td></td>
-                <td>Nama Menu</td>
-                <td>Gambar4</td>
-                <td></td>
-                <td>
-                  <button id="button-edit" class="edit-menu">
-                    <img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-                <td>
-                  <button id="button-hapus" class="link">
-                    <img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td></td>
-                <td>Nama Menu</td>
-                <td>Gambar5</td>
-                <td></td>
-                <td>
-                  <button id="button-edit" class="edit-menu">
-                    <img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-                <td>
-                  <button id="button-hapus" class="link">
-                    <img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td></td>
-                <td>Nama Menu</td>
-                <td>Gambar6</td>
-                <td></td>
-                <td>
-                  <button id="button-edit" class="edit-menu">
-                    <img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-                <td>
-                  <button id="button-hapus" class="link">
-                    <img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>7</td>
-                <td></td>
-                <td>Nama Menu</td>
-                <td>Gambar7</td>
-                <td></td>
-                <td>
-                  <button id="button-edit" class="edit-menu">
-                    <img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-                <td>
-                  <button id="button-hapus" class="link">
-                    <img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>8</td>
-                <td></td>
-                <td>Nama Menu</td>
-                <td>Gambar8</td>
-                <td></td>
-                <td>
-                  <button id="button-edit" class="edit-menu">
-                    <img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-                <td>
-                  <button id="button-hapus" class="link">
-                    <img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
+              <?php }
+			  ?>
               </tr>
             </table>
           </div>
@@ -360,86 +281,57 @@ if($query)
               </div>
               <p style="font-size: 20px; padding: 0px">Pemesanan Menu</p>
             </div>
-            <div class="flex-row">
-              <a href="tambah_transaksi.php">
-                <div id="tambah-data-transaksi" class="button-tambah-data flex-row">
-                  <img src="./images/plus-icon.png" alt="plus-icon" height="25px" width="25px" style="margin-right: 10px" />
-                  <p style="font-size: 21px; margin-right: 5px">Tambah Data</p>
-                </div>
-              </a>
-              <input type="text" placeholder="Search" style="border-radius: 4px; width: 120px; height: 20px; margin-top: auto; margin-left: auto" />
-            </div>
             <table>
               <tr>
                 <th>No</th>
                 <th>Tanggal</th>
                 <th>No. Meja</th>
-                <th>Atas Nama</th>
+                <th>Username</th>
                 <th>Total</th>
-                <th>Harga</th>
+                <th>Status</th>
                 <th>Edit</th>
                 <th>Hapus</th>
               </tr>
               <tr>
-                <td>1</td>
-                <td>2012-12-01</td>
-                <td>1</td>
-                <td>Anggun</td>
-                <td>Rp4.000</td>
-                <td>
-                  <button class="button-status belum-bayar">Belum Bayar</button>
-                </td>
-                <td>
-                  <button id="button-edit" class="edit-transaksi">
-                    <img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-                <td>
-                  <button id="button-hapus" class="link">
-                    <img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>2021-12-21</td>
-                <td>3</td>
-                <td>Aulia</td>
-                <td>Rp40.000</td>
-                <td>
-                  <button class="button-status belum-bayar" class="link">Belum Bayar</button>
-                </td>
-                <td>
-                  <button id="button-edit" class="edit-transaksi">
-                    <img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-                <td>
-                  <button id="button-hapus" class="link">
-                    <img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>2021-12-21</td>
-                <td>5</td>
-                <td>Feni</td>
-                <td>Rp40.000</td>
-                <td>
-                  <button class="button-status belum-bayar" class="link">Belum Bayar</button>
-                </td>
-                <td>
-                  <button id="button-edit" class="edit-transaksi">
-                    <img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-                <td>
-                  <button id="button-hapus" class="link">
-                    <img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-              </tr>
+              <?php
+              $query = mysqli_query($db,"select * from order_resto where res_id = '$res_id'");
+              if(!empty($query))
+              {
+                $i = 1;
+                while($order = mysqli_fetch_array($query))
+                {?>
+                  <td><?php echo $i++;?></td>
+                  <td><?php echo $order['order_date'];?></td>
+                  <td><?php echo $meja_resto['meja_name'];?></td>
+                  <td><?php echo $order['order_user'];?></td>
+                  <td><?php echo number_format($order['order_total'],2);?></td>
+                  <td><?php echo $order['order_status'];?></td>
+                  <td>
+                    <form method="post" action="master_data.php?order_id=<?php echo $order['order_id'];?>">
+                        <select name="status_bayar">
+                          <option value="none" selected disabled hidden>-Valid/Not Valid-</option>
+                          <option value="valid">Valid</option>
+                          <option value="not_valid">Tidak Valid</option>
+                        </select>
+                      <input type="submit" name="ubah_status_bayar" value="Ubah Status">
+                    </form>
+                  </td>
+                  <td>
+                    <?php
+                    if($order['order_status']=='not_valid')
+                    {?>
+                      <button id="button-hapus" class="link">
+                          <a href="deleteCOrd.php?order_id=<?php echo $order['order_id'];?>">
+                          <img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px"/>
+                        </a>
+                        </button>
+                      </td>
+                   <?php }
+                    ?>
+                <?php }
+              }
+              ?>
+              </tr> 
             </table>
             <div id="modal-bg-transaksi" class="hidden">
               <div class="modal-bg">
@@ -505,37 +397,53 @@ if($query)
                 <th>No</th>
                 <th>Tanggal</th>
                 <th>Nama Menu</th>
-                <th>Atas Nama</th>
+                <th>Username</th>
                 <th>Harga</th>
                 <th>Jumlah Beli</th>
                 <th>Total</th>
+                <th>Hapus</th>
               </tr>
               <tr>
-                <td>1</td>
-                <td>2012-12-01</td>
-                <td>Kopi</td>
-                <td>Anggun</td>
-                <td>Rp4.000</td>
-                <td>1 porsi</td>
-                <td>Rp4.000</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>2021-12-21</td>
-                <td>Es Teh</td>
-                <td>Aulia</td>
-                <td>Rp10.000</td>
-                <td>3 porsi</td>
-                <td>Rp30.000</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>2021-12-21</td>
-                <td>Teh Panas</td>
-                <td>Aulia</td>
-                <td>Rp10.000</td>
-                <td>1 porsi</td>
-                <td>Rp10.000</td>
+              <?php
+              $lapor = mysqli_query($db,"select * from order_menu_resto where rest_id = '$res_id'");
+              if(!empty($lapor))
+              {
+                $i = 1;
+                while($order_menu = mysqli_fetch_array($lapor))
+                {?>
+                <td><?php echo $i++;?></td>
+                <td><?php echo $order_menu['order_date'];?></td>
+                <td>
+                  <?php
+                    $m_id = $order_menu['menu_id'];
+                    $query = mysqli_query($db,"select * from menu where menu_id='$m_id'");
+                    $m_name = mysqli_fetch_assoc($query);
+                    if($query)
+                    {
+                      echo $m_name['menu_name'];
+                    }
+                  ?>
+                </td>
+                <td><?php 
+                $ord_id = $order_menu['order_id'];
+                $om = mysqli_query($db, "select * from order_resto where res_id = '$res_id' and order_id = '$ord_id'");
+                if($om)
+                {
+                  $om_nama = mysqli_fetch_assoc($om);
+                  echo $om_nama['order_user'];
+                }
+                ?></td>
+                <td><?php echo number_format($order_menu['menu_price'],2);?></td>
+                <td><?php echo $order_menu['menu_qty'];?> porsi</td>
+                <td><?php echo number_format($order_menu['menu_qty']*$order_menu['menu_price']);?></td>
+                <td><button id="button-hapus" class="link">
+                      <a href="deleteOrd.php?order_menu_id=<?php echo $order_menu['order_menu_id'];?>">
+                      <img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px"/>
+                    </a>
+                    </button>
+                </td>
+                <?php }
+              }?>
               </tr>
             </table>
           </div>

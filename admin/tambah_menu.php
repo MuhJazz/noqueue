@@ -11,7 +11,20 @@ if($query)
 		$resto = mysqli_fetch_assoc($res);
 	}
 }
-
+$ctg = mysqli_query($db, "select * from menu where res_id = '$res_id'");
+if(!empty($ctg))
+{
+    $categ = mysqli_fetch_assoc($ctg);
+    if(!empty($categ['categ_id']))
+    {
+      $ctg_id = $categ['categ_id'];
+      $c = mysqli_query($db,"select * from menu_category where category_id = '$ctg_id'");
+      if($c)
+      {
+          $categories = mysqli_fetch_assoc($c);
+      }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -196,27 +209,17 @@ if($query)
                 <th>Hapus</th>
               </tr>
               <tr>
-                <td>1</td>
-                <td></td>
-                <td>Salty Popcorn</td>
-                <td>Gambar1</td>
-                <td></td>
-                <td>
-                  <button id="button-edit" class="edit-menu">
-                    <img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-                <td>
-                  <button id="button-hapus" class="link">
-                    <img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td></td>
-                <td>Caramel Popcorn</td>
-                <td>Gambar2</td>
+              <?php
+			 	$query = mysqli_query($db,"select * from menu where res_id = '$res_id'");
+				 $i = 1;
+				 while($menu = mysqli_fetch_assoc($query))
+				 {?>
+                <td><?php echo $i++;?></td>
+                <td><?php
+                    echo $categories['category_name'];
+                ?></td>
+                <td><?php echo $menu['menu_name'];?></td>
+                <td><?php echo "menu_images/".$menu['menu_image'];?></td>
                 <td></td>
                 <td>
                   <button id="button-edit" class="edit-menu">
@@ -229,108 +232,8 @@ if($query)
                   </button>
                 </td>
               </tr>
-              <tr>
-                <td>3</td>
-                <td></td>
-                <td>Nama Menu</td>
-                <td>Gambar3</td>
-                <td></td>
-                <td>
-                  <button id="button-edit" class="edit-menu">
-                    <img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-                <td>
-                  <button id="button-hapus" class="link">
-                    <img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td></td>
-                <td>Nama Menu</td>
-                <td>Gambar4</td>
-                <td></td>
-                <td>
-                  <button id="button-edit" class="edit-menu">
-                    <img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-                <td>
-                  <button id="button-hapus" class="link">
-                    <img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td></td>
-                <td>Nama Menu</td>
-                <td>Gambar5</td>
-                <td></td>
-                <td>
-                  <button id="button-edit" class="edit-menu">
-                    <img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-                <td>
-                  <button id="button-hapus" class="link">
-                    <img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td></td>
-                <td>Nama Menu</td>
-                <td>Gambar6</td>
-                <td></td>
-                <td>
-                  <button id="button-edit" class="edit-menu">
-                    <img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-                <td>
-                  <button id="button-hapus" class="link">
-                    <img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>7</td>
-                <td></td>
-                <td>Nama Menu</td>
-                <td>Gambar7</td>
-                <td></td>
-                <td>
-                  <button id="button-edit" class="edit-menu">
-                    <img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-                <td>
-                  <button id="button-hapus" class="link">
-                    <img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>8</td>
-                <td></td>
-                <td>Nama Menu</td>
-                <td>Gambar8</td>
-                <td></td>
-                <td>
-                  <button id="button-edit" class="edit-menu">
-                    <img src="./images/edit-icon.png" alt="edit-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-                <td>
-                  <button id="button-hapus" class="link">
-                    <img src="./images/hapus-icon.png" alt="hapus-icon" style="width: 20px; height: 20px" />
-                  </button>
-                </td>
-              </tr>
+              <?php }
+			  ?>
             </table>
           </div>
           <div id="modal-bg-kategori" class="hidden">
@@ -351,35 +254,38 @@ if($query)
           <div id="modal-bg-menu">
             <div class="modal-bg">
               <div class="modal-container">
-                <form action="">
+                <form method="post" action="tambah_menu.php" enctype="multipart/form-data">
                   <strong><label for="namakategori">Nama Kategori</label></strong
                   ><br />
-                  <select name="categories" id="categories">
-                    <option value="none" selected disabled hidden>-Silahkan Pilih Nama Kategori-</option>
-                    <option value="rekomendasi">Rekomendasi</option>
-                    <option value="menuutama">Menu Utama</option>
-                    <option value="makananringan">Makanan Ringan</option>
-                    <option value="minuman">Minuman</option>
-                    <option value="penutup">Penutup</option>
-                    <option value="kopi">Kopi</option>
-                  </select>
+                  <?php 
+                $query = mysqli_query($db, "select * from menu_category where r_id='$res_id'");
+                ?>
+                    <select name="categories">
+                    <?php
+                        while($category = mysqli_fetch_array($query))
+                        {
+                            ?>
+                            <option value="none" selected disabled hidden>-Silahkan Pilih Nama Kategori-</option>
+                            <option value = "<?= $category['category_id'];?>">
+                            <?php  echo $category['category_name']; ?>
+                            </option>
+                            <?php
+                        }
+                    ?>
+                    </select>
                   <strong><label for="namamenu">Nama Menu</label></strong
                   ><br />
-                  <select name="menus" id="menus">
-                    <option value="none" selected disabled hidden></option>
-                    <option value="jusmangga">Jus Mangga</option>
-                  </select>
-                  <strong><label for="foto">Foto</label></strong
+                  <input type="text" name="nama_menu" style="width: 100%; padding-right: 0px" />
+                  <strong><label for="foto">Foto Menu</label></strong
                   ><br />
-                  <div class="image-container" style="height: 150px; width: 120px; border: 1px solid #000">
-                    <img id="image" class="image" src="" alt="foto-menu" style="height: 120px" />
-                  </div>
-                  <input type="file" class="changeimage" id="changeimage" accept=".png, .jpg, .jpeg" style="margin-bottom: 30px" />
+                  <input type="file" name="menu_images" class="changeimage" accept=".png, .jpg, .jpeg" style="margin-bottom: 30px" />
                   <strong><label for="harga">Harga</label></strong
                   ><br />
-                  <input type="text" name="harga" style="width: 100%; padding-right: 0px" />
+                  <input type="text" name="harga_menu" style="width: 100%; padding-right: 0px" />
+                  <input type="hidden" name="nama_resto" style="width: 100%; padding-right: 0px" value="<?php echo $res_id;?>"/>
                   <div class="flext-row" style="text-align: end; margin-top: 30px">
-                    <input class="button-simpan" type="button" value="SIMPAN" />
+                    <input name="add_menu" class="button-simpan" type="submit" value="SIMPAN"/>
+                    <a class="button-simpan" style="text-decoration:none" href="master_data.php">KEMBALI</a>
                   </div>
                 </form>
               </div>

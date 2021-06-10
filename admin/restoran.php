@@ -1,4 +1,4 @@
-<?php include('admin_server.php') ?>
+<?php include('super_server.php') ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -145,6 +145,7 @@
 
 				<div class="input-group">
 				<button type="submit" class="btn" name="add_resto">Tambah Resto</button>
+        <a href="list_resto.php">Kembali</a>
 				</div>
 			</form>
 		</div>

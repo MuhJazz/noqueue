@@ -1,4 +1,4 @@
-<?php include('../server.php') ?>
+<?php include('super_server.php') ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -93,6 +93,7 @@
 				<input type="text" name="loc_name">
 				</div>
 				<button type="submit" class="btn" name="resto_loc">add resto</button>
+        <a href="list_loc_resto.php">Kembali</a>
 				</div>
 			</form>
 		</div>

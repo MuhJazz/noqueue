@@ -1,6 +1,8 @@
-<?php include('admin_server.php'); 
-$res = mysqli_query($db,"select * from restoran");
-$meja_resto = mysqli_fetch_assoc($res);
+<?php include('admin_server.php') 
+  $admin = $_SESSION['admin_username']
+  $query = mysqli_query($db, "select * from admin_resto where admin_username='$admin'");
+  $adm = mysqli_fetch_assoc($query);
+  $rest_id = $adm['res_id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,17 +14,6 @@ $meja_resto = mysqli_fetch_assoc($res);
     <title>Home Page</title>
   </head>
   <body>
-  <?php 
-  if (!isset($_SESSION['admin_username'])) {
-  	$_SESSION['msg'] = "You must log in first";
-  	header('location: login_admin.php');
-  }
-  if (isset($_GET['logout'])) {
-  	session_destroy();
-  	unset($_SESSION['admin_username']);
-  	header("location: login_admin.php");
-  }
-?>
     <header class="header">
       <img style="position: absolute" src="./images/logo.png" alt="logo" />
       <div class="center">
@@ -100,18 +91,33 @@ $meja_resto = mysqli_fetch_assoc($res);
     </div>
 	<div class="modal-bg">
     	<div class="modal-container" style="height: 55%">
-			<form method="post" action="add_meja.php?resto_id=<?php echo $_GET['resto_id'];?>" class="form">
-      <?php include('error.php');
-      $r_id = mysqli_real_escape_string($db,$_GET['resto_id']);
-      ?>
-      <div class="input-group">
+			<form method="post" action="add_meja_resto.php" class="form">
+      <?php include('error.php'); ?>
+                <?php 
+                $query = mysqli_query($db, "select * from restoran");
+                ?>
+                    <select name="nama_resto">
+                    <?php
+                        while($resto = mysqli_fetch_array($query))
+                        {
+                            ?>
+                            <option value = "<?= $resto['resto_id'];?>">
+                            <?php 
+                                echo $resto['resto_name']; ?>
+                            </option>
+                            <?php
+                        }
+                    ?>
+                    </select>
+                </div>
+
+				<div class="input-group">
 				<label>Nama Meja</label>
 				<input type="text" name="nama_meja">
-			</div>
-        <input type="hidden" name="id_resto" value="<?php echo $r_id;?>"> 
+				</div>
+
+        <input type="hidden" name="nama_meja" value="<?php echo $rest_id;?>"> 
 				<button type="submit" class="btn" name="meja_resto">add meja</button>
-        <a href="list_meja.php">Kembali</a>
-          </div>
 				</div>
 			</form>
 		</div>

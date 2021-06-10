@@ -117,9 +117,7 @@
                         }
                     ?>
                     </select>
-                </div>
-
-				<div class="input-group">
+                    <div class="input-group">
 				<label>Username</label>
 				<input type="text" name="username_resto" value="<?php echo $admin_username; ?>">
 				</div>
@@ -136,7 +134,9 @@
 
 				<div class="input-group">
 				<button type="submit" class="btn" name="reg_admin">Register</button>
+        <a href="list_admin.php">Kembali</a>
 				</div>
+                </div>
 			</form>
 		</div>
 	</div>
