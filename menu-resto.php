@@ -3,7 +3,7 @@
   {
     $res_id = $_GET['resto_id'];
 
-    $query = mysqli_query($db, "select * from restoran where resto_id='$res_id'");
+    $query = mysqli_query($db, "select * from restoran where resto_id='$res_id' AND resto_status='buka'");
 
     $resto = mysqli_fetch_assoc($query);
 
@@ -11,7 +11,6 @@
     $res_name = $resto["resto_name"];
     $res_addr = $resto["resto_address"];
     $res_open = $resto["resto_open"];
-    $res_rate = $resto["resto_rating"];
   }
 ?>
 <!DOCTYPE html>
@@ -101,10 +100,6 @@
       <div class="atribut-restoran">
         <div class="flex-row">
           <h1><?php echo $res_name;?></h1>
-          <div class="flex-row rate">
-            <img src="./admin/images/star-icon.png" alt="star-icon" width="20px" height="20px" />
-            <h4><?php echo $res_rate?>/5.0</h4>
-          </div>
         </div>
         <div class="flex-column">
           <div class="lokasi-resto">
@@ -130,52 +125,95 @@
         <div id="menu-content">
           <div class="menu-container">
             <div class="menu-cards">
-            <?php $query = mysqli_query($db,"select * from menu where res_id = '$res_id'");
-              if(!empty($_SESSION['cart']))
+            <?php
+              if(isset($_POST['filter_cats']))
               {
-                foreach($_SESSION['cart'] as $key => $value)
-                { 
-                  if($value['resto_id']!=$res_id)
+                if(!empty($_POST['cat']))
+                {
+                  $selected = $_POST['cat'];
+                  $query = mysqli_query($db,"select * from menu where res_id = '$res_id' and categ_id ='$selected'");
+                  if(!empty($_SESSION['cart']))
                   {
-                    unset($_SESSION['cart']);
+                    foreach($_SESSION['cart'] as $key => $value)
+                    { 
+                      if($value['resto_id']!=$res_id)
+                      {
+                        unset($_SESSION['cart']);
+                      }
+                    }
                   }
+                    while($menu = mysqli_fetch_array($query))
+                    {?>
+                    <div class="card">
+                    <?php $menu_img = "admin/menu_images/".$menu['menu_image'];?>
+                    <span class="card-image" style="background-image: url(<?php echo $menu_img?>)"></span>
+                    <div class="card-content">
+                      <span class="nama-menu"><?php echo $menu['menu_name'];?></span>
+                      <span class="harga-menu"><?php echo number_format($menu['menu_price'],2);?></span>
+                    <form method="post" action="menu-resto.php?action=add&menu_id=<?php echo $menu['menu_id'];?>&resto_id=<?php echo $_GET['resto_id'];?>">
+                      <input type="number" name="qty_menu" value="1" min="1">
+                      <input type="hidden" name="nama_menu" value="<?php echo $menu['menu_name'];?>">
+                      <input type="hidden" name="harga_menu" value="<?php echo $menu['menu_price'];?>">
+                      <input class="harga-menu" type="submit" name="add_to_cart" value="Tambah ke Keranjang">
+                    </form>
+                    </div>
+                  </div><?php }
                 }
               }
-                while($menu = mysqli_fetch_array($query))
-                {?>
-                <div class="card">
-                <?php $menu_img = "admin/menu_images/".$menu['menu_image'];?>
-                <span class="card-image" style="background-image: url(<?php echo $menu_img?>)"></span>
-                <div class="card-content">
-                  <span class="nama-menu"><?php echo $menu['menu_name'];?></span>
-                  <span class="harga-menu"><?php echo number_format($menu['menu_price'],2);?></span>
-                <form method="post" action="menu-resto.php?action=add&menu_id=<?php echo $menu['menu_id'];?>&resto_id=<?php echo $_GET['resto_id'];?>">
-                  <input type="number" name="qty_menu" value="1" min="1">
-                  <input type="hidden" name="nama_menu" value="<?php echo $menu['menu_name'];?>">
-                  <input type="hidden" name="harga_menu" value="<?php echo $menu['menu_price'];?>">
-                  <input class="harga-menu" type="submit" name="add_to_cart" value="Tambah ke Keranjang">
-                </form>
-                </div>
-              </div><?php }?>
+              else{
+                $query = mysqli_query($db,"select * from menu where res_id = '$res_id'");
+                  if(!empty($_SESSION['cart']))
+                  {
+                    foreach($_SESSION['cart'] as $key => $value)
+                    { 
+                      if($value['resto_id']!=$res_id)
+                      {
+                        unset($_SESSION['cart']);
+                      }
+                    }
+                  }
+                    while($menu = mysqli_fetch_array($query))
+                    {?>
+                    <div class="card">
+                    <?php $menu_img = "admin/menu_images/".$menu['menu_image'];?>
+                    <span class="card-image" style="background-image: url(<?php echo $menu_img?>)"></span>
+                    <div class="card-content">
+                      <span class="nama-menu"><?php echo $menu['menu_name'];?></span>
+                      <span class="harga-menu"><?php echo number_format($menu['menu_price'],2);?></span>
+                    <form method="post" action="menu-resto.php?action=add&menu_id=<?php echo $menu['menu_id'];?>&resto_id=<?php echo $_GET['resto_id'];?>">
+                      <input type="number" name="qty_menu" value="1" min="1">
+                      <input type="hidden" name="nama_menu" value="<?php echo $menu['menu_name'];?>">
+                      <input type="hidden" name="harga_menu" value="<?php echo $menu['menu_price'];?>">
+                      <input class="harga-menu" type="submit" name="add_to_cart" value="Tambah ke Keranjang">
+                    </form>
+                    </div>
+                  </div><?php }
+              }
+              ?>
             </div>
             <div class="kategori-pemesanan-container">
               <div class="kategori">
                 <h2 style="padding-left: 10px; margin-top: 10px; margin-bottom: 10px">KATEGORI</h2>
                 <div class="category-input-container" style="padding-left: 10px; padding-top: 10px; border-top: 1px solid">
-                  <form action="">
-                    <input type="checkbox" id="category1" name="category1" value="rekomendasi" />
-                    <label for="category1">Rekomendasi</label><br />
-                    <input type="checkbox" id="category2" name="category2" value="menu-utama" />
-                    <label for="category2">Menu utama</label><br />
-                    <input type="checkbox" id="category3" name="category3" value="makanan-ringan" />
-                    <label for="category3">Makanan ringan</label><br />
-                    <input type="checkbox" id="category4" name="category4" value="minuman" />
-                    <label for="category4">Minuman</label><br />
-                    <input type="checkbox" id="category5" name="category5" value="penutup" />
-                    <label for="category5">Penutup</label><br />
-                    <input type="checkbox" id="category6" name="category6" value="kopi" />
-                    <label for="category6">Kopi</label><br />
-                  </form>
+                <?php 
+                $query = mysqli_query($db, "select * from menu_category where r_id='$res_id'");
+                ?>
+                <form method="post" action="">
+                    <select name="cat" id="location">
+                    <?php
+                        while($cats = mysqli_fetch_array($query))
+                        {
+                            ?>
+                            <option value = "<?php echo $cats['category_id'];?>">
+                            <?php 
+                                echo $cats['category_name']; ?>
+                            </option>
+                            <?php
+                        }
+                    ?>
+                    </select>
+                    <button type="submit" class="btn" name="filter_cats">Cari</button>
+                </form>
                 </div>
               </div>
               <div class="pemesanan">
@@ -290,7 +328,7 @@
               {
                 $query = mysqli_query($db, "select * from meja_resto where res_id='$res_id'");
                 $m = mysqli_fetch_assoc($query);
-                if(count($_SESSION['cart'])>0 && $m['meja_status']=='free' )
+                if(count($_SESSION['cart'])>0 && $m['meja_status']=='free' && $resto['resto_status']=='buka')
                 {?>
                   <input type="submit" name="checkout" style="margin-right: 40px">
                 <?php }?>

@@ -117,7 +117,7 @@
         <div class="modal-container">
             <form method="post" action="image_profile_edit.php" class="form" enctype="multipart/form-data">
 				<?php include('error.php'); ?>
-                <div class="input-group">
+        <div class="input-group">
 					<label>Foto Profil</label>
 					<input type="file" name="user_image" accept=".png, .jpg, .jpeg" style="margin: 10px 0px;">
 				</div>

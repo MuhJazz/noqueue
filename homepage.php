@@ -107,7 +107,7 @@
                     if(!empty($_POST['location']))
                     {
                         $selected = $_POST['location'];
-                        $query = mysqli_query($db, "select * from restoran where loc_id='$selected'");
+                        $query = mysqli_query($db, "select * from restoran where loc_id='$selected' and resto_status='buka'");
                             while($resto = mysqli_fetch_array($query))
                             {?>
                             <?php $res_img = "admin/images/".$resto['resto_image'];
@@ -129,7 +129,9 @@
               <?php }?>
           <?php }
             else{?>
-              <?php $query = mysqli_query($db, "select * from restoran");?>
+              <?php $query = mysqli_query($db, "select * from restoran where resto_status='buka'");?>
+              <h3>Restoran Yang Buka </h3>
+              <h4>(jika tidak ada artinya tutup)</h4>
                 <div class="content">
                   <div class="cards">
                   <?php

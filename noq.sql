@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2021 at 02:25 PM
+-- Generation Time: Jun 10, 2021 at 10:58 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -39,8 +39,7 @@ CREATE TABLE `admin_resto` (
 --
 
 INSERT INTO `admin_resto` (`admin_id`, `admin_username`, `admin_password`, `res_id`) VALUES
-(11, 'taican', '1111', 3),
-(12, 'owl_admin_321', '321', 2);
+(13, 'summarec', '1111', 6);
 
 -- --------------------------------------------------------
 
@@ -60,11 +59,8 @@ CREATE TABLE `meja_resto` (
 --
 
 INSERT INTO `meja_resto` (`meja_id`, `meja_name`, `meja_status`, `res_id`) VALUES
-(4, 'owl table 1', 'free', 2),
-(5, 'owl table 2', 'free', 2),
-(6, 'owl table 3', 'free', 2),
-(7, 'owl table 4', 'free', 2),
-(8, 'summa table 1', 'free', 6);
+(14, 'summa table 1', 'free', 6),
+(15, 'summa table 2', 'free', 6);
 
 -- --------------------------------------------------------
 
@@ -76,22 +72,10 @@ CREATE TABLE `menu` (
   `menu_id` int(11) NOT NULL,
   `menu_name` varchar(64) NOT NULL,
   `menu_price` int(24) NOT NULL,
-  `menu_desc` varchar(255) NOT NULL,
   `menu_image` varchar(255) NOT NULL,
-  `res_id` int(11) NOT NULL
+  `res_id` int(11) NOT NULL,
+  `categ_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `menu`
---
-
-INSERT INTO `menu` (`menu_id`, `menu_name`, `menu_price`, `menu_desc`, `menu_image`, `res_id`) VALUES
-(1, 'Sate Bakar', 20000, 'Sate ayam lezat dengan proses pembakaran', '5f1fdcdacafc4.jpg', 1),
-(2, 'Spaghetti Carbonara', 32000, 'Spaghetti dengan keju enak', 'Espaguetis_carbonara.jpg', 2),
-(3, 'Nasi Goreng Kambing', 15000, 'Nasi Goreng dengan daging kambing penuh rempah', '5f211052c70f7.jpg', 4),
-(4, 'Sate Ayam Bumbu Kacang', 18000, 'Sate Ayam yang dibakar ditambah dengan bumbu kacang penuh rasa', 'sate-ayam-bumbu-kacang-foto-resep-utama.jpg', 3),
-(5, 'Beef Wellington', 150000, 'Beef Wellington terkenal di seluruh dunia', 'image1.jpg', 2),
-(6, 'Beef Wellington', 20000, 'Beef Wellington terkenal di seluruh dunia', 'Beef-wellington-d4f3320.jpg', 6);
 
 -- --------------------------------------------------------
 
@@ -110,9 +94,8 @@ CREATE TABLE `menu_category` (
 --
 
 INSERT INTO `menu_category` (`category_id`, `category_name`, `r_id`) VALUES
-(27, 'Minuman', 2),
-(28, 'Makanan', 2),
-(31, 'Makanan Berat', 2);
+(33, 'Makanan', 6),
+(34, 'Minuman', 6);
 
 -- --------------------------------------------------------
 
@@ -122,20 +105,13 @@ INSERT INTO `menu_category` (`category_id`, `category_name`, `r_id`) VALUES
 
 CREATE TABLE `order_menu_resto` (
   `order_menu_id` int(11) NOT NULL,
+  `order_date` date NOT NULL DEFAULT current_timestamp(),
   `order_id` int(11) NOT NULL,
   `menu_id` int(11) NOT NULL,
   `menu_price` int(24) NOT NULL,
   `menu_qty` int(64) NOT NULL,
   `rest_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `order_menu_resto`
---
-
-INSERT INTO `order_menu_resto` (`order_menu_id`, `order_id`, `menu_id`, `menu_price`, `menu_qty`, `rest_id`) VALUES
-(38, 62, 6, 20000, 3, 6),
-(56, 80, 6, 20000, 2, 6);
 
 -- --------------------------------------------------------
 
@@ -157,14 +133,6 @@ CREATE TABLE `order_resto` (
   `order_status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `order_resto`
---
-
-INSERT INTO `order_resto` (`order_id`, `res_id`, `order_date`, `order_user`, `order_total`, `order_payment`, `order_meja`, `order_waktu`, `order_catatan`, `order_bukti_bayar`, `order_status`) VALUES
-(62, 6, '2021-06-09', 'blodek', 60000, 'gopay', 8, '18.30', 'medium rare', 'images.png', 'sedang verif'),
-(80, 6, '2021-06-09', 'blodek', 40000, 'gopay', 8, '18.30', 'medium rare', 'Gaming_5000x3125.jpg', 'sedang verif');
-
 -- --------------------------------------------------------
 
 --
@@ -173,28 +141,23 @@ INSERT INTO `order_resto` (`order_id`, `res_id`, `order_date`, `order_user`, `or
 
 CREATE TABLE `restoran` (
   `resto_id` int(11) NOT NULL,
+  `resto_status` varchar(255) NOT NULL,
   `resto_name` varchar(24) NOT NULL,
   `resto_address` varchar(64) NOT NULL,
   `resto_number` varchar(20) NOT NULL,
   `resto_image` varchar(255) NOT NULL,
   `resto_open` varchar(24) NOT NULL,
-  `resto_rating` int(11) NOT NULL,
   `qr_ovo` varchar(255) NOT NULL,
   `qr_gopay` varchar(255) NOT NULL,
-  `loc_id` int(11) NOT NULL,
-  `status_id` int(11) NOT NULL
+  `loc_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `restoran`
 --
 
-INSERT INTO `restoran` (`resto_id`, `resto_name`, `resto_address`, `resto_number`, `resto_image`, `resto_open`, `resto_rating`, `qr_ovo`, `qr_gopay`, `loc_id`, `status_id`) VALUES
-(1, 'cikenti', 'Jl. Babakan Raya', '082838281921', 'resto1.jpeg', '09.00-21.00', 0, '', '', 3, 0),
-(2, 'owl', 'Jl. Perwira', '08237323281', 'resto2.jpeg', '10.00-21.00', 0, '', '', 2, 0),
-(3, 'taican', 'Jl. Tebet Timur', '08123321921', 'resto3.jpeg', '10.00-20.00', 0, '', '', 4, 0),
-(4, 'eater', 'Jl. Summarecon', '085263281921', 'resto4.jpeg', '07.00-23.00', 0, '', '', 5, 0),
-(6, 'Summa', 'Jl. Summarecon 22', '08283824242', 'res_img.jpg', '10.00-21.00', 0, 'qr-code.png', 'qr-code-2.png', 5, 0);
+INSERT INTO `restoran` (`resto_id`, `resto_status`, `resto_name`, `resto_address`, `resto_number`, `resto_image`, `resto_open`, `qr_ovo`, `qr_gopay`, `loc_id`) VALUES
+(6, 'buka', 'Summa', 'Jl. Summarecon 22', '08283824242', 'res_img.jpg', '10.00-21.00', 'qr-code.png', 'qr-code-2.png', 5);
 
 -- --------------------------------------------------------
 
@@ -220,21 +183,21 @@ INSERT INTO `restoran_loc` (`loc_id`, `loc_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `status`
+-- Table structure for table `super_admin`
 --
 
-CREATE TABLE `status` (
-  `status_id` int(11) NOT NULL,
-  `status_name` varchar(11) NOT NULL
+CREATE TABLE `super_admin` (
+  `super_id` int(11) NOT NULL,
+  `super_name` varchar(255) NOT NULL,
+  `super_pass` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `status`
+-- Dumping data for table `super_admin`
 --
 
-INSERT INTO `status` (`status_id`, `status_name`) VALUES
-(1, 'buka'),
-(2, 'tutup');
+INSERT INTO `super_admin` (`super_id`, `super_name`, `super_pass`) VALUES
+(1, 'noq_super_admin', 'n0thingS');
 
 -- --------------------------------------------------------
 
@@ -282,7 +245,8 @@ ALTER TABLE `meja_resto`
 --
 ALTER TABLE `menu`
   ADD PRIMARY KEY (`menu_id`),
-  ADD KEY `FK_Resto_Id` (`res_id`);
+  ADD KEY `FK_Resto_Id` (`res_id`),
+  ADD KEY `FK_C_Id` (`categ_id`);
 
 --
 -- Indexes for table `menu_category`
@@ -322,10 +286,10 @@ ALTER TABLE `restoran_loc`
   ADD PRIMARY KEY (`loc_id`);
 
 --
--- Indexes for table `status`
+-- Indexes for table `super_admin`
 --
-ALTER TABLE `status`
-  ADD PRIMARY KEY (`status_id`);
+ALTER TABLE `super_admin`
+  ADD PRIMARY KEY (`super_id`);
 
 --
 -- Indexes for table `users`
@@ -341,55 +305,55 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin_resto`
 --
 ALTER TABLE `admin_resto`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `meja_resto`
 --
 ALTER TABLE `meja_resto`
-  MODIFY `meja_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `meja_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `menu_category`
 --
 ALTER TABLE `menu_category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `order_menu_resto`
 --
 ALTER TABLE `order_menu_resto`
-  MODIFY `order_menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `order_menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `order_resto`
 --
 ALTER TABLE `order_resto`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `restoran`
 --
 ALTER TABLE `restoran`
-  MODIFY `resto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `resto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `restoran_loc`
 --
 ALTER TABLE `restoran_loc`
-  MODIFY `loc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `loc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `status`
+-- AUTO_INCREMENT for table `super_admin`
 --
-ALTER TABLE `status`
-  MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `super_admin`
+  MODIFY `super_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -417,6 +381,7 @@ ALTER TABLE `meja_resto`
 -- Constraints for table `menu`
 --
 ALTER TABLE `menu`
+  ADD CONSTRAINT `FK_C_Id` FOREIGN KEY (`categ_id`) REFERENCES `menu_category` (`category_id`),
   ADD CONSTRAINT `FK_Resto_Id` FOREIGN KEY (`res_id`) REFERENCES `restoran` (`resto_id`);
 
 --

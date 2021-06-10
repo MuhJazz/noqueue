@@ -192,6 +192,16 @@ if(isset($_POST['img_edit']))
   $menu_ids = array();  
   if(isset($_POST['add_to_cart']))
   { 
+    $r_id = $_GET['resto_id'];
+    $query = mysqli_query($db,"select * from restoran where resto_id='$r_id'");
+    $r = mysqli_fetch_assoc($query);
+    if($r['resto_status']=='tutup')
+    {
+      echo 'Maaf restoran sudah tutup';
+      unset($_SESSION['cart']);
+      header("location: homepage.php");
+
+    }
     if(isset($_SESSION['cart']))
     {
       $count = count($_SESSION['cart']); 
