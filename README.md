@@ -46,36 +46,15 @@ Makanan adalah sumber energi manusia, tanpa adanya energi sangat sulit untuk mel
 - Sebagai pemilik restoran, agar dapat melihat laporan pemesanan, saya dapat melihat di bagian data laporan
 
 # Ruang Lingkup Pengembangan
-
 ## Software
-
-| Jenis            | nama                  |
+|            |                  |
 | ---------------- | --------------------- |
 | Operating System | Windows 10, Linux     |
 | Text Editor/IDE  | VS Code, Sublime Text |
-| Framework        | -                     |
 | Database         | MySQL                 |
 | Design           | Figma                 |
 | Server           | Apache                |
-
-| Name  | Age |
-| ----- | --- |
-| Bob   | 27  |
-| Alice | 23  |
-
-| ----- | --- |
-| Bob | 27 |
-| Alice | 23 |
-
-| Operating System | Windows 10/Linux |
-| Text Editor/IDE | VS Code, Sublime Text |
-| Framework | Bootstrap (CSS) |
-| Database | MySQL |
-| Design | Figma |
-| Server | Apache |
-
 ## Hardware
-
 | <!-- -->      | <!-- -->            |
 | ------------- | ------------------- |
 | Processor     | Intel Core i5-4210U |
@@ -84,7 +63,6 @@ Makanan adalah sumber energi manusia, tanpa adanya energi sangat sulit untuk mel
 | Storage       | 1 TB                |
 
 ## Tech Stack
-
 | <!-- -->               | <!-- -->                       |
 | ---------------------- | ------------------------------ |
 | Collaboration Platform | Github                         |
