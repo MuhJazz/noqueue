@@ -106,9 +106,11 @@ Makanan adalah sumber energi manusia, tanpa adanya energi sangat sulit untuk mel
 
 ## Entity Relationship Diagram
 
-![ERD](/images-laporan/erd.png)
+![ERD](/images-laporan/erd.jpg)
 
 ## Arsitektur Sistem
+
+![ERD](/images-laporan/arsitektur-aplikasi.png)
 
 ## Fungsi Utama yang Dikembangkan
 
