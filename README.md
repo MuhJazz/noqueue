@@ -82,6 +82,10 @@ Makanan adalah sumber energi manusia, tanpa adanya energi sangat sulit untuk mel
 | RAM           | 4GB DDR3            |
 | Storage       | 1 TB                |
 
+| <!-- --> | <!-- --> |
+| -------- | -------- |
+| Foo      | Bar      |
+
 ## Tech Stack
 
 | Collaboration Platform | Github |
