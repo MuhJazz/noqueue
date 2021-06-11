@@ -32,7 +32,7 @@ Makanan adalah sumber energi manusia, tanpa adanya energi sangat sulit untuk mel
 * Sebagai pemilik restoran, agar dapat melihat laporan pemesanan, saya dapat melihat di bagian data laporan
 # Ruang Lingkup Pengembangan
 ## Software
-    | Operating System |  Windows 10 / Linux  |
+  | Operating System |  Windows 10 / Linux  |
     | ----------------------  | --- | ----- |
     | Text Editor / IDE | VS Code, Sublime Text  |
     | Framework | Bootstrap (CSS) |
@@ -40,13 +40,13 @@ Makanan adalah sumber energi manusia, tanpa adanya energi sangat sulit untuk mel
     | Design  | Figma |
     | Server  | Apache |
 ## Hardware
-    | Processor  | Intel Core i5-4210U |
+  | Processor  | Intel Core i5-4210U |
     | ----------------------  | --- | ----- |
     | Graphics Card  | Graphics Card |
     | RAM | 4GB DDR3 |
     | Storage  | 1 TB |
 ## Tech Stack
-    | Collaboration Platform  | Github |
+  | Collaboration Platform  | Github |
     | ----------------------  | --- | ----- |
     | Project Management | Trello |
 
