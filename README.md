@@ -76,11 +76,11 @@ Makanan adalah sumber energi manusia, tanpa adanya energi sangat sulit untuk mel
 
 ## Hardware
 
-| --- | --- |
-| Processor | Intel Core i5-4210U |
-| Graphics Card | Graphics Card |
-| RAM | 4GB DDR3 |
-| Storage | 1 TB |
+| Processor     | Intel Core i5-4210U |
+| ------------- | :------------------ |
+| Graphics Card | Graphics Card       |
+| RAM           | 4GB DDR3            |
+| Storage       | 1 TB                |
 
 ## Tech Stack
 
