@@ -32,6 +32,12 @@ Makanan adalah sumber energi manusia, tanpa adanya energi sangat sulit untuk mel
 * Sebagai pemilik restoran, agar dapat melihat laporan pemesanan, saya dapat melihat di bagian data laporan
 # Ruang Lingkup Pengembangan
 ## Software 
+| Name  | Nim | Role  |
+| ----------------------  | --- | ----- |
+| Muhammad Daffa Subhan   | G64190018  |  Back-end  |
+| Lesy Okviani | G64190026  | Project Manager |
+| Bobby Williams K.H  | G64190061  |  Front-end  |
+| Muhammad Jazuli | G64190081  | UI/UX Designer |
 |  Operating System  |  Windows 10 / Linux  |
 |  Text Editor/IDE  |  VS Code, Sublime Text  |
 |  Framework  |  Bootstrap (CSS)  |
