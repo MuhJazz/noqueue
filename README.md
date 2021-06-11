@@ -99,6 +99,9 @@ Makanan adalah sumber energi manusia, tanpa adanya energi sangat sulit untuk mel
 
 ## Activity Diagram
 
+![Activity Diagram](/images-laporan/activity.png)
+![Activity-Admin Diagram](/images-laporan/activity-admin.png)
+
 ## Class Diagram
 
 ## Entity Relationship Diagram
