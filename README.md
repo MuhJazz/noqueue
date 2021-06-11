@@ -53,7 +53,7 @@ Makanan adalah sumber energi manusia, tanpa adanya energi sangat sulit untuk mel
 | ---------------- | --------------------- |
 | Operating System | Windows 10, Linux     |
 | Text Editor/IDE  | VS Code, Sublime Text |
-| Framework        | Bootstrap(CSS}        |
+| Framework        | -                     |
 | Database         | MySQL                 |
 | Design           | Figma                 |
 | Server           | Apache                |
@@ -94,6 +94,8 @@ Makanan adalah sumber energi manusia, tanpa adanya energi sangat sulit untuk mel
 # Hasil dan Pembahasan
 
 ## Use Case Diagram
+
+![Usecase Diagram](/images-laporan/usecase.png)
 
 ## Activity Diagram
 
