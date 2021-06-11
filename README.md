@@ -110,7 +110,7 @@ Makanan adalah sumber energi manusia, tanpa adanya energi sangat sulit untuk mel
 
 ## Arsitektur Sistem
 
-![ERD](/images-laporan/arsitektur-aplikasi.png)
+![Arsitektur Aplikasi](/images-laporan/arsitektur_aplikasi.png)
 
 ## Fungsi Utama yang Dikembangkan
 
