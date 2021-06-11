@@ -93,6 +93,32 @@ Makanan adalah sumber energi manusia, tanpa adanya energi sangat sulit untuk mel
 ## Fungsi Utama yang Dikembangkan
 
 ## Fungsi CRUD
+| Domain class           | CRUD      | Verified use case                   |
+| ---------------------- | --------- | ----------------------------------- |
+| Restoran (Admin)       | Create    | Membuat akun                        |
+|                        |           | Membuat Kategori dan menu restoran  |
+|                        |           | Membuat meja restoran               |
+|                        | Read      | Membaca pesanan                     |
+|                        |           | Membaca pembayaran                  |
+|                        |           | Membaca laporan transaksi           |
+|                        | Update    | Mengubah kategori dan menu          |
+|                        |           | Menyelesaikan transaksi             |
+|                        | Delete    | Menghapus kategori dan menu         |
+|                        |           | Menghapus restoran                  |
+|                        |           |                                     |
+| Superadmin             | Create    | Membuat akun                        |
+|                        | Read      | Membaca data restoran               |
+|                        | Update    |                                     |
+|                        | Delete    | Menghapus restoran                  |
+|                        |           |                                     |
+| Customer (user)        | Create    | Membuat akun                        |
+|                        |           | Membuat pesanan                     |
+|                        | Read      | Membaca kategori dan menu restoran  |
+|                        | Update    | Melakukan pemesanan                 |
+|                        |           | Mengubah pemesanan                  |
+|                        |           | Melakukan pembayaran                |
+|                        |           | Mengubah biodata akun               |
+|                        | Delete    | Menghapus akun                      |
 
 # Hasil Implementasi
 
