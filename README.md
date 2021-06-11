@@ -34,7 +34,7 @@ Makanan adalah sumber energi manusia, tanpa adanya energi sangat sulit untuk mel
 ## Software
 | Operating System |  Windows 10 / Linux  |
 | ----------------------  | --- | ----- |
-| Text Editor / IDE | VS Code / Sublime Text  |
+| Text Editor / IDE | VS Code, Sublime Text  |
 | Framework | Bootstrap (CSS) |
 | Database  | MySQL |
 | Design  | Figma |
