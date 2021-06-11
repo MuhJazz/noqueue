@@ -40,6 +40,11 @@ Makanan adalah sumber energi manusia, tanpa adanya energi sangat sulit untuk mel
 | Design   | Figma  |
 | Server | Apache  |
 
+| Name  | Age |
+| ----- | --- |
+| Bob   | 27  |
+| Alice | 23  |
+
 | ----- | --- |
 | Bob   | 27  |
 | Alice | 23  |
