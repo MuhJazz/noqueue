@@ -7,18 +7,18 @@
 
 # Dibimbing oleh :
 
-- -
-- -
-- -
+- Ali Naufal Ammarullah
+- Levina S
+- Muhammad Fauzan Ramadhan
 
 # Tim Pengembang NoQ
 
-| Name                  | Nim       | Role            |
-| --------------------- | --------- | --------------- |
-| Muhammad Daffa Subhan | G64190018 | Back-end        |
-| Lesy Okviani          | G64190026 | Project Manager |
-| Bobby Williams K.H    | G64190061 | Front-end       |
-| Muhammad Jazuli       | G64190081 | UI/UX Designer  |
+| Name                   | Nim       | Role            |
+| ---------------------- | --------- | --------------- |
+| Muhammad Daffa Subhan  | G64190018 | Back-end        |
+| Lesy Okviani           | G64190026 | Project Manager |
+| Bobby Williams K. Hara | G64190061 | Front-end       |
+| Muhammad Jazuli        | G64190081 | UI/UX Designer  |
 
 # Deskripsi Singkat NoQ
 
@@ -85,5 +85,28 @@ Makanan adalah sumber energi manusia, tanpa adanya energi sangat sulit untuk mel
 
 ## Tech Stack
 
-| Collaboration Platform | Github |
-| Project Management | Trello |
+| <!-- -->               | <!-- -->                       |
+| ---------------------- | ------------------------------ |
+| Collaboration Platform | Github                         |
+| Project Management     | Trello                         |
+| Teknologi              | HTML, CSS, Javascript, dan PHP |
+
+# Hasil dan Pembahasan
+
+## Use Case Diagram
+
+## Activity Diagram
+
+## Class Diagram
+
+## Entity Relationship Diagram
+
+## Arsitektur Sistem
+
+## Fungsi Utama yang Dikembangkan
+
+## Fungsi CRUD
+
+# Hasil Implementasi
+
+# Saran Untuk Pengembangan Selanjutnya
