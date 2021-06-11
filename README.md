@@ -93,6 +93,18 @@ Makanan adalah sumber energi manusia, tanpa adanya energi sangat sulit untuk mel
 ## Fungsi Utama yang Dikembangkan
 
 ## Fungsi CRUD
+| Domain class           | CRUD      | Verified use case                   |
+| ---------------------- | --------- | ----------------------------------- |
+| Restoran (Admin)       | Create    | Membuat akun                        |
+|                        |           | Membuat Kategori dan menu restoran  |
+|                        |           | Membuat meja restoran               |
+|                        | Read      | Membaca pesanan                     |
+|                        |           | Membaca pembayaran                  |
+|                        |           | Membaca laporan transaksi           |
+|                        | Update    | Mengubah kategori dan menu          |
+|                        |           | Menyelesaikan transaksi             |
+|                        | Delete    | Menghapus kategori dan menu         |
+|                        |           | Menghapus restoran                  |
 
 # Hasil Implementasi
 
