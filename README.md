@@ -34,7 +34,7 @@ Makanan adalah sumber energi manusia, tanpa adanya energi sangat sulit untuk mel
 - Membantu pengguna menghindari antrean saat melakukan pemesanan makanan
 - Mempermudah pengguna untuk mereservasi tempat duduk yang tersedia
 
-# user Stories
+# User Stories
 
 - Sebagai pengguna yang terdaftar, agar dapat mencari menu makanan yang saya inginkan, saya dapat mencarinya melalui pencarian
 - Sebagai pengguna yang telah logout, agar dapat menggunakan aplikasi secara personal, saya dapat login menggunakan alamat email untuk masuk ke aplikasi
