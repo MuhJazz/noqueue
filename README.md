@@ -93,6 +93,31 @@ Makanan adalah sumber energi manusia, tanpa adanya energi sangat sulit untuk mel
 ## Fungsi Utama yang Dikembangkan
 
 ## Fungsi CRUD
+| Domain Class           | CRUD      | Role                               |
+| ---------------------- | --------- | ---------------------------------- |
+| Restoran (Admin)       | Create    | Membuat akun                       |
+|                        |           | Membuat Kategori dan menu restoran |
+|                        |           | Membuat meja restoran              |
+|                        | Read      | Membaca pesanan                    |
+|                        |           | Membaca pembayaran                 |
+|                        |           | Membaca laporan transaksi          |
+|                        | Update    | Mengubah kategori dan menu         |
+|                        |           | Menyelesaikan transaksi            |
+|                        | Delete    | Menghapus kategori dan menu        |
+|                        |           | Menghapus restoran                 |
+|                        |           |                                    |
+| Superadmin             | Create    | Membuat akun                       |
+|                        | Read      | Membaca data restoran              |
+|                        | Update    |                                    |
+|                        | Delete    | Menghapus restoran                 |
+|                        |           |                                    |
+| Customer (User)        | Create    | Membuat akun                       |
+|                        |           | Membuat pesanan                    |
+|                        | Read      | Membaca kategori dan menu restoran |
+|                        | Update    | Melakukan pembayaran               |
+|                        |           | Mengubah pemesanan                 |
+|                        |           | Mengubah informasi akun            |
+|                        | Delete    | Menghapus akun                     |
 
 # Hasil Implementasi
 
